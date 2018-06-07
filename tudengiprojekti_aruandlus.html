@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label>Taotleja isikukood / organisatsiooni registrikood:</label>
-                <input type="number" class="form-control">
+                <input type="text" class="form-control">
             </div>
 
             <div class="form-group">
@@ -62,15 +62,15 @@
             </div>
             <div class="form-group">
                 <label>Määratud toetuse summa (kui suur toetus tegelikult määrati komisjoni poolt):</label>
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" min="0">
             </div>
             <div class="form-group">
                 <label>Kasutatud toetuse summa (kui palju määratud toetusest ära kasutati):</label>
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" min="0">
             </div>
             <div class="form-group">
                 <label>Projekti tegelik kogukulu (kasutatud toetus + kaasfinantseering + omaosalus):</label>
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" min="0">
             </div>
 
 
@@ -149,10 +149,10 @@
             <tbody>
               <tr>
                 <td><input type="text" class="form-control" placeholder="1."></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
@@ -163,8 +163,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder="" min="0"></td>
+                <td>TLÜst toatletav summa:<br><br><br> <input type="number" class="form-control" placeholder="" min="0"></td>
 
               </tr>
             </tbody>
@@ -173,6 +173,7 @@
         <hr>
         <div class="chapter">
           <div class="form-group">
+              <br>
               <label>Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" class="form-control" placeholder="eelarve põhjendus">
           </div>
@@ -191,8 +192,8 @@
                 </ul>
             </div>
             <div class="form-group">
-                <label>Aruande esitaja nimi, esitamise kuupäev ning allkiri:</label>
-                <input type="text" class="form-control" placeholder="">
+                <label>Kinnitan:</label>
+                <input type="checkbox" class="form-control" placeholder="">
             </div>
         </div>
 <!--

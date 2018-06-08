@@ -19,10 +19,10 @@ require './php/sessionCheck.php';
         <div class="chapter-header">
 			<p>Teadusprojekti taotlus</p>
             <p>Projekti ning taotleja üldandmed</p>
-			<button type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
 			<br>
 			<br>
-			<button type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
         </div>
         <div class="chapter">
 

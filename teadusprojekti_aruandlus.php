@@ -12,83 +12,103 @@ require './php/sessionCheck.php';
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	 <script type="text/javascript">
+    let counter=3;
+      function addOneToTable() {
+        var table = document.getElementById("projectBudgetTable");
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        counter++;
+      }
+      function removeOneFromTable() {
+        if (counter>3) {
+          document.getElementById("projectBudgetTable").deleteRow(counter-1);
+          counter--;
+        } else {
+          alert("Rohkem ei saa eemaldada!");
+        }
+      }
+    </script>
 </head>
 
 <body>
-
     <div class="content">
         <div class="chapter-header">
-			
-			<p>Teadusprojekti aruandlus</p>
             <p>Projekti ning taotleja üldandmed</p>
-			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
-			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
-			<br>
-			<br>
-			
         </div>
         <div class="chapter">
 
             <div class="form-group">
                 <label>1. Taotleja ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi </br>( * toetuse taotleja on projekti lõppedes toetuse saaja)</br></label>
-                <input type="text" class="form-control" id="nimi">
+                <input type="text" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label>2. Taotleja isikukood / organisatsiooni registrikood </label>
-                <input type="number" class="form-control" id="isikukood">
+                <input type="number" class="form-control" id="code">
             </div>
 
             <div class="form-group">
                 <label>3.Taotleja kontaktandmed:</label>
-                <input type="number" class="form-control" placeholder="telefoninumber" id="telefon">
+                <input type="number" class="form-control" placeholder="telefoninumber" id="phone">
                 <br>
-                <input type="email" class="form-control" placeholder="e-posti aadress" id="epost">
+                <input type="email" class="form-control" placeholder="e-posti aadress" id="email">
                 <br>
-                <input type="text" class="form-control" placeholder="elukoha aadress" id="elukoht">
+                <input type="text" class="form-control" placeholder="elukoha aadress" id="address">
 
             </div>
             <div class="form-group">
                 <label>4. Taotleja arveldusarve number </label>
-                <input type="number" class="form-control" placeholder="number" id="arveldusnumber">
+                <input type="number" class="form-control" placeholder="number" id="bank_account">
             </div>
             <div class="form-group">
                 <label>5. Aruandluse koostaja (juhul, kui erineb taotlejast)</label>
-                <input type="text" class="form-control" id="aruandlusekoostaja">
+                <input type="text" class="form-control" id="report_compiler">
             </div>
             <div class="form-group">
                 <label>6. Projekti juht (M1 ja M3 projektide puhul saab juhiks olla toetuse taotleja)</label>
-                <input type="text" class="form-control" id="projektijuht">
+                <input type="text" class="form-control" id="project_manager">
             </div>
             <div class="form-group">
                 <label>7. Teised projektimeeskonna liikmed:</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="team_members">
             </div>
 			<div class="form-group">
                 <label>8. Juhendaja nimi, ametikoht/haridus, tegevusvaldkond (ainult M1 projekt) :</label>
-                <input type="text" class="form-control" placeholder="juhendaja nimi" id="juhendajanimi">
+                <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name">
                 <br>
-                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="juhendajaametikoht">
+                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" "juhendajategevusvaldkond">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" "supervisor_field">
             </div>
 			<div class="form-group">
                 <label>9. Projekti pealkiri :</label>
-                <input type="text" class="form-control" id="projektipealkiri">
+                <input type="text" class="form-control" id="project_name">
             </div>
     
             <div class="form-group">
                 <label>10. Projekti tegelik elluviimise periood (algus- ning lõpukuupäev) :</label>
-                <input type="date" class="form-control" placeholder="alguskuupäev" id="algus">
+                <input type="date" class="form-control" placeholder="alguskuupäev" id="initial_date">
                 <br>
-                <input type="date" class="form-control" placeholder="lõpukuupäev" id="lopp">
+                <input type="date" class="form-control" placeholder="lõpukuupäev" id="end_date">
             </div>
 			<div class="form-group">
                 <label>11. Määratav toetus :</label>
-                <input type="number" class="form-control" id="mtoetus">
+                <input type="number" class="form-control" id="grant_awarded">
 			</div>
 			<div class="form-group">
                 <label>12. Tegelik kulu (teadusprojektide vahenditest planeeritud kulu) :</label>
-                <input type="number" class="form-control" id="kulu">
+                <input type="number" class="form-control" id="actual_cost">
             </div>
 			</div>
 
@@ -102,12 +122,12 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>13. Probleemi püstitus ja sihtrühma kirjeldus :</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="problem">
 				</div>
             
             <div class="form-group">
                 <label>14. Projekti eesmärk :</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="project_goal">
             </div>
             <div class="form-group">
                 <label>15. Projekti tulemused 
@@ -115,18 +135,16 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>15.1 Oodatud tulemused <br>(mida projektiga taheti saavutada) :</br></label>
-                <input type="text" class="form-control" placeholder="1.">
-                <input type="text" class="form-control" placeholder="2.">
-                <input type="text" class="form-control" placeholder="3.">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="project_goal"></textarea>
+                
 				<tr>
                 
               </tr>
             </div>
 			<div class="form-group">
                 <label>15.2 Tegelikud tulemused : <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda) :</br></label>
-                <input type="text" class="form-control" placeholder="1.">
-                <input type="text" class="form-control" placeholder="2.">
-                <input type="text" class="form-control" placeholder="3.">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_results"></textarea>
+                
 				<tr>
                 
               </tr>
@@ -136,18 +154,16 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>16.1 Planeeritud tegevused ja tähtaeg <br>(mida projektiga taheti saavutada) :</label>
-                <input type="text" class="form-control" placeholder="1.">
-                <input type="text" class="form-control" placeholder="2.">
-                <input type="text" class="form-control" placeholder="3.">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_activities"></textarea>
+                
 				<tr>
                 
               </tr>
             </div>
 			<div class="form-group">
                 <label>16.2 Tegelikud tegevused ja tähtaeg <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda):</br></label>
-                <input type="text" class="form-control" placeholder="1.">
-                <input type="text" class="form-control" placeholder="2.">
-                <input type="text" class="form-control" placeholder="3.">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_activities"></textarea>
+                
 				<tr>
                 
               </tr>
@@ -157,14 +173,14 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="plannedd_m1"></textarea>
 				<tr>
                 
               </tr>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m1"></textarea>
 				<tr>
                 
               </tr>
@@ -176,14 +192,14 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>18.1. Planeeritud :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m2"></textarea>
 				<tr>
                 
               </tr>
             </div>
 			<div class="form-group">
                 <label>18.2 Tegelik :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m2"></textarea>
 				<tr>
                 
               </tr>
@@ -193,21 +209,21 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>19.1. Planeeritud :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m3"></textarea>
 				<tr>
                 
               </tr>
             </div>
 			<div class="form-group">
                 <label>19.2 Tegelik :</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m3"></textarea>
 				<tr>
                 
               </tr>
             </div>
             <div class="form-group">
                 <label>20. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
-                <input type="text" class="form-control">
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
             </div>
 			
 			 <hr>
@@ -237,10 +253,10 @@ require './php/sessionCheck.php';
             <tbody>
               <tr>
                 <td><input type="text" class="form-control" placeholder="1."></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
@@ -300,3 +316,4 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
+

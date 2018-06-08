@@ -231,7 +231,7 @@ require './php/sessionCheck.php';
             <p>Projekti eelarve ning põhjendus</p>
         </div>
         <div class="chapter">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
                 <th>Eelarverida ehk kuluartikkel</th>
@@ -260,15 +260,15 @@ require './php/sessionCheck.php';
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                 <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder="" min="0"></td>
+                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder="" min="0"></td>
 
               </tr>
             </tbody>
@@ -316,4 +316,3 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
-

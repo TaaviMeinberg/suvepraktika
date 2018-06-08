@@ -19,11 +19,11 @@ require './php/sessionCheck.php';
 <body onload="onLoad()">
     <div class="content">
         <div class="chapter-header">
-			 <button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='main.php';">Tagasi avalehele</button>
             <p id="header">Uus taotlus</p>
             
         </div>
         <div class="chapter">
+			<button class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
             <center>
                 <br>

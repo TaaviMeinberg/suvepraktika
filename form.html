@@ -4,6 +4,7 @@
 <head>
     <title>Page Title</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -153,6 +154,80 @@
                 <label>Toetuse taotlemise põhjus (kuidas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
                     ehk mida saab rahastuse abil paremini teha):</label>
                 <input type="text" class="form-control">
+				<hr>
+        <div class="chapter-header">
+            <p>Projekti eelarve ning põhjendus</p>
+        </div>
+        <div class="chapter">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Eelarverida ehk kuluartikkel</th>
+                <th>Ühik</th>
+                <th>Ühiku hind</th>
+                <th>Ühiku kogus</th>
+                <th>Kuluartikli summa</th>
+                <th>Rahastaja</th>
+              </tr>
+              <tr>
+                <th class="tableExplanation">(nt. trükkimine, transport)</th>
+                <th class="tableExplanation">(nt. plakat, bussi pilet)</th>
+                <th class="tableExplanation">(nt. ühe plakati hind, ühe bussi pileti hind)</th>
+                <th class="tableExplanation">(nt. 45 plakatit, 10 bussipiletit)</th>
+                <th class="tableExplanation">(ühiku hind x ühiku kogus)</th>
+                <th class="tableExplanation">(märkida, kas kulu on planeeritud TLÜ toetusest, omafinantseeringust või kaasfinantseeringust*)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" class="form-control" placeholder="1."></td>
+                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="text" class="form-control" placeholder=""></td>
+              </tr>
+              <tr>
+                <td><button type="button" name="addToTable">+</button></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
+                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder=""></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr>
+       
+          <div class="form-group">
+              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <input type="text" class="form-control" placeholder="eelarve põhjendus">
+          </div>
+		   
+        </div>
+		 <hr>
+        <div class="chapter-header">
+            <p>Kinnitusleht</p>
+        </div>
+        <div class="chapter">
+            <div class="form-group">
+                <label>Käesoleva aruande allkirjastamisega kinnitan, et:</label>
+                <ul>
+                  <li>aruandes esitatud andmed on õiged ning tõesed;</li>
+                  <li>olen teadlik, et aruandeid menetleval komisjonil on õigus nõuda lisadokumente ja kutsuda aruande esitaja vestlusele, mille käigus peab aruande esitaja andma lisainformatsiooni projekti, selle osade ja/või rahaliste vahendite kasutamise kohta.</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label>Kinnitan:</label>
+                <input type="checkbox" class="form-control" placeholder="">
+            </div>
+        </div>
+        </div>
             </div>
         </div>
 <!--
@@ -165,3 +240,4 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:tudengiprojekti_aruandlus.html
 <!DOCTYPE html>
 <html>
@@ -236,6 +237,8 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 
 </html>
 =======
+=======
+>>>>>>> 2296a2c5b09b372652e21d9cd031a63da16eee4c
 <?php
 require './php/sessionCheck.php';
 ?>
@@ -482,4 +485,3 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
->>>>>>> 665f62d244ca26db02119fdfb9415daab0ee65c9:tudengiprojekti_aruandlus.php

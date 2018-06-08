@@ -14,14 +14,15 @@ require './php/sessionCheck.php';
 </head>
 
 <body>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='main.php';">Tagasi avalehele</button>
-<br>
-<br>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
+
     <div class="content">
         <div class="chapter-header">
 			<p>Teadusprojekti taotlus</p>
             <p>Projekti ning taotleja üldandmed</p>
+			<button type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<br>
+			<br>
+			<button type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
         </div>
         <div class="chapter">
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:tudengiprojekti_aruandlus.html
 <!DOCTYPE html>
 <html>
@@ -38,14 +39,14 @@
 </head>
 
 <body>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='main.html';">Tagasi avalehele</button>
-<br>
-<br>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='uusTaotlus.html';">Tagasi uue taotluse lehele</button>
     <div class="content">
         <div class="chapter-header">
 			<p>Tudengiprojekti aruandlus</p>
             <p>Projekti ning taotleja üldandmed</p>
+			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
+			<br>
+			<br>
         </div>
         <div class="chapter">
 
@@ -236,6 +237,8 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 
 </html>
 =======
+=======
+>>>>>>> 2296a2c5b09b372652e21d9cd031a63da16eee4c
 <?php
 require './php/sessionCheck.php';
 ?>
@@ -482,4 +485,3 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
->>>>>>> 665f62d244ca26db02119fdfb9415daab0ee65c9:tudengiprojekti_aruandlus.php

@@ -19,64 +19,64 @@
 
             <div class="form-group">
                 <label>1. Taotleja ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi </br>( * toetuse taotleja on projekti lõppedes toetuse saaja)</br></label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" name="name">
             </div>
             <div class="form-group">
                 <label>2. Taotleja isikukood / organisatsiooni registrikood </label>
-                <input type="number" class="form-control" id="code">
+                <input type="number" class="form-control" name="code">
             </div>
 
             <div class="form-group">
                 <label>3.Taotleja kontaktandmed:</label>
-                <input type="number" class="form-control" placeholder="telefoninumber" id="phone">
+                <input type="number" class="form-control" placeholder="telefoninumber" name="phone">
                 <br>
-                <input type="email" class="form-control" placeholder="e-posti aadress" id="email">
+                <input type="email" class="form-control" placeholder="e-posti aadress" name="email">
                 <br>
-                <input type="text" class="form-control" placeholder="elukoha aadress" id="address">
+                <input type="text" class="form-control" placeholder="elukoha aadress" name="address">
 
             </div>
             <div class="form-group">
                 <label>4. Taotleja arveldusarve number </label>
-                <input type="number" class="form-control" placeholder="number" id="bank_account">
+                <input type="number" class="form-control" placeholder="number" name="bank_account">
             </div>
             <div class="form-group">
                 <label>5. Aruandluse koostaja (juhul, kui erineb taotlejast)</label>
-                <input type="text" class="form-control" id="report_compiler">
+                <input type="text" class="form-control" name="report_compiler">
             </div>
             <div class="form-group">
                 <label>6. Projekti juht (M1 ja M3 projektide puhul saab juhiks olla toetuse taotleja)</label>
-                <input type="text" class="form-control" id="project_manager">
+                <input type="text" class="form-control" name="project_manager">
             </div>
             <div class="form-group">
                 <label>7. Teised projektimeeskonna liikmed:</label>
-                <input type="text" class="form-control" id="team_members">
+                <input type="text" class="form-control" name="team_members">
             </div>
 			<div class="form-group">
                 <label>8. Juhendaja nimi, ametikoht/haridus, tegevusvaldkond (ainult M1 projekt) :</label>
-                <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name">
+                <input type="text" class="form-control" placeholder="juhendaja nimi" name="supervisor_name">
                 <br>
-                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation">
+                <input type="text" class="form-control" placeholder="ametikoht/haridus" name="supervisor_occupation">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" "supervisor_field">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" name="field_of_activity">
             </div>
 			<div class="form-group">
                 <label>9. Projekti pealkiri :</label>
-                <input type="text" class="form-control" id="project_name">
+                <input type="text" class="form-control" name="project_name">
             </div>
-    
+
             <div class="form-group">
                 <label>10. Projekti tegelik elluviimise periood (algus- ning lõpukuupäev) :</label>
-                <input type="date" class="form-control" placeholder="alguskuupäev" id="initial_date">
+                <input type="date" class="form-control" placeholder="alguskuupäev" name="initial_date">
                 <br>
-                <input type="date" class="form-control" placeholder="lõpukuupäev" id="end_date">
+                <input type="date" class="form-control" placeholder="lõpukuupäev" name="end_date">
             </div>
 			<div class="form-group">
                 <label>11. Määratav toetus :</label>
-                <input type="number" class="form-control" id="grant_awarded">
+                <input type="number" class="form-control" name="grant_awarded">
 			</div>
 			<div class="form-group">
                 <label>12. Tegelik kulu (teadusprojektide vahenditest planeeritud kulu) :</label>
-                <input type="number" class="form-control" id="actual_cost">
+                <input type="number" class="form-control" name="actual_cost">
             </div>
 			</div>
 
@@ -86,35 +86,35 @@
         <div class="chapter-header">
             <p>Projekti kirjeldus</p>
 			</div>
-        
+
         <div class="chapter">
             <div class="form-group">
                 <label>13. Probleemi püstitus ja sihtrühma kirjeldus :</label>
-                <input type="text" class="form-control" id="problem">
+                <input type="text" class="form-control" name="problem">
 				</div>
-            
+
             <div class="form-group">
                 <label>14. Projekti eesmärk :</label>
-                <input type="text" class="form-control" id="project_goal">
+                <input type="text" class="form-control" name="project_goal">
             </div>
             <div class="form-group">
-                <label>15. Projekti tulemused 
+                <label>15. Projekti tulemused
                     <br>(eesmärk on võrrelda, mis sai esitatud projekti taotluses ning kuidas see tegelikult täitus. “Planeeritud” lahtrisse kopeerida taotluses esitatu ning “tegelik” lahtris kirjeldada tegelikku teostamist) :</br></label>
             </div>
             <div class="form-group">
                 <label>15.1 Oodatud tulemused <br>(mida projektiga taheti saavutada) :</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="project_goal"></textarea>
-                
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="expected_results"></textarea>
+
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
                 <label>15.2 Tegelikud tulemused : <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda) :</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_results"></textarea>
-                
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="actual_results"></textarea>
+
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
@@ -122,18 +122,18 @@
             </div>
 			<div class="form-group">
                 <label>16.1 Planeeritud tegevused ja tähtaeg <br>(mida projektiga taheti saavutada) :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_activities"></textarea>
-                
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="planned_activities"></textarea>
+
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
                 <label>16.2 Tegelikud tegevused ja tähtaeg <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda):</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_activities"></textarea>
-                
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="actual_activities"></textarea>
+
 				<tr>
-                
+
               </tr>
             </div>
             <div class="form-group">
@@ -141,35 +141,35 @@
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="plannedd_m1"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="planned_m1"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m1"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="actual_m1"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
             <div class="form-group">
                 <label>18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava
                     materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):</label>
-        
+
             </div>
 			<div class="form-group">
                 <label>18.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m2"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="planned_m2"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
                 <label>18.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m2"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="actual_m2"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
             <div class="form-group">
@@ -177,23 +177,23 @@
             </div>
 			<div class="form-group">
                 <label>19.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m3"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="planned_m3"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
 			<div class="form-group">
                 <label>19.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m3"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="actual_m3"></textarea>
 				<tr>
-                
+
               </tr>
             </div>
             <div class="form-group">
                 <label>20. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" name="additional_info"></textarea>
             </div>
-			
+
 			 <hr>
         <div class="chapter-header">
             <p>Projekti eelarve ning põhjendus</p>
@@ -243,12 +243,12 @@
           </table>
         </div>
         <hr>
-       
+
           <div class="form-group">
               <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" class="form-control" placeholder="eelarve põhjendus">
           </div>
-		   
+
         </div>
 		 <hr>
         <div class="chapter-header">

@@ -30,7 +30,7 @@ require './php/sessionCheck.php';
                 <?php 
                     echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
-                <br>
+                <hr>
                 <p style="font-style: italic;">Siia kuvatakse Sinu esitatud taotlused</p>
                 <br>
                 <br>

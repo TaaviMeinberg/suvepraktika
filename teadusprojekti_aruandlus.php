@@ -1,3 +1,7 @@
+<?php
+require './php/sessionCheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +12,34 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	 <script type="text/javascript">
+    let counter=3;
+      function addOneToTable() {
+        var table = document.getElementById("projectBudgetTable");
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        counter++;
+      }
+      function removeOneFromTable() {
+        if (counter>3) {
+          document.getElementById("projectBudgetTable").deleteRow(counter-1);
+          counter--;
+        } else {
+          alert("Rohkem ei saa eemaldada!");
+        }
+      }
+    </script>
 </head>
 
 <body>
@@ -221,10 +253,10 @@
             <tbody>
               <tr>
                 <td><input type="text" class="form-control" placeholder="1."></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
@@ -284,3 +316,4 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
+

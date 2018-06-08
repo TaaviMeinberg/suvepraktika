@@ -1,0 +1,136 @@
+Andmebaasid praktika jaoks:
+
+4 tk iga taotluse kohta 1 tabel
+
+1. teadusprojekti aruandlus
+
+???? projekti eelarve ning põhjendus
+eelarverida 
+ühik
+ühiku hind
+ühikute kogus
+kogu summa
+rahastaja 
+eelarve põhjendus
+kinnitusleht ehk allkiri jne 
+
+CREATE TABLE report1(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(60), 
+code VARCHAR(11), 
+phone VARCHAR(8), 
+email VARCHAR(60), 
+address VARCHAR(60),
+bank_account VARCHAR(22),
+report_compiler VARCHAR(60), 
+project_manager VARCHAR(60), 
+team_members VARCHAR(240), 
+supervisor_name VARCHAR(60), 
+supervisor_occupation VARCHAR(60), 
+supervisor_field VARCHAR(60), 
+project_name VARCHAR(100), 
+initial_date DATE,
+end_date DATE, 
+grant_awarded INT(5),
+actual_cost INT(5),
+problem VARCHAR(500),
+project_goal VARCHAR(500),
+planned_results VARCHAR(500), 
+actual_results VARCHAR(500), 
+planned_activities VARCHAR(500), 
+actual_activities VARCHAR(500),
+planned_m1 VARCHAR(500), 
+actual_m1 VARCHAR(500),
+planned_m2 VARCHAR(500), 
+actual_m2 VARCHAR(500),
+planned_m3 VARCHAR(500), 
+actual_m3 VARCHAR(500),
+additional_info VARCHAR(500)
+
+2. teadusprojekti taotlus
+
+CREATE TABLE application1(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(60), 
+connection VARCHAR(140)
+code VARCHAR(11), 
+phone VARCHAR(8), 
+email VARCHAR(60), 
+address VARCHAR(60),
+speciality VARCHAR(60),
+degree VARCHAR(60),
+year INT(4),  
+project_manager VARCHAR(60), 
+team_members VARCHAR(240), 
+supervisor_name VARCHAR(60), 
+supervisor_occupation VARCHAR(60), 
+supervisor_field VARCHAR(60), 
+project_name VARCHAR(100), 
+requested_amount INT(5),
+initial_date DATE,
+end_date DATE, 
+requested_amount_goal VARCHAR(500),
+problem VARCHAR(500),
+project_goal VARCHAR(500),
+results VARCHAR(500), 
+activities VARCHAR(500), 
+m1 VARCHAR(500), 
+m2 VARCHAR(500), 
+m3 VARCHAR(500),
+reason VARCHAR(500)
+
+3. tudengiprojekti aruandlus
+
+CREATE TABLE report2(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(60), 
+code VARCHAR(11), 
+phone VARCHAR(8), 
+email VARCHAR(60), 
+address VARCHAR(60),
+bank_account VARCHAR(22),
+report_compiler VARCHAR(60), 
+project_manager VARCHAR(60), 
+team_members VARCHAR(240),  
+project_name VARCHAR(100), 
+initial_date DATE,
+end_date DATE, 
+grant_awarded INT(5),
+used_grant_awarded INT(5),
+actual_cost INT(5),
+problem VARCHAR(500),
+project_goal VARCHAR(500),
+planned_results VARCHAR(500), 
+actual_results VARCHAR(500), 
+planned_activities VARCHAR(500), 
+actual_activities VARCHAR(500),
+additional_info VARCHAR(500)
+
+4. tudengiprojekti taotlus
+
+CREATE TABLE application2(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(60), 
+connection VARCHAR(140)
+code VARCHAR(11), 
+phone VARCHAR(8), 
+email VARCHAR(60), 
+address VARCHAR(60),
+speciality VARCHAR(60),
+degree VARCHAR(60),
+year INT(4),  
+project_manager VARCHAR(60), 
+team_members VARCHAR(240), 
+project_name VARCHAR(100), 
+requested_amount INT(5),
+budget INT(5),
+initial_date DATE,
+end_date DATE, 
+requested_amount_goal VARCHAR(500),
+problem VARCHAR(500),
+project_goal VARCHAR(500),
+results VARCHAR(500), 
+activities VARCHAR(500), 
+additional_info VARCHAR(500),
+reason VARCHAR(500)
+

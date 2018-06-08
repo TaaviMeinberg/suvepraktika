@@ -22,15 +22,16 @@ require './php/sessionCheck.php';
             
         </div>
         <div class="chapter">
-                <button type="button" class="btn btn-success btn-small" onclick="location.href='uusTaotlus.html';" style="float: left;">Esita uus taotlus</button>
+                <button type="button" class="btn btn-success btn-small" onclick="location.href='uusTaotlus.php';" style="float: left;">Esita uus taotlus</button>
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
             <center>
                 <br>
                 <br>
                 <?php 
-                    echo "Welcome back, " . $_SESSION["userName"] . ".";
+                    echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
-                <p style="font-style: italic;">Siia kuvatakse esitatud taotlused</p>
+                <br>
+                <p style="font-style: italic;">Siia kuvatakse Sinu esitatud taotlused</p>
                 <br>
                 <br>
             </center>

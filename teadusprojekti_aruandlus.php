@@ -1,3 +1,7 @@
+<?php
+require './php/sessionCheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,14 +15,15 @@
 </head>
 
 <body>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='main.html';">Tagasi avalehele</button>
-<br>
-<br>
-<button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='uusTaotlus.html';">Tagasi uue taotluse lehele</button>
+
     <div class="content">
         <div class="chapter-header">
 			<p>Teadusprojekti aruandlus</p>
             <p>Projekti ning taotleja üldandmed</p>
+			<button type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<br>
+			<br>
+			<button type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
         </div>
         <div class="chapter">
 
@@ -112,7 +117,7 @@
                 <input type="text" class="form-control" placeholder="2.">
                 <input type="text" class="form-control" placeholder="3.">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
@@ -121,7 +126,7 @@
                 <input type="text" class="form-control" placeholder="2.">
                 <input type="text" class="form-control" placeholder="3.">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
@@ -133,7 +138,7 @@
                 <input type="text" class="form-control" placeholder="2.">
                 <input type="text" class="form-control" placeholder="3.">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
@@ -142,7 +147,7 @@
                 <input type="text" class="form-control" placeholder="2.">
                 <input type="text" class="form-control" placeholder="3.">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
             <div class="form-group">
@@ -152,14 +157,14 @@
                 <label>17.1. Planeeritud :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
             <div class="form-group">
@@ -171,14 +176,14 @@
                 <label>18.1. Planeeritud :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
                 <label>18.2 Tegelik :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
             <div class="form-group">
@@ -188,14 +193,14 @@
                 <label>19.1. Planeeritud :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
 			<div class="form-group">
                 <label>19.2 Tegelik :</label>
                 <input type="text" class="form-control">
 				<tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                
               </tr>
             </div>
             <div class="form-group">

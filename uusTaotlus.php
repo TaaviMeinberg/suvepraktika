@@ -1,3 +1,7 @@
+<?php
+require './php/sessionCheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -15,20 +19,20 @@
 <body onload="onLoad()">
     <div class="content">
         <div class="chapter-header">
-			 <button style= "position: absolute; left: 0" type="button" class="btn btn-info" onclick="location.href='main.html';">Tagasi avalehele</button>
             <p id="header">Uus taotlus</p>
             
         </div>
         <div class="chapter">
+			<button class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
             <center>
                 <br>
                 <br>
                 <p style="font-style: italic;">Vali millist taotlust esitada</p>
-                <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_taotlus.html';">tudengiprojekti taotlus</button>
-                <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_aruandlus.html';">tudengiprojekti aruandlus</button>
-                <button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_aruandlus.html';">teadusprojekti aruandlus</button>
-				<button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_taotlus.html';">teadusprojekti taotlus</button>
+                <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_taotlus.php';">tudengiprojekti taotlus</button>
+                <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_aruandlus.php';">tudengiprojekti aruandlus</button>
+                <button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_aruandlus.php';">teadusprojekti aruandlus</button>
+				<button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_taotlus.php';">teadusprojekti taotlus</button>
                 <br>
                 <br>
             </center>

@@ -1,3 +1,7 @@
+<?php
+require './php/sessionCheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +27,9 @@
             <center>
                 <br>
                 <br>
+                <?php 
+                    echo "Welcome back, " . $_SESSION["userName"] . ".";
+                ?>
                 <p style="font-style: italic;">Siia kuvatakse esitatud taotlused</p>
                 <br>
                 <br>

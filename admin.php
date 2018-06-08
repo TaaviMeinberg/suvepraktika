@@ -28,9 +28,10 @@ require './php/sessionCheck.php';
                 <br>
                 <br>
                 <?php 
-                    echo "Welcome back, " . $_SESSION["userName"] . ".";
+                    echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
-                <p style="font-style: italic;">Siia kuvatakse esitatud taotlused</p>
+                <hr>
+                <p style="font-style: italic;">Siia kuvatakse kõik esitatud taotlused</p>
                 <br>
                 <br>
             </center>

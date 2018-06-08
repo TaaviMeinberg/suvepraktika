@@ -6,6 +6,34 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    let counter=3;
+      function addOneToTable() {
+        var table = document.getElementById("projectBudgetTable");
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        counter++;
+      }
+      function removeOneFromTable() {
+        if (counter>3) {
+          document.getElementById("projectBudgetTable").deleteRow(counter-1);
+          counter--;
+        } else {
+          alert("Rohkem ei saa eemaldada!");
+        }
+      }
+    </script>
 </head>
 
 <body>
@@ -132,7 +160,7 @@
             <p>Projekti eelarve ning põhjendus</p>
         </div>
         <div class="chapter">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
                 <th>Eelarverida ehk kuluartikkel</th>
@@ -161,7 +189,7 @@
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
               </tr>
               <tr>
                 <td></td>
@@ -198,7 +226,7 @@
             </div>
             <div class="form-group">
                 <label>Kinnitan:</label>
-                <input type="checkbox" class="form-control" placeholder="">
+                <input type="checkbox" class="form-control" placeholder="" required>
             </div>
         </div>
 <!--

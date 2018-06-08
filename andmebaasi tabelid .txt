@@ -46,6 +46,7 @@ actual_m2 VARCHAR(500),
 planned_m3 VARCHAR(500), 
 actual_m3 VARCHAR(500),
 additional_info VARCHAR(500)
+);
 
 2. teadusprojekti taotlus
 
@@ -78,6 +79,7 @@ m1 VARCHAR(500),
 m2 VARCHAR(500), 
 m3 VARCHAR(500),
 reason VARCHAR(500)
+);
 
 3. tudengiprojekti aruandlus
 
@@ -105,6 +107,7 @@ actual_results VARCHAR(500),
 planned_activities VARCHAR(500), 
 actual_activities VARCHAR(500),
 additional_info VARCHAR(500)
+);
 
 4. tudengiprojekti taotlus
 
@@ -133,4 +136,5 @@ results VARCHAR(500),
 activities VARCHAR(500), 
 additional_info VARCHAR(500),
 reason VARCHAR(500)
+);
 

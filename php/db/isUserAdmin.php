@@ -1,7 +1,6 @@
 <?php
     session_start();
     require("dbConfig.php");
-    $database = "if17_suvepraktika";
 
     $notice ="";
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);

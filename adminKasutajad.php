@@ -1,5 +1,6 @@
 <?php
 require './php/sessionCheck.php';
+require './php/db/adminFunctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +83,8 @@ require './php/sessionCheck.php';
             <p id="header">Kõik admin kasutajad</p>
 			</div>
         <div class="chapter">
-			<p>
+          <?php listAllAdmins(); ?>
+        </div>
     </div>
 </body>
 

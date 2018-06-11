@@ -29,8 +29,13 @@ $actual_m2;
 $planned_m3;
 $actual_m3;
 $additional_info;
+$jsonTable;
+$project_budget_total;
+$requested_budget;
+$budget_explanation;
 
-//table
+$message = "wrong answer";
+echo "<script type='text/javascript'>alert('$message');</script>";
 
 
 

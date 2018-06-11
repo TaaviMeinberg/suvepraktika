@@ -23,12 +23,12 @@ require './php/sessionCheck.php';
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell1.innerHTML = '<input name="budget" type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input name="unit" type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input name="unit_amount" type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input name="cost_of_item" type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input name="funder" type="text" class="form-control" placeholder="">';
         counter++;
       }
       function removeOneFromTable() {
@@ -69,7 +69,7 @@ require './php/sessionCheck.php';
         let planned_m3 = document.getElementById("planned_m3");
         let actual_m3 = document.getElementById("actual_m3");
         let additional_info = document.getElementById("additional_info");
-        let tableArray = [];
+        let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
           tableArray[0].push(document.getElementsByName("budget")[i].value);
           tableArray[1].push(document.getElementsByName("unit")[i].value);
@@ -78,10 +78,11 @@ require './php/sessionCheck.php';
           tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
           tableArray[5].push(document.getElementsByName("funder")[i].value);
         }
-        console.log(tableArray);
-        //$.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, adress:aadress, bank_account:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info});
-
-
+        var jsonTable = JSON.stringify(tableArray);
+        let project_budget_total = document.getElementById("project_budget_total");
+        let requested_budget = document.getElementById("requested_budget");
+        let budget_explanation = document.getElementById("budget_explanation");
+        $.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, adress:aadress, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation});
       }
 
 
@@ -277,7 +278,7 @@ require './php/sessionCheck.php';
             <p>Projekti eelarve ning põhjendus</p>
         </div>
         <div class="chapter">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
                 <th>Eelarverida ehk kuluartikkel</th>
@@ -306,15 +307,15 @@ require './php/sessionCheck.php';
                 <td><input name="funder" type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" placeholder=""></td>
+                <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" placeholder=""></td>
 
               </tr>
             </tbody>
@@ -323,8 +324,8 @@ require './php/sessionCheck.php';
         <hr>
 
           <div class="form-group">
-              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" class="form-control" placeholder="eelarve põhjendus">
+              <label>17. Eelarve põhjzendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 
         </div>

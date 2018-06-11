@@ -14,7 +14,7 @@ rahastaja
 eelarve põhjendus
 kinnitusleht ehk allkiri jne 
 
-CREATE TABLE report1(
+CREATE TABLE scientific_project_report(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60), 
 code VARCHAR(11), 
@@ -50,10 +50,10 @@ additional_info VARCHAR(3000)
 
 2. teadusprojekti taotlus
 
-CREATE TABLE application1(
+CREATE TABLE scientific_project_application(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60), 
-connection VARCHAR(500)
+connection VARCHAR(500),
 code VARCHAR(11), 
 phone VARCHAR(8), 
 email VARCHAR(60), 
@@ -83,7 +83,7 @@ reason VARCHAR(500)
 
 3. tudengiprojekti aruandlus
 
-CREATE TABLE report2(
+CREATE TABLE student_project_report(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60), 
 code VARCHAR(11), 
@@ -111,7 +111,7 @@ additional_info VARCHAR(3000)
 
 4. tudengiprojekti taotlus
 
-CREATE TABLE application2(
+CREATE TABLE student_project_application(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60), 
 connection VARCHAR(500),

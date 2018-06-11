@@ -7,6 +7,8 @@ require './php/sessionCheck.php';
 
 <head>
     <title>Page Title</title>
+	<meta http-equiv="content-type" content="application/vnd.ms-excel" charset="UTF-8">
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

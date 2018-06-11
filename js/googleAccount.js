@@ -45,6 +45,7 @@ function signOut() {
 function isAdmin(){
     $.get("./php/db/isUserAdmin.php", function(result){
         if(result !="true"){
+			document.body.innerHTML = "";
             alert("Teil puudub ligipääs");
             window.location = "./main.php";
         }

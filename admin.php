@@ -27,7 +27,7 @@ require './php/sessionCheck.php';
         <div class="chapter">
                 
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
-            <button type="button" class="btn btn-info" onclick="location.href='adminKasutajad.php';" style="float: left; margin-right: 10px;">Admin Kasutajad</button>
+            <button type="button" class="btn btn-info" onclick="location.href='adminKasutajad.php';" style="float: left; margin-right: 10px;">Halda adminne</button>
             <center>
                 <br>
                 <br>

@@ -42,3 +42,11 @@ function signOut() {
         window.location = "./index.html";
     });
 }
+function isAdmin(){
+    $.get("./php/db/isUserAdmin.php", function(result){
+        if(result !="true"){
+            alert("Teil puudub ligipääs");
+            window.location = "./main.php";
+        }
+    });
+}

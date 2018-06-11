@@ -15,7 +15,10 @@ require './php/sessionCheck.php';
     <script src="js/googleAccount.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="608677679448-ak55huh9omcppibuhh2t69iectp1r7ok.apps.googleusercontent.com">
-	    <script type="text/javascript">
+	<meta http-equiv="content-type" content="application/vnd.ms-excel" charset="UTF-8">
+      <script type="text/javascript">
+      isAdmin();
+
     let counter=1;
       function addOneToTable() {
         var table = document.getElementById("admins");

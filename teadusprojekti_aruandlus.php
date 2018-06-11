@@ -40,35 +40,35 @@ require './php/sessionCheck.php';
         }
       }
       function sendForm() {
-        let name = document.getElementById("name");
-        let id = document.getElementById("code");
-        let phone = document.getElementById("phone");
-        let email = document.getElementById("email");
-        let aadress = document.getElementById("aadress");
-        let bank_acc = document.getElementById("bank_account");
-        let report_compiler = document.getElementById("report_compiler");
-        let project_manager = document.getElementById("project_manager");
-        let team_members = document.getElementById("team_members");
-        let supervisor_name = document.getElementById("supervisor_name");
-        let supervisor_occupation = document.getElementById("supervisor_occupation");
-        let field_of_activity = document.getElementById("field_of_activity");
-        let project_name = document.getElementById("project_name");
-        let initial_date = document.getElementById("initial_date");
-        let end_date = document.getElementById("end_date");
-        let grant_awarded = document.getElementById("grant_awarded");
-        let actual_cost = document.getElementById("actual_cost");
-        let problem = document.getElementById("problem");
-        let project_goal = document.getElementById("project_goal");
-        let expected_results = document.getElementById("expected_results");
-        let actual_results = document.getElementById("actual_results");
-        let planned_activities = document.getElementById("planned_activities");
-        let planned_m1 = document.getElementById("planned_m1");
-        let actual_m1 = document.getElementById("actual_m1");
-        let planned_m2 = document.getElementById("planned_m2");
-        let actual_m2 = document.getElementById("actual_m2");
-        let planned_m3 = document.getElementById("planned_m3");
-        let actual_m3 = document.getElementById("actual_m3");
-        let additional_info = document.getElementById("additional_info");
+        var name = document.getElementById("name").value;
+        let id = document.getElementById("code").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let bank_acc = document.getElementById("bank_account").value;
+        let report_compiler = document.getElementById("report_compiler").value;
+        let project_manager = document.getElementById("project_manager").value;
+        let team_members = document.getElementById("team_members").value;
+        let supervisor_name = document.getElementById("supervisor_name").value;
+        let supervisor_occupation = document.getElementById("supervisor_occupation").value;
+        let field_of_activity = document.getElementById("field_of_activity").value;
+        let project_name = document.getElementById("project_name").value;
+        let initial_date = document.getElementById("initial_date").value;
+        let end_date = document.getElementById("end_date").value;
+        let grant_awarded = document.getElementById("grant_awarded").value;
+        let actual_cost = document.getElementById("actual_cost").value;
+        let problem = document.getElementById("problem").value;
+        let project_goal = document.getElementById("project_goal").value;
+        let expected_results = document.getElementById("expected_results").value;
+        let actual_results = document.getElementById("actual_results").value;
+        let planned_activities = document.getElementById("planned_activities").value;
+        let planned_m1 = document.getElementById("planned_m1").value;
+        let actual_m1 = document.getElementById("actual_m1").value;
+        let planned_m2 = document.getElementById("planned_m2").value;
+        let actual_m2 = document.getElementById("actual_m2").value;
+        let planned_m3 = document.getElementById("planned_m3").value;
+        let actual_m3 = document.getElementById("actual_m3").value;
+        let additional_info = document.getElementById("additional_info").value;
         let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
           tableArray[0].push(document.getElementsByName("budget")[i].value);
@@ -79,17 +79,22 @@ require './php/sessionCheck.php';
           tableArray[5].push(document.getElementsByName("funder")[i].value);
         }
         var jsonTable = JSON.stringify(tableArray);
-        let project_budget_total = document.getElementById("project_budget_total");
-        let requested_budget = document.getElementById("requested_budget");
-        let budget_explanation = document.getElementById("budget_explanation");
-        $.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, adress:aadress, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation});
-      }
 
+        let project_budget_total = document.getElementById("project_budget_total").value;
+        let requested_budget = document.getElementById("requested_budget").value;
+        let budget_explanation = document.getElementById("budget_explanation").value;
+        //$.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation});
+
+        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name},function(data, status, jqXHR) {// success callback
+              $('p').append(data);
+        });
+      }
 
     </script>
 </head>
 
 <body>
+
     <div class="content">
         <div class="chapter-header">
             <p>Projekti ning taotleja üldandmed</p>
@@ -136,7 +141,7 @@ require './php/sessionCheck.php';
                 <br>
                 <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity;">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity">
             </div>
 			<div class="form-group">
                 <label>9. Projekti pealkiri :</label>

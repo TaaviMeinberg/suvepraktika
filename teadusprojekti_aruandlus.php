@@ -181,6 +181,7 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>15.1 Oodatud tulemused <br>(mida projektiga taheti saavutada) :</br></label>
+
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="expected_results"></textarea>
 
 				<tr>
@@ -189,7 +190,8 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>15.2 Tegelikud tulemused : <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda) :</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_results"></textarea>
+
+                <textarea rows="" cols="" class="form-control" id="actual_results"></textarea>
 
 				<tr>
 
@@ -200,7 +202,8 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>16.1 Planeeritud tegevused ja tähtaeg <br>(mida projektiga taheti saavutada) :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_activities"></textarea>
+
+                <textarea rows="" cols="" class="form-control" id="planned_activities"></textarea>
 
 				<tr>
 
@@ -208,7 +211,12 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>16.2 Tegelikud tegevused ja tähtaeg <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda):</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_activities"></textarea>
+
+                
+
+
+                <textarea rows="" cols="" class="form-control" id="actual_activities"></textarea>
+                
 
 				<tr>
 
@@ -219,14 +227,16 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m1"></textarea>
+
+                <textarea rows="" cols="" placeholder="" class="form-control" id="planned_m1"></textarea>
+
 				<tr>
 
               </tr>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m1"></textarea>
+                <textarea rows="" cols="" class="form-control" id="actual_m1"></textarea>
 				<tr>
 
               </tr>
@@ -238,14 +248,14 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>18.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m2"></textarea>
+                <textarea rows="" cols="" class="form-control" id="planned_m2"></textarea>
 				<tr>
 
               </tr>
             </div>
 			<div class="form-group">
                 <label>18.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m2"></textarea>
+                <textarea rows="" cols="" class="form-control" id="actual_m2"></textarea>
 				<tr>
 
               </tr>
@@ -255,21 +265,21 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>19.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m3"></textarea>
+                <textarea rows="" cols="" class="form-control" id="planned_m3"></textarea>
 				<tr>
 
               </tr>
             </div>
 			<div class="form-group">
                 <label>19.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m3"></textarea>
+                <textarea rows="" cols="" class="form-control" id="actual_m3"></textarea>
 				<tr>
 
               </tr>
             </div>
             <div class="form-group">
                 <label>20. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
+                <textarea rows="" cols="" class="form-control" id="additional_info"></textarea>
             </div>
 
 			 <hr>
@@ -277,7 +287,7 @@ require './php/sessionCheck.php';
             <p>Projekti eelarve ning põhjendus</p>
         </div>
         <div class="chapter">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
                 <th>Eelarverida ehk kuluartikkel</th>
@@ -306,15 +316,15 @@ require './php/sessionCheck.php';
                 <td><input name="funder" type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                 <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder="" min="0"></td>
+                <td>TLÜst toatletav summa:<input type="number" class="form-control" placeholder="" min="0"></td>
 
               </tr>
             </tbody>

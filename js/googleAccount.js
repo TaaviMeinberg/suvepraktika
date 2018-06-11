@@ -18,8 +18,13 @@ function onSignIn(googleUser) {
         var sessionStatus = "create";
 
         $.post("./php/session.php", {userName:userName, userEmail:userEmail, sessionStatus:sessionStatus});
-        
-        window.location = "./main.php";
+        $.get("./php/db/isUserAdmin.php", function(result){
+            if(result =="true"){
+                window.location = "./admin.php";
+            }else{
+                window.location = "./main.php";
+            }
+        });
     } else {
         alert("Palun logi sisse kasutades enda TLÜ kontot.");
         signOut();

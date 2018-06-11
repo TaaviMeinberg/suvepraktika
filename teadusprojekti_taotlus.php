@@ -28,68 +28,68 @@ require './php/sessionCheck.php';
 
             <div class="form-group">
                 <label>Ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi:</label>
-                <input type="text" class="form-control" name="name">
+                <input type="text" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label>Organisatsiooni seos tudengi ja ülikooliga:</label>
-                <input type="text" class="form-control" name="connection">
+                <input type="text" class="form-control" id="connection">
             </div>
             <div class="form-group">
                 <label>Taotleja isikukood / organisatsiooni registrikood:</label>
-                <input type="text" class="form-control" name="code">
+                <input type="text" class="form-control" id="code">
             </div>
 
             <div class="form-group">
                 <label>Taotleja kontaktandmed:</label>
-                <input type="number" class="form-control" placeholder="telefoninumber" name="phone">
+                <input type="number" class="form-control" placeholder="telefoninumber" id="phone">
                 <br>
-                <input type="email" class="form-control" placeholder="e-posti aadress" name="email">
+                <input type="email" class="form-control" placeholder="e-posti aadress" id="email">
                 <br>
-                <input type="text" class="form-control" placeholder="elukoha aadress" name="address">
+                <input type="text" class="form-control" placeholder="elukoha aadress" id="address">
 
             </div>
             <div class="form-group">
                 <label>Õppeinfo:</label>
-                <input type="text" class="form-control" placeholder="eriala" name="speciality">
+                <input type="text" class="form-control" placeholder="eriala" id="speciality">
                 <br>
-                <input type="text" class="form-control" placeholder="õppetase" name="degree">
+                <input type="text" class="form-control" placeholder="õppetase" id="degree">
                 <br>
-                <input type="number" class="form-control" placeholder="õppeaasta" name="year">
+                <input type="number" class="form-control" placeholder="õppeaasta" id="year">
             </div>
             <div class="form-group">
                 <label>Projekti juht:</label>
-                <input type="text" class="form-control" name="project_manager">
-                <small name="project_manager" class="form-text text-muted">M1 ja M3 projektide puhul saab juhiks olla toetuse taotleja.</small>
+                <input type="text" class="form-control" id="project_manager">
+                <small id="project_manager" class="form-text text-muted">M1 ja M3 projektide puhul saab juhiks olla toetuse taotleja.</small>
             </div>
             <div class="form-group">
                 <label>Teised projektimeeskonna liikmed</label>
-                <input type="text" class="form-control" name="team_members">
+                <input type="text" class="form-control" id="team_members">
             </div>
             <div class="form-group">
                 <label>Juhendaja info (ainult M1 projekt):</label>
-                <input type="text" class="form-control" placeholder="juhendaja nimi" name="supervisor_name">
+                <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name">
                 <br>
-                <input type="text" class="form-control" placeholder="ametikoht/harnameus" name="supervisor_occupation">
+                <input type="text" class="form-control" placeholder="ametikoht/harnameus" id="supervisor_occupation">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" name="supervisor_field">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="supervisor_field">
             </div>
             <div class="form-group">
                 <label>Projekti pealkiri</label>
-                <input type="text" class="form-control" name="project_name">
+                <input type="text" class="form-control" id="project_name">
             </div>
             <div class="form-group">
                 <label>Taotletav summa</label>
-                <input type="number" class="form-control" min="0" name="requested_amount">
+                <input type="number" class="form-control" min="0" id="requested_amount">
             </div>
             <div class="form-group">
                 <label>Projekti eeldatav periood:</label>
-                <input type="date" class="form-control" placeholder="alguskuupäev" name="initial_date">
+                <input type="date" class="form-control" placeholder="alguskuupäev" id="initial_date">
                 <br>
-                <input type="date" class="form-control" placeholder="lõpukuupäev" name="end_date">
+                <input type="date" class="form-control" placeholder="lõpukuupäev" id="end_date">
             </div>
             <div class="form-group">
                 <label>Taotletava summa kasutamise eesmärk (ühe lausega)</label>
-                <input type="text" class="form-control" name="requested_amount_goal">
+                <input type="text" class="form-control" id="requested_amount_goal">
             </div>
 
 
@@ -101,12 +101,12 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>Vali projekti meede:</label>
-                <select class="form-control" name="project_option">
+                <select class="form-control" id="project_option">
                     <option>(M1) teadustöö läbiviimine (kuni 400 eurot)</option>
                     <option>(M2) teaduse populariseerimine (kuni 800 eurot)</option>
                     <option>(M3) teadustöö esitlemine (kuni 300 eurot)</option>
                 </select>
-                <small name="project_option" class="form-text text-muted">
+                <small id="project_option" class="form-text text-muted">
                     <b>M1:</b> andmete kogumine, töövahendite või teavikute soetamine, tõlkimine ja keeleline toimetamine;
                     <br>
                     <b>M2:</b> teadust populariseerivate ürituste korraldamine, teadust populariseerivate materjalide koostamine
@@ -127,39 +127,39 @@ require './php/sessionCheck.php';
             <div class="form-group">
                 <label>Probleemi püstitus ja sihtrühma kirjeldus (kirjelda sihtgruppi ja selle probleeme või vajadusi; põhjenda
                     projekti olulisust):</label>
-                <input type="text" class="form-control" name="problem">
+                <input type="text" class="form-control" id="problem">
             </div>
             <div class="form-group">
                 <label>Projekti eesmärk (ühe lausega; eesmärk ei saa olla tegevus):</label>
-                <input type="text" class="form-control" name="project_goal">
+                <input type="text" class="form-control" id="project_goal">
             </div>
             <div class="form-group">
                 <label>Projekti oodatavad tulemused
                     <br>(mõju sihtgrupile, valdkonnale ja ühiskonnale laiemalt; oodatav tulemus peab
                     olema konkreetne, objektiivselt mõõdetav ja kaasa aitama eesmärgi saavutamisele):</label>
-                 <textarea class="form-control" name="results" placeholder="1. ..."> </textarea>
+                 <textarea class="form-control" id="results" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
-                <textarea class="form-control" name="activities" placeholder="1. ..."> </textarea>
+                <textarea class="form-control" id="activities" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>(ainult M1 taotleja) Kasutatavate uurimismeetodite kirjeldus:</label>
-                <input type="text" class="form-control" name="m1">
+                <input type="text" class="form-control" id="m1">
             </div>
             <div class="form-group">
                 <label>(ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava
                     materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):</label>
-                <input type="text" class="form-control" name="m2">
+                <input type="text" class="form-control" id="m2">
             </div>
             <div class="form-group">
                 <label>(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:</label>
-                <input type="text" class="form-control" name="m3">
+                <input type="text" class="form-control" id="m3">
             </div>
             <div class="form-group">
                 <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
                     ehk mida saab rahastuse abil paremini teha):</label>
-                <input type="text" class="form-control" name="reason">
+                <input type="text" class="form-control" id="reason">
 				<hr>
         <div class="chapter-header">
             <p>Projekti eelarve ning põhjendus</p>
@@ -194,7 +194,7 @@ require './php/sessionCheck.php';
                 <td><input type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" name="addToTable">+</button></td>
+                <td><button type="button" id="addToTable">+</button></td>
               </tr>
               <tr>
                 <td></td>
@@ -212,7 +212,7 @@ require './php/sessionCheck.php';
        
           <div class="form-group">
               <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" class="form-control" placeholder="eelarve põhjendus" name="reason">
+              <input type="text" class="form-control" placeholder="eelarve põhjendus" id="reason">
           </div>
 		   
         </div>

@@ -13,6 +13,9 @@ require './php/sessionCheck.php';
     <script src="js/googleAccount.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="608677679448-ak55huh9omcppibuhh2t69iectp1r7ok.apps.googleusercontent.com">
+    <script>
+        isAdmin();
+    </script>
 </head>
 
 <body onload="onLoad()">

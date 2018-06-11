@@ -71,7 +71,6 @@ require './php/sessionCheck.php';
 						<td><input type="text" class="form-control" placeholder=""></td>
 					  </tr>
 					  <tr>
-						<td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
 					  </tr>
 					</tbody>
 				</table>

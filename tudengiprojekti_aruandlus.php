@@ -34,6 +34,53 @@
           alert("Rohkem ei saa eemaldada!");
         }
       }
+      function sendForm() {
+        event.preventDefault();
+        let name = document.getElementById("name").value;
+        let id = document.getElementById("code").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let bank_acc = document.getElementById("bank_account").value;
+        let report_compiler = document.getElementById("report_compiler").value;
+        let project_manager = document.getElementById("project_manager").value;
+        let team_members = document.getElementById("team_members").value;
+        let supervisor_name = document.getElementById("supervisor_name").value;
+        let supervisor_occupation = document.getElementById("supervisor_occupation").value;
+        let field_of_activity = document.getElementById("field_of_activity").value;
+        let project_name = document.getElementById("project_name").value;
+        let initial_date = document.getElementById("initial_date").value;
+        let end_date = document.getElementById("end_date").value;
+        let grant_awarded = document.getElementById("grant_awarded").value;
+        let used_grant_awarded = document.getElementById("used_grant_awarded").value;
+        let actual_cost = document.getElementById("actual_cost").value;
+        let problem = document.getElementById("problem").value;
+        let project_goal = document.getElementById("project_goal").value;
+        let planned_results = document.getElementById("planned_results").value;
+        let actual_results = document.getElementById("actual_results").value;
+        let planned_activities = document.getElementById("planned_activities").value;
+        let actual_activities = document.getElementById("actual_activities").value;
+        let additional_info = document.getElementById("additional_info").value;
+        let tableArray = [[],[],[],[],[],[]];
+        for (i = 0; i < document.getElementsByName("budget").length; i++) {
+          tableArray[0].push(document.getElementsByName("budget")[i].value);
+          tableArray[1].push(document.getElementsByName("unit")[i].value);
+          tableArray[2].push(document.getElementsByName("cost_of_unit")[i].value);
+          tableArray[3].push(document.getElementsByName("unit_amount")[i].value);
+          tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
+          tableArray[5].push(document.getElementsByName("funder")[i].value);
+        }
+        let jsonTable = JSON.stringify(tableArray);
+
+        let project_budget_total = document.getElementById("project_budget_total").value;
+        let requested_budget = document.getElementById("requested_budget").value;
+        let budget_explanation = document.getElementById("budget_explanation").value;
+        //$.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation});
+
+        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name}).done(function( data ) {
+          alert( "Data Loaded: " + data );
+        });
+      }
     </script>
 </head>
 
@@ -177,12 +224,12 @@
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="form-control" placeholder="1."></td>
-                <td><input type="number" class="form-control" placeholder="" min="0"></td>
-                <td><input type="number" class="form-control" placeholder="" min="0"></td>
-                <td><input type="number" class="form-control" placeholder="" min="0"></td>
-                <td><input type="number" class="form-control" placeholder="" min="0"></td>
-                <td><input type="text" class="form-control" placeholder=""></td>
+                <td><input name="budget" type="text" class="form-control" placeholder="1."></td>
+                <td><input name="unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="unit_amount" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="cost_of_item" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="funder" type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
                 <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
@@ -192,8 +239,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder="" min="0"></td>
-                <td>TLÜst toatletav summa:<br><br><br> <input type="number" class="form-control" placeholder="" min="0"></td>
+                <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" placeholder=""></td>
+                <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" placeholder=""></td>
 
               </tr>
             </tbody>
@@ -204,7 +251,7 @@
           <div class="form-group">
               <br>
               <label>Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" class="form-control" placeholder="eelarve põhjendus">
+              <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
         </div>
 
@@ -222,7 +269,7 @@
             </div>
             <div class="form-group">
                 <label>Kinnitan:</label>
-                <input type="checkbox" class="form-control" placeholder="" required>
+                <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
             </div>
         </div>
 <!--

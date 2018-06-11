@@ -79,7 +79,7 @@ require './php/sessionCheck.php';
           tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
           tableArray[5].push(document.getElementsByName("funder")[i].value);
         }
-        var jsonTable = JSON.stringify(tableArray);
+        let jsonTable = JSON.stringify(tableArray);
 
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
@@ -87,8 +87,8 @@ require './php/sessionCheck.php';
         //$.post("./php/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation});
 
         $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name}).done(function( data ) {
-    alert( "Data Loaded: " + data );
-  });
+          alert( "Data Loaded: " + data );
+        });
       }
 
     </script>

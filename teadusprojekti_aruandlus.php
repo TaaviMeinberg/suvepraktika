@@ -91,7 +91,7 @@ require './php/sessionCheck.php';
 <body>
     <div class="content">
         <div class="chapter-header">
-	<p>Tudengiprojekti aruandlus</p>
+	<p>Teadusprojekti aruandlus</p>
             <p>Projekti ning taotleja üldandmed</p>
 			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
 			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>

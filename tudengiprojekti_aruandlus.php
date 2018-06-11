@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD:tudengiprojekti_aruandlus.html
+
 <!DOCTYPE html>
 <html>
 

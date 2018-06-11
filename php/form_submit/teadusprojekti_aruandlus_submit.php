@@ -39,7 +39,7 @@ echo "<script type='text/javascript'>alert('test');</script>";
 }*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script type='text/javascript'>alert('test');</script>";
-    submitForm();
+  //  submitForm();
 }
 
 //echo "<script type='text/javascript'>alert('test');</script>";

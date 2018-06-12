@@ -1,5 +1,5 @@
 <?php
-require './php/sessionCheck.php';
+require './php/sessionCheck.php'
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ require './php/sessionCheck.php';
         <div class="chapter">
                 
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
-		<button type="button" class="btn btn-info" onclick="location.href='admin.php';" style="float: left; margin-right: 10px;">Admin leht</button>
+			<button type="button" class="btn btn-info" onclick="location.href='admin.php';" style="float: left; margin-right: 10px;">Admin leht</button>
             <center>
                 <br>
                 <br>
@@ -38,8 +38,20 @@ require './php/sessionCheck.php';
                     echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
                 <hr>
-				<label>Admin kasutajate lisamine</label>
-                <div class="chapter">
+			</center>
+	</div>
+		<div class="chapter-header">
+			<p id="header">Admin kasutajate lisamine</p>
+			</div>
+			<div class="chapter" id="ADD">
+			<!--
+			Name: <input type="text" name="name" >
+
+			E-mail: <input type="text" name="email" >
+			-->
+			
+			</div>
+               <div class="chapter">
 				<table class="table table-bordered" id="admins">
 					<thead>
 					  <tr>
@@ -49,22 +61,33 @@ require './php/sessionCheck.php';
 					</thead>
 					<tbody>
 					  <tr>
-						<td><input type="text" class="form-control" placeholder=""></td>
-						<td><input type="text" class="form-control" placeholder=""></td>
+						<td><form action="./php/db/adminFunctions.php" method="post"><input type="text" class="form-control" placeholder="Näide: Mari Juurikas"id="name" name="name"></td>
+						<td><input type="text" class="form-control" placeholder="Näide: marijuurikas@tlu.ee"id="email" name="email"></td>
+						<td>
+						<input type="hidden" name="action" value="InsertAdmins" />
+						<input type="submit" />
+						
+						</form></td>
 					  </tr>
 					  <tr>
 					  </tr>
 					</tbody>
 				</table>
-			</div>
-            </center>
-        </div>
+				
+				</div>
+			
+            
+		
+			
+				
+		
 		<div class="chapter-header">
             <p id="header">Kõik admin kasutajad</p>
 			</div>
             <div class="chapter" id="list">
             </div>
-    </div>
+    
+
     <script> 
         isAdmin();
         $.post("./php/db/adminFunctions.php", {action:"listAllAdmins"}, function(result){
@@ -76,8 +99,19 @@ require './php/sessionCheck.php';
                 });
             });
         });
-        
+		
+		
+		isAdmin();
+		var adminName = getElementById('name').value;
+		var adminEmail = getElementById('email').value;
+        $.post("./php/db/adminFunctions.php", {action:"InsertAdmins", name:adminName ,email:adminEmail}
+		
+		);
+		
+		
+	 
     </script>
+	
 </body>
 
 </html>

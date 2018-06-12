@@ -1,4 +1,5 @@
 <?php
+	
     require("dbConfig.php");
     
     switch($_POST["action"]){
@@ -8,7 +9,9 @@
         case "removeAdmin":
             removeAdmin($_POST["adminID"]);
             break;
-        //add case "addAdmin" which calls function addAdmin()
+      	case "InsertAdmins":
+			InsertAdmins($_POST["name"], $_POST["email"]);
+			break;
     }
 
     //all available methods
@@ -24,6 +27,7 @@
             echo '<p style="display: inline;">'. $name .", ". $email.'</p>   ';
             echo '<button type="button" id="'.$id.'" class="btn btn-danger btn-sm" style="display: inline;" name="deleteAdmin">Kustuta</button>';
             echo '</center>';
+			
         }
         $stmt->close();
     }
@@ -37,6 +41,17 @@
             echo "Something went wrong";
         }
         $stmt->close();
+    }
+	
+
+	
+	function InsertAdmins($name, $email){
+	    $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+	    $stmt = $mysqli->prepare("INSERT INTO admins (Name, Email) VALUES (?, ?)");
+	    $stmt->bind_param("ss", $name, $email);
+        $stmt->execute();
+        $stmt->close();
+		header('Location:../../adminKasutajad.php');
     }
     // TO DO: add function addAdmin()
 ?>

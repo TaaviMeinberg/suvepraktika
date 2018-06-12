@@ -71,7 +71,9 @@ require './php/sessionCheck.php';
             $('#list').html(result);
 
             $(".btn-sm").on('click', function(event){
-                $.post("./php/db/adminFunctions.php", {action:"removeAdmin", adminID:event.target.id})
+                $.post("./php/db/adminFunctions.php", {action:"removeAdmin", adminID:event.target.id}, function(){
+                    location.reload();
+                });
             });
         });
         

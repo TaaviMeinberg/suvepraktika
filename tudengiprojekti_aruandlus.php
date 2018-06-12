@@ -1,3 +1,6 @@
+<?php
+require './php/sessionCheck.php';
+?>
 
 <!DOCTYPE html>
 <html>

@@ -31,8 +31,8 @@ supervisor_field VARCHAR(60),
 project_name VARCHAR(500), 
 initial_date DATE,
 end_date DATE, 
-grant_awarded INT(5),
-actual_cost INT(5),
+grant_awarded DOUBLE(7),
+actual_cost DOUBLE(7),
 problem VARCHAR(3000),
 project_goal VARCHAR(3000),
 planned_results VARCHAR(3000), 
@@ -45,7 +45,11 @@ planned_m2 VARCHAR(3000),
 actual_m2 VARCHAR(3000),
 planned_m3 VARCHAR(3000), 
 actual_m3 VARCHAR(3000),
-additional_info VARCHAR(3000)
+additional_info VARCHAR(3000),
+budget_table VARCHAR(2000); 
+budget_total DOUBLE(7);
+requested_budget DOUBLE(7);
+budget_explanation VARCHAR(400) 
 );
 
 2. teadusprojekti taotlus
@@ -67,7 +71,7 @@ supervisor_name VARCHAR(60),
 supervisor_occupation VARCHAR(60), 
 supervisor_field VARCHAR(60), 
 project_name VARCHAR(100), 
-requested_amount INT(5),
+requested_amount DOUBLE(7),
 initial_date DATE,
 end_date DATE, 
 requested_amount_goal VARCHAR(500),
@@ -97,16 +101,20 @@ team_members VARCHAR(240),
 project_name VARCHAR(500), 
 initial_date DATE,
 end_date DATE, 
-grant_awarded INT(5),
-used_grant_awarded INT(5),
-actual_cost INT(5),
+grant_awarded DOUBLE(7),
+used_grant_awarded DOUBLE(7),
+actual_cost DOUBLE(7),
 problem VARCHAR(3000),
 project_goal VARCHAR(3000),
 planned_results VARCHAR(3000), 
 actual_results VARCHAR(3000), 
 planned_activities VARCHAR(3000), 
 actual_activities VARCHAR(3000),
-additional_info VARCHAR(3000)
+additional_info VARCHAR(3000);
+budget_table VARCHAR(2000); 
+budget_total DOUBLE(7);
+requested_budget DOUBLE(7);
+budget_explanation VARCHAR(400) 
 );
 
 4. tudengiprojekti taotlus
@@ -125,8 +133,8 @@ year INT(4),
 project_manager VARCHAR(60), 
 team_members VARCHAR(1000), 
 project_name VARCHAR(500), 
-requested_amount INT(5),
-budget INT(5),
+requested_amount DOUBLE(7),
+budget DOUBLE(7),
 initial_date DATE,
 end_date DATE, 
 requested_amount_goal VARCHAR(3000),

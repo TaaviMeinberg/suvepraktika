@@ -38,7 +38,7 @@ require './php/sessionCheck.php';
         }
       }
       function sendForm() {
-        event.preventDefault();
+        //event.preventDefault();
         let name = document.getElementById("name").value;
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;

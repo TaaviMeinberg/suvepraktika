@@ -11,6 +11,34 @@ require './php/sessionCheck.php';
 	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    let counter=3;
+      function addOneToTable() {
+        var table = document.getElementById("projectBudgetTable");
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        counter++;
+      }
+      function removeOneFromTable() {
+        if (counter>3) {
+          document.getElementById("projectBudgetTable").deleteRow(counter-1);
+          counter--;
+        } else {
+          alert("Rohkem ei saa eemaldada!");
+        }
+      }
+    </script>
 </head>
 
 <body>
@@ -165,7 +193,7 @@ require './php/sessionCheck.php';
             <p>Projekti eelarve ning põhjendus</p>
         </div>
         <div class="chapter">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
                 <th>Eelarvernamea ehk kuluartikkel</th>
@@ -209,12 +237,12 @@ require './php/sessionCheck.php';
           </table>
         </div>
         <hr>
-       
+
           <div class="form-group">
               <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" class="form-control" placeholder="eelarve põhjendus" id="reason">
           </div>
-		   
+
         </div>
 		 <hr>
         <div class="chapter-header">
@@ -246,4 +274,3 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 </body>
 
 </html>
-

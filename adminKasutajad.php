@@ -1,6 +1,5 @@
 <?php
 require './php/sessionCheck.php';
-require './php/db/adminFunctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,26 +17,7 @@ require './php/db/adminFunctions.php';
     <meta name="google-signin-client_id" content="608677679448-ak55huh9omcppibuhh2t69iectp1r7ok.apps.googleusercontent.com">
 	<meta http-equiv="content-type" content="application/vnd.ms-excel" charset="UTF-8">
       <script type="text/javascript">
-      isAdmin();
 
-    let counter=1;
-      function addOneToTable() {
-        var table = document.getElementById("admins");
-        var row = table.insertRow(counter);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        counter++;
-      }
-      function removeOneFromTable() {
-        if (counter>1) {
-          document.getElementById("admins").deleteRow(counter-1);
-          counter--;
-        } else {
-          alert("Rohkem ei saa eemaldada!");
-        }
-      }
     </script>
 </head>
 
@@ -82,10 +62,22 @@ require './php/db/adminFunctions.php';
 		<div class="chapter-header">
             <p id="header">Kõik admin kasutajad</p>
 			</div>
-        <div class="chapter">
-          <?php listAllAdmins(); ?>
-        </div>
+            <div class="chapter" id="list">
+            </div>
     </div>
+    <script> 
+        isAdmin();
+        $.post("./php/db/adminFunctions.php", {action:"listAllAdmins"}, function(result){
+            $('#list').html(result);
+
+            $(".btn-sm").on('click', function(event){
+                $.post("./php/db/adminFunctions.php", {action:"removeAdmin", adminID:event.target.id}, function(){
+                    location.reload();
+                });
+            });
+        });
+        
+    </script>
 </body>
 
 </html>

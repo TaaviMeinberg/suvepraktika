@@ -8,7 +8,7 @@ require './php/sessionCheck.php';
 <head>
     <title>Page Title</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+	  <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -22,12 +22,12 @@ require './php/sessionCheck.php';
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell1.innerHTML = '<input name="budget" type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input name="unit" type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input name="unit_amount" type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input name="cost_of_item" type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input name="funder" type="text" class="form-control" placeholder="">';
         counter++;
       }
       function removeOneFromTable() {
@@ -38,6 +38,58 @@ require './php/sessionCheck.php';
           alert("Rohkem ei saa eemaldada!");
         }
       }
+	  function sendForm() {
+        //event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let organisation = 0;
+        if (document.getElementById("organisation").checked==true) {
+          organisation=1;
+        }
+		    let connection = document.getElementById("connection").value;
+        let id = document.getElementById("code").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let speciality = document.getElementById("speciality").value;
+        let degree = document.getElementById("degree").value;
+		    let year = document.getElementById("year").value;
+        let project_manager = document.getElementById("project_manager").value;
+        let team_members = document.getElementById("team_members").value;
+        let supervisor_name = document.getElementById("supervisor_name").value;
+        let supervisor_occupation = document.getElementById("supervisor_occupation").value;
+        let field_of_activity = document.getElementById("field_of_activity").value;
+        let project_name = document.getElementById("project_name").value;
+		    let requested_amount = document.getElementById("requested_amount").value;
+        let initial_date = document.getElementById("initial_date").value;
+        let end_date = document.getElementById("end_date").value;
+        let requested_amount_goal = document.getElementById("requested_amount_goal").value;
+        let problem = document.getElementById("problem").value;
+        let project_goal = document.getElementById("project_goal").value;
+        let results = document.getElementById("results").value;
+        let activities = document.getElementById("activities").value;
+        let m1 = document.getElementById("m1").value;
+        let m2 = document.getElementById("m2").value;
+        let m3 = document.getElementById("m3").value;
+        let reason = document.getElementById("reason").value;
+        let tableArray = [[],[],[],[],[],[]];
+        for (i = 0; i < document.getElementsByName("budget").length; i++) {
+          tableArray[0].push(document.getElementsByName("budget")[i].value);
+          tableArray[1].push(document.getElementsByName("unit")[i].value);
+          tableArray[2].push(document.getElementsByName("cost_of_unit")[i].value);
+          tableArray[3].push(document.getElementsByName("unit_amount")[i].value);
+          tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
+          tableArray[5].push(document.getElementsByName("funder")[i].value);
+        }
+        let jsonTable = JSON.stringify(tableArray);
+
+        let project_budget_total = document.getElementById("project_budget_total").value;
+        let requested_budget = document.getElementById("requested_budget").value;
+        let budget_explanation = document.getElementById("budget_explanation").value;
+        $.post("./php/form_submit/teadusprojekti_taotlus_submit.php", {name:name, organisation:organisation, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, requested_amount:requested_amount, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, m1:m1, m2:m2, m3:m3, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+          alert( "Andmed: " + data );
+        });
+      }
     </script>
 </head>
 
@@ -47,8 +99,8 @@ require './php/sessionCheck.php';
         <div class="chapter-header">
 			<p>Teadusprojekti taotlus</p>
             <p>Projekti ning taotleja üldandmed</p>
-			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
-			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
+			<button style="float: right;" type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<button style="float: left;" type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
 			<br>
 			<br>
         </div>
@@ -101,7 +153,7 @@ require './php/sessionCheck.php';
                 <br>
                 <input type="text" class="form-control" placeholder="ametikoht/harnameus" id="supervisor_occupation">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="supervisor_field">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity">
             </div>
             <div class="form-group">
                 <label>Projekti pealkiri</label>
@@ -173,15 +225,19 @@ require './php/sessionCheck.php';
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
                 <textarea class="form-control" id="activities" placeholder="1. ..."> </textarea>
             </div>
-			<div class="form-group">
-                <label>17.Vali taotluse tüüp :</label>
-				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
-				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
-				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
+            <div class="form-group">
+                <label>(ainult M1 taotleja) Kasutatavate uurimismeetodite kirjeldus:</label>
+                <input type="text" class="form-control" id="m1">
             </div>
             <div class="form-group">
-                <label id="tyyp"></label>
-                <input type="text" class="form-control" id="m1">
+                <label>(ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava
+                    materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):</label>
+                <input type="text" class="form-control" id="m2">
+            </div>
+            <div class="form-group">
+                <label>(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:</label>
+                <input type="text" class="form-control" id="m3">
+            </div>
             <div class="form-group">
                 <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
                     ehk mida saab rahastuse abil paremini teha):</label>
@@ -212,23 +268,23 @@ require './php/sessionCheck.php';
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="form-control" placeholder="1."></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="number" class="form-control" placeholder=""></td>
-                <td><input type="text" class="form-control" placeholder=""></td>
+                <td><input name="budget" type="text" class="form-control" placeholder="1."></td>
+                <td><input name="unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="unit_amount" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="cost_of_item" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="funder" type="text" class="form-control" placeholder=""></td>
               </tr>
               <tr>
-                <td><button type="button" id="addToTable">+</button></td>
+                <td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-                <td>TLÜst taotletav summa:<input type="number" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" placeholder=""></td>
+                <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" placeholder=""></td>
 
               </tr>
             </tbody>
@@ -238,7 +294,7 @@ require './php/sessionCheck.php';
 
           <div class="form-group">
               <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" class="form-control" placeholder="eelarve põhjendus" id="reason">
+              <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 
         </div>
@@ -256,7 +312,7 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Kinnitan:</label>
-                <input type="checkbox" class="form-control" placeholder="">
+                <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
             </div>
         </div>
         </div>
@@ -268,25 +324,7 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 
 -->
     </div>
-<script>
-			function M1function() {
-				document.getElementById("tyyp").innerHTML ="17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M2function() {
-				document.getElementById("tyyp").innerHTML ="18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
-				document.getElementById('M1').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M3function() {
-				document.getElementById("tyyp").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M1').checked = false;
-			}
-			
-			
-	</script>
+
 </body>
 
 </html>

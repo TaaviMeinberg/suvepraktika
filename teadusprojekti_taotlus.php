@@ -40,7 +40,6 @@ require './php/sessionCheck.php';
       }
 	  function sendForm() {
         //event.preventDefault();
-
         let name = document.getElementById("name").value;
         let organisation = 0;
         if (document.getElementById("organisation").checked==true) {
@@ -82,7 +81,6 @@ require './php/sessionCheck.php';
           tableArray[5].push(document.getElementsByName("funder")[i].value);
         }
         let jsonTable = JSON.stringify(tableArray);
-
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
@@ -225,18 +223,15 @@ require './php/sessionCheck.php';
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
                 <textarea class="form-control" id="activities" placeholder="1. ..."> </textarea>
             </div>
+			<div class="form-group">
+                <label>17.Vali taotluse tüüp :</label>
+				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
+				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
+				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
+            </div>
             <div class="form-group">
-                <label>(ainult M1 taotleja) Kasutatavate uurimismeetodite kirjeldus:</label>
+                <label id="tyyp"></label>
                 <input type="text" class="form-control" id="m1">
-            </div>
-            <div class="form-group">
-                <label>(ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava
-                    materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):</label>
-                <input type="text" class="form-control" id="m2">
-            </div>
-            <div class="form-group">
-                <label>(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:</label>
-                <input type="text" class="form-control" id="m3">
             </div>
             <div class="form-group">
                 <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
@@ -319,12 +314,28 @@ require './php/sessionCheck.php';
             </div>
         </div>
 <!--
-
 Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
-
 -->
     </div>
-
+<script>
+			function M1function() {
+				document.getElementById("tyyp").innerHTML ="17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
+				document.getElementById('M2').checked = false;
+				document.getElementById('M3').checked = false;
+			}
+			function M2function() {
+				document.getElementById("tyyp").innerHTML ="18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
+				document.getElementById('M1').checked = false;
+				document.getElementById('M3').checked = false;
+			}
+			function M3function() {
+				document.getElementById("tyyp").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
+				document.getElementById('M2').checked = false;
+				document.getElementById('M1').checked = false;
+			}
+			
+			
+	</script>
 </body>
 
 </html>

@@ -25,17 +25,17 @@ require './php/sessionCheck.php';
         <div class="chapter">
 			<button class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
-            <center>
+            
                 <br>
                 <br>
-                <p style="font-style: italic;">Vali millist taotlust esitada</p>
-                <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_taotlus.php';">tudengiprojekti taotlus</button>
+                <p align="center" style="font-style: italic;">Vali millist taotlust esitada</p>
+			    <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_taotlus.php';">tudengiprojekti taotlus</button>
                 <button type="button" class="btn btn-info" onclick="location.href='tudengiprojekti_aruandlus.php';">tudengiprojekti aruandlus</button>
                 <button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_aruandlus.php';">teadusprojekti aruandlus</button>
 				<button type="button" class="btn btn-info" onclick="location.href='teadusprojekti_taotlus.php';">teadusprojekti taotlus</button>
                 <br>
-                <br>
-            </center>
+				<br>
+            
         </div>
 
     </div>

@@ -97,6 +97,8 @@ require './php/sessionCheck.php';
             <div class="form-group">
                 <label>Ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi:</label>
                 <input type="text" class="form-control" id="name">
+		<label>Organisatsioon:</label>
+                <input id="organisation" type="checkbox">
             </div>
 
             <div class="form-group">

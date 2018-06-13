@@ -22,11 +22,19 @@
         $stmt->execute();
     
         while($stmt->fetch()){
-            echo '<center>';
+            //echo '<center>';
             echo '<br>';
+			echo '<table>';
+			echo '<tr>';
+			echo '<td width=600>';
             echo '<p style="display: inline;">'. $name .", ". $email.'</p>   ';
+			echo '</td>';
+			echo '<td>';
             echo '<button type="button" id="'.$id.'" class="btn btn-danger btn-sm" style="display: inline;" name="deleteAdmin">Kustuta</button>';
-            echo '</center>';
+			echo '</td>';
+			echo '</tr>';
+			echo '</table>';
+           // echo '</center>';
 			
         }
         $stmt->close();

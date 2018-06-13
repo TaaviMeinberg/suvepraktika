@@ -64,8 +64,8 @@ require './php/sessionCheck.php'
 						<td><form action="./php/db/adminFunctions.php" method="post"><input type="text" class="form-control" placeholder="Näide: Mari Juurikas"id="name" name="name"></td>
 						<td><input type="text" class="form-control" placeholder="Näide: marijuurikas@tlu.ee"id="email" name="email"></td>
 						<td>
-						<input type="hidden" name="action" value="InsertAdmins" />
-						<input type="submit" />
+						<input type="hidden" name="action" value="InsertAdmins" >
+						<input type="submit" value="Lisa"//>
 						
 						</form></td>
 					  </tr>
@@ -82,11 +82,20 @@ require './php/sessionCheck.php'
 				
 		
 		<div class="chapter-header">
-            <p id="header">Kõik admin kasutajad</p>
+            <p id="header">Kõik admin kasutajad</p>				<table class="table table-bordered">
+					<thead>
+					  <tr>
+						<th width="500">Kodaniku nimi</th>
+						<th>Kustuta </th>
+					  </tr>
+					</thead>
+					
+				</table>
 			</div>
             <div class="chapter" id="list">
+
             </div>
-    
+			
 
     <script> 
         isAdmin();

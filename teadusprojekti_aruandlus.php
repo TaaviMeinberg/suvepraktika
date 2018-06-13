@@ -105,6 +105,9 @@ require './php/sessionCheck.php';
             <div class="form-group">
                 <label>1. Taotleja ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi </br>( * toetuse taotleja on projekti lõppedes toetuse saaja)</br></label>
                 <input type="text" class="form-control" id="name">
+	    	<label>Organisatsioon:</label>
+                <input id="organisation" type="checkbox">
+	    
             </div>
             <div class="form-group">
                 <label>2. Taotleja isikukood / organisatsiooni registrikood </label>

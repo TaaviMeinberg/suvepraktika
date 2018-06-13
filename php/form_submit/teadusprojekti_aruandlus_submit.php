@@ -25,12 +25,9 @@ $project_goal;
 $expected_results;
 $actual_results;
 $planned_activities;
-$planned_m1;
-$actual_m1;
-$planned_m2;
-$actual_m2;
-$planned_m3;
-$actual_m3;
+$m_type;
+$planned_m;
+$actual_m;
 $additional_info;
 $jsonTable;
 $project_budget_total;
@@ -62,12 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $actual_results = $_POST['actual_results'];
     $planned_activities = $_POST['planned_activities'];
     $actual_activities = $_POST['actual_activities'];
-    $planned_m1 = $_POST['planned_m1'];
-    $actual_m1 = $_POST['actual_m1'];
-    $planned_m2 = $_POST['planned_m2'];
-    $actual_m2 = $_POST['actual_m2'];
-    $planned_m3 = $_POST['planned_m3'];
-    $actual_m3 = $_POST['actual_m3'];
+    $m_type = $_POST['m_type'];
+    $planned_m = $_POST['planned_m'];
+    $actual_m = $_POST['actual_m'];
     $additional_info = $_POST['additional_info'];
     $jsonTable = $_POST['jsonTable'];
     $project_budget_total = $_POST['project_budget_total'];
@@ -75,9 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $budget_explanation = $_POST['budget_explanation'];
 
     $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-    $stmt = $mysqli->prepare("INSERT INTO scientific_project_report (user_email, name, organization, code, phone, email, address, bank_account, report_compiler, project_manager, team_members, supervisor_name, supervisor_occupation, supervisor_field, project_name, initial_date, end_date, grant_awarded, actual_cost, problem, project_goal, expected_results, actual_results, planned_activities, actual_activities, planned_m1, actual_m1, planned_m2, actual_m2, planned_m3, actual_m3, additional_info, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $mysqli->prepare("INSERT INTO scientific_project_report (user_email, name, organization, code, phone, email, address, bank_account, report_compiler, project_manager, team_members, supervisor_name, supervisor_occupation, supervisor_field, project_name, initial_date, end_date, grant_awarded, actual_cost, problem, project_goal, expected_results, actual_results, planned_activities, actual_activities, m_type, planned_m, actual_m, additional_info, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     echo $mysqli->error;
-    $stmt->bind_param("ssissssssssssssssddssssssssssssssdds", $user_email, $name, $organization, $id, $phone, $email, $address, $bank_acc, $report_compiler, $project_manager, $team_members, $supervisor_name, $supervisor_occupation, $field_of_activity, $project_name, $initial_date, $end_date, $grant_awarded, $actual_cost, $problem, $project_goal, $expected_results, $actual_results, $planned_activities, $actual_activities, $planned_m1, $actual_m1, $planned_m2, $actual_m2, $planned_m3, $actual_m3, $additional_info, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
+    $stmt->bind_param("ssissssssssssssssddssssssissssdds", $user_email, $name, $organization, $id, $phone, $email, $address, $bank_acc, $report_compiler, $project_manager, $team_members, $supervisor_name, $supervisor_occupation, $field_of_activity, $project_name, $initial_date, $end_date, $grant_awarded, $actual_cost, $problem, $project_goal, $expected_results, $actual_results, $planned_activities, $actual_activities, $m_type, $planned_m, $actual_m, $additional_info, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
     if ($stmt->execute()){
       echo "\n Salvestatud!";
     } else {

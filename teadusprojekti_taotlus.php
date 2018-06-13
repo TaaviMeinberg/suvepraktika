@@ -67,9 +67,17 @@ require './php/sessionCheck.php';
         let project_goal = document.getElementById("project_goal").value;
         let results = document.getElementById("results").value;
         let activities = document.getElementById("activities").value;
-        let m1 = document.getElementById("m1").value;
-        let m2 = document.getElementById("m2").value;
-        let m3 = document.getElementById("m3").value;
+        let m = document.getElementById("m").value;
+        let m_type = 0;
+        if (document.getElementById('M1').checked == true) {
+          m_type = 1;
+        }
+        if (document.getElementById('M2').checked == true) {
+          m_type = 2;
+        }
+        if (document.getElementById('M3').checked == true) {
+          m_type = 3;
+        }
         let reason = document.getElementById("reason").value;
         let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
@@ -84,7 +92,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/teadusprojekti_taotlus_submit.php", {name:name, organisation:organisation, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, requested_amount:requested_amount, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, m1:m1, m2:m2, m3:m3, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/teadusprojekti_taotlus_submit.php", {name:name, organisation:organisation, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, requested_amount:requested_amount, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, m_type:m_type, m:m, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }
@@ -224,14 +232,14 @@ require './php/sessionCheck.php';
                 <textarea class="form-control" id="activities" placeholder="1. ..."> </textarea>
             </div>
 			<div class="form-group">
-                <label>17.Vali taotluse tüüp :</label>
+                <label>17.Märgi taotluse tüüp :</label>
 				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
 				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
 				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
             </div>
             <div class="form-group">
                 <label id="tyyp"></label>
-                <input type="text" class="form-control" id="m1">
+                <input type="text" class="form-control" id="m">
             </div>
             <div class="form-group">
                 <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
@@ -333,8 +341,8 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 				document.getElementById('M2').checked = false;
 				document.getElementById('M1').checked = false;
 			}
-			
-			
+
+
 	</script>
 </body>
 

@@ -85,7 +85,7 @@ require './php/sessionCheck.php'
             <p id="header">Kõik admin kasutajad</p>				<table class="table table-bordered">
 					<thead>
 					  <tr>
-						<th width="500">Kodaniku nimi</th>
+						<th width="500">Kodaniku nimi</th>	
 						<th>Kustuta </th>
 					  </tr>
 					</thead>

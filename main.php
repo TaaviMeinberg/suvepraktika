@@ -32,12 +32,29 @@ require './php/sessionCheck.php';
                 ?>
                 <hr>
                 <p style="font-style: italic;">Siia kuvatakse Sinu esitatud taotlused</p>
-                <br>
-                <br>
-            </center>
+                <div style="margin-right: 10px;" class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover" id="admins">
+                        <thead>
+                        <tr>
+                            <th>Loomise kuupäev</th>
+                            <th>Liik</th>
+                            <th>Nimi</th>
+                            <th>Tegevused</th>
+                        </tr>
+                        </thead>
+                        <tbody id="list">
+                        </tbody>
+                    </table>
+                </center>
+                </div>
         </div>
 
     </div>
+    <script>
+        $.post("./php/db/formFunctions.php", {action:"listUserSubmissions"}, function(result){
+            $('#list').append (result);
+        });
+    </script>
 </body>
 
 </html>

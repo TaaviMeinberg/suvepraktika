@@ -21,12 +21,12 @@ require './php/sessionCheck.php';
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell1.innerHTML = '<input name="budget" type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input name="unit" type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input name="unit_amount" type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input name="cost_of_item" type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input name="funder" type="text" class="form-control" placeholder="">';
         counter++;
       }
       function removeOneFromTable() {
@@ -40,6 +40,10 @@ require './php/sessionCheck.php';
       function sendForm() {
         //event.preventDefault();
         let name = document.getElementById("name").value;
+        let organisation = 0;
+        if (document.getElementById("organisation").checked==true) {
+          organisation=1;
+        }
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
         let email = document.getElementById("email").value;
@@ -75,7 +79,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/tudengiprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, used_grant_awarded:used_grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, planned_results:planned_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/tudengiprojekti_aruandlus_submit.php", {name:name, organisation:organisation, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, used_grant_awarded:used_grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, planned_results:planned_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }

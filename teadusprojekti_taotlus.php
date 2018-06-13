@@ -42,7 +42,11 @@ require './php/sessionCheck.php';
         //event.preventDefault();
 
         let name = document.getElementById("name").value;
-		let connection = document.getElementById("connection").value;
+        let organisation = 0;
+        if (document.getElementById("organisation").checked==true) {
+          organisation=1;
+        }
+		    let connection = document.getElementById("connection").value;
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
         let email = document.getElementById("email").value;
@@ -67,6 +71,7 @@ require './php/sessionCheck.php';
         let m1 = document.getElementById("m1").value;
         let m2 = document.getElementById("m2").value;
         let m3 = document.getElementById("m3").value;
+        let reason = document.getElementById("reason").value;
         let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
           tableArray[0].push(document.getElementsByName("budget")[i].value);
@@ -81,7 +86,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/teadusprojekti_taotlus_submit.php", {name:name, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, requested_amount:requested_amount, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, m1:m1, m2:m2, m3:m3, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/teadusprojekti_taotlus_submit.php", {name:name, organisation:organisation, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, requested_amount:requested_amount, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, m1:m1, m2:m2, m3:m3, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }

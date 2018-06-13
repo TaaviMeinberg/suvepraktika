@@ -42,6 +42,10 @@ require './php/sessionCheck.php';
         //event.preventDefault();
 
         let name = document.getElementById("name").value;
+        let organisation = 0;
+        if (document.getElementById("organisation").checked==true) {
+          organisation=1;
+        }
 		    let connection = document.getElementById("connection").value;
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
@@ -77,7 +81,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/tudengiprojekti_taotlus_submit.php", {name:name, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members,  project_name:project_name, requested_amount:requested_amount, budget:budget, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, expected_results:expected_results, activities:activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/tudengiprojekti_taotlus_submit.php", {name:name, organisation:organisation, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members,  project_name:project_name, requested_amount:requested_amount, budget:budget, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, expected_results:expected_results, activities:activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }

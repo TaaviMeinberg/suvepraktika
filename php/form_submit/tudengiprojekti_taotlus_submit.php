@@ -3,7 +3,6 @@
 require './../db/dbConfig.php';
 
 $name;
-$organization;
 $connection;
 $id;
 $phone;

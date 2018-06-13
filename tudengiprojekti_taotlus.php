@@ -22,12 +22,12 @@ require './php/sessionCheck.php';
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-        cell1.innerHTML = '<input type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell3.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell4.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell5.innerHTML = '<input type="number" class="form-control" placeholder="" min="0">';
-        cell6.innerHTML = '<input type="text" class="form-control" placeholder="">';
+        cell1.innerHTML = '<input name="budget" type="text" class="form-control" placeholder="">';
+        cell2.innerHTML = '<input name="unit" type="number" class="form-control" placeholder="" min="0">';
+        cell3.innerHTML = '<input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0">';
+        cell4.innerHTML = '<input name="unit_amount" type="number" class="form-control" placeholder="" min="0">';
+        cell5.innerHTML = '<input name="cost_of_item" type="number" class="form-control" placeholder="" min="0">';
+        cell6.innerHTML = '<input name="funder" type="text" class="form-control" placeholder="">';
         counter++;
       }
       function removeOneFromTable() {
@@ -42,28 +42,27 @@ require './php/sessionCheck.php';
         //event.preventDefault();
 
         let name = document.getElementById("name").value;
-		let connection = document.getElementById("connection").value;
+		    let connection = document.getElementById("connection").value;
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
         let email = document.getElementById("email").value;
         let address = document.getElementById("address").value;
         let speciality = document.getElementById("speciality").value;
         let degree = document.getElementById("degree").value;
-		let year = document.getElementById("year").value;
+		    let year = document.getElementById("year").value;
         let project_manager = document.getElementById("project_manager").value;
         let team_members = document.getElementById("team_members").value;
         let project_name = document.getElementById("project_name").value;
-		let requested_amount = document.getElementById("requested_amount").value;
-		let budget = document.getElementById("budget").value;
+		    let requested_amount = document.getElementById("requested_amount").value;
+		    let budget = document.getElementById("budget").value;
         let initial_date = document.getElementById("initial_date").value;
         let end_date = document.getElementById("end_date").value;
         let requested_amount_goal = document.getElementById("requested_amount_goal").value;
         let problem = document.getElementById("problem").value;
         let project_goal = document.getElementById("project_goal").value;
-        let results = document.getElementById("results").value;
+        let expected_results = document.getElementById("expected_results").value;
         let activities = document.getElementById("activities").value;
         let additional_info = document.getElementById("additional_info").value;
-        let reason = document.getElementById("reason").value;
         let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
           tableArray[0].push(document.getElementsByName("budget")[i].value);
@@ -78,7 +77,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members,  project_name:project_name, requested_amount:requested_amount, budget:budget, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, additional_info:additional_info, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/tudengiprojekti_taotlus_submit.php", {name:name, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members,  project_name:project_name, requested_amount:requested_amount, budget:budget, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, expected_results:expected_results, activities:activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }
@@ -89,7 +88,7 @@ require './php/sessionCheck.php';
 
 
     <div class="content">
-		
+
         <div class="chapter-header">
 			<p>Tudengiprojekti taotlus</p>
             <p>Projekti ning taotleja üldandmed</p>
@@ -112,12 +111,12 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Taotleja isikukood / organisatsiooni registrikood:</label>
-                <input type="number" class="form-control" id="code">
+                <input type="text" class="form-control" id="code">
             </div>
 
             <div class="form-group">
                 <label>Taotleja kontaktandmed:</label>
-                <input type="number" class="form-control" placeholder="telefoninumber" id="phone">
+                <input type="text" class="form-control" placeholder="telefoninumber" id="phone">
                 <br>
                 <input type="email" class="form-control" placeholder="e-posti aadress" id="email">
                 <br>
@@ -156,9 +155,9 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>Projekti eeldatav periood:</label>
-                <input type="number" class="form-control" placeholder="alguskuupäev" id="initial_date">
+                <input type="date" class="form-control" placeholder="alguskuupäev" id="initial_date">
                 <br>
-                <input type="number" class="form-control" placeholder="lõpukuupäev" id="end_date">
+                <input type="date" class="form-control" placeholder="lõpukuupäev" id="end_date">
             </div>
             <div class="form-group">
                 <label>Taotletava summa kasutamise eesmärk (ühe lausega)</label>
@@ -214,7 +213,7 @@ require './php/sessionCheck.php';
                 <label>Projekti oodatavad tulemused
                     <br>(mõju sihtgrupile, valdkonnale ja ühiskonnale laiemalt; oodatav tulemus peab
                     olema konkreetne, objektiivselt mõõdetav ja kaasa aitama eesmärgi saavutamisele):</label>
-					 <textarea class="form-control" id="results" placeholder="1. ..."> </textarea>
+					 <textarea class="form-control" id="expected_results" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
@@ -253,12 +252,12 @@ require './php/sessionCheck.php';
 					</thead>
 					<tbody>
 					  <tr>
-						<td><input type="text" class="form-control" placeholder="1."></td>
-						<td><input type="number" class="form-control" placeholder="" min=""></td>
-						<td><input type="number" class="form-control" placeholder="" min=""></td>
-						<td><input type="number" class="form-control" placeholder="" min=""></td>
-						<td><input type="number" class="form-control" placeholder="" min=""></td>
-						<td><input type="text" class="form-control" placeholder=""></td>
+              <td><input name="budget" type="text" class="form-control" placeholder="1."></td>
+              <td><input name="unit" type="number" class="form-control" placeholder="" min="0"></td>
+              <td><input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0"></td>
+              <td><input name="unit_amount" type="number" class="form-control" placeholder="" min="0"></td>
+              <td><input name="cost_of_item" type="number" class="form-control" placeholder="" min="0"></td>
+              <td><input name="funder" type="text" class="form-control" placeholder=""></td>
 					  </tr>
 					  <tr>
 						<td><button type="button" name="addToTable" onclick="addOneToTable()">+</button> <button type="button" name="removeFromTable" onclick="removeOneFromTable()">-</button></td>
@@ -268,8 +267,8 @@ require './php/sessionCheck.php';
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>Projekti summa kokku:<input type="number" class="form-control" placeholder=""></td>
-						<td>TLÜst toatletav summa: <br><br><br> <input type="number" class="form-control" placeholder=""></td>
+            <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" placeholder=""></td>
+            <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" placeholder=""></td>
 
 					  </tr>
 					</tbody>
@@ -279,7 +278,7 @@ require './php/sessionCheck.php';
 		<div class="chapter">
 				<div class="budget">
                 <label>Eelarve põhjendus (selgitus üldsõnalistele kuluartiklitele; seos projekti elluviimisega)</label>
-                <input type="text" class="form-control" id="reason">
+                <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
             </div>
             <br>
 			<div class="budget">
@@ -303,7 +302,7 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Kinnitan:</label>
-                <input type="checkbox" class="form-control" placeholder="">
+                <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
             </div>
         </div>
 

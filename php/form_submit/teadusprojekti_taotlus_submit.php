@@ -35,6 +35,7 @@ $requested_budget;
 $budget_explanation;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_email = $_SESSION["userEmail"];
     $name = $_POST['name'];
 	  $connection = $_POST['connection'];
     $id = $_POST['id'];
@@ -66,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $budget_explanation = $_POST['budget_explanation'];
 
     $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-    $stmt = $mysqli->prepare("INSERT INTO scientific_project_application (name, connection, code, phone, email, address, speciality, degree, year, project_manager, team_members, supervisor_name, supervisor_occupation, field_of_activity, project_name, requested_amount, initial_date, end_date, requested_amount_goal, problem, project_goal, results, activities, m1, m2, m3, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $mysqli->prepare("INSERT INTO scientific_project_application (user_email, name, connection, code, phone, email, address, speciality, degree, year, project_manager, team_members, supervisor_name, supervisor_occupation, field_of_activity, project_name, requested_amount, initial_date, end_date, requested_amount_goal, problem, project_goal, results, activities, m1, m2, m3, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     echo $mysqli->error;
-    $stmt->bind_param("ssssssssissssssdsssssssssssdds", $name, $connection, $id, $phone, $email, $address, $speciality, $degree, $year, $project_manager, $team_members, $supervisor_name, $supervisor_occupation, $field_of_activity, $project_name, $requested_amount, $initial_date, $end_date, $requested_amount_goal, $problem, $project_goal, $results, $activities, $m1, $m2, $m3, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
+    $stmt->bind_param("sssssssssissssssdsssssssssssdds", $user_email, $name, $connection, $id, $phone, $email, $address, $speciality, $degree, $year, $project_manager, $team_members, $supervisor_name, $supervisor_occupation, $field_of_activity, $project_name, $requested_amount, $initial_date, $end_date, $requested_amount_goal, $problem, $project_goal, $results, $activities, $m1, $m2, $m3, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
     if ($stmt->execute()){
       echo "\n Salvestatud!";
     } else {

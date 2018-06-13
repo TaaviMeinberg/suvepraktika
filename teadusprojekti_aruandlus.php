@@ -98,7 +98,12 @@ require './php/sessionCheck.php';
 
     <div class="content">
         <div class="chapter-header">
-            <p>Projekti ning taotleja üldandmed</p>
+        <p>Teadusprojekti aruandlus</p>
+	<p>Projekti ning taotleja üldandmed</p>
+	<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+	<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
+	<br>
+	<br>
         </div>
         <div class="chapter">
 

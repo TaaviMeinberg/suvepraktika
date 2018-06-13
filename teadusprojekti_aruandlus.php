@@ -43,10 +43,6 @@ require './php/sessionCheck.php';
         //event.preventDefault();
 
         let name = document.getElementById("name").value;
-        let organisation = 0;
-        if (document.getElementById("organisation").checked==true) {
-          organisation=1;
-        }
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
         let email = document.getElementById("email").value;
@@ -90,7 +86,7 @@ require './php/sessionCheck.php';
         let project_budget_total = document.getElementById("project_budget_total").value;
         let requested_budget = document.getElementById("requested_budget").value;
         let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name, organisation:organisation, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, supervisor_name:supervisor_name, supervisor_occupation:supervisor_occupation, field_of_activity:field_of_activity, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, expected_results:expected_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, planned_m1:planned_m1, actual_m1:actual_m1, planned_m2:planned_m2, actual_m2:actual_m2, planned_m3:planned_m3, actual_m3:actual_m3, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
           alert( "Andmed: " + data );
         });
       }
@@ -102,12 +98,12 @@ require './php/sessionCheck.php';
 
     <div class="content">
         <div class="chapter-header">
-        <p>Teadusprojekti aruandlus</p>
-	<p>Projekti ning taotleja üldandmed</p>
-	<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
-	<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
-	<br>
-	<br>
+            <p>Teadusprojekti aruandlus</p>
+			<p>Projekti ning taotleja üldandmed</p>
+			<button style="float: right; type="button" class="btn btn-success" onclick="location.href='main.php';">Tagasi avalehele</button>
+			<button style="float: left; type="button" class="btn btn-success" onclick="location.href='uusTaotlus.php';">Tagasi uue taotluse lehele</button>
+			<br>
+			<br>
         </div>
         <div class="chapter">
 
@@ -116,7 +112,7 @@ require './php/sessionCheck.php';
                 <input type="text" class="form-control" id="name">
 	    	<label>Organisatsioon:</label>
                 <input id="organisation" type="checkbox">
-
+	    
             </div>
             <div class="form-group">
                 <label>2. Taotleja isikukood / organisatsiooni registrikood </label>
@@ -233,8 +229,14 @@ require './php/sessionCheck.php';
 
               </tr>
             </div>
-            <div class="form-group">
-                <label>17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :</label>
+			<div class="form-group">
+                <label>17.Vali taotluse tüüp :</label>
+				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
+				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
+				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
+            </div>
+			<div class="form-group">
+                <label id="test2"></label>
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
@@ -251,41 +253,9 @@ require './php/sessionCheck.php';
               </tr>
             </div>
             <div class="form-group">
-                <label>18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava
-                    materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):</label>
+               
 
-            </div>
-			<div class="form-group">
-                <label>18.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m2"></textarea>
-				<tr>
-
-              </tr>
-            </div>
-			<div class="form-group">
-                <label>18.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m2"></textarea>
-				<tr>
-
-              </tr>
-            </div>
-            <div class="form-group">
-                <label>(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:</label>
-            </div>
-			<div class="form-group">
-                <label>19.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m3"></textarea>
-				<tr>
-
-              </tr>
-            </div>
-			<div class="form-group">
-                <label>19.2 Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m3"></textarea>
-				<tr>
-
-              </tr>
-            </div>
+            
             <div class="form-group">
                 <label>20. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
@@ -342,7 +312,7 @@ require './php/sessionCheck.php';
         <hr>
 
           <div class="form-group">
-              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <label>17. Eelarve põhjzendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 
@@ -377,7 +347,26 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 
 -->
     </div>
-
+	<script>
+			function M1function() {
+				document.getElementById("test2").innerHTML ="17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
+				document.getElementById('M2').checked = false;
+				document.getElementById('M3').checked = false;
+			}
+			function M2function() {
+				document.getElementById("test2").innerHTML ="18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
+				document.getElementById('M1').checked = false;
+				document.getElementById('M3').checked = false;
+			}
+			function M3function() {
+				document.getElementById("test2").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
+				document.getElementById('M2').checked = false;
+				document.getElementById('M1').checked = false;
+			}
+			
+			
+	</script>
 </body>
 
 </html>
+

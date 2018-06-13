@@ -338,7 +338,7 @@ require './php/sessionCheck.php';
         <hr>
 
           <div class="form-group">
-              <label>17. Eelarve põhjzendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 

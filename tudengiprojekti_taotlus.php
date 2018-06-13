@@ -8,6 +8,7 @@ require './php/sessionCheck.php';
 <head>
     <title>Tudengiprojekti taotlus</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
@@ -36,6 +37,50 @@ require './php/sessionCheck.php';
         } else {
           alert("Rohkem ei saa eemaldada!");
         }
+      }
+	  function sendForm() {
+        //event.preventDefault();
+
+        let name = document.getElementById("name").value;
+		let connection = document.getElementById("connection").value;
+        let id = document.getElementById("code").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let speciality = document.getElementById("speciality").value;
+        let degree = document.getElementById("degree").value;
+		let year = document.getElementById("year").value;
+        let project_manager = document.getElementById("project_manager").value;
+        let team_members = document.getElementById("team_members").value;
+        let project_name = document.getElementById("project_name").value;
+		let requested_amount = document.getElementById("requested_amount").value;
+		let budget = document.getElementById("budget").value;
+        let initial_date = document.getElementById("initial_date").value;
+        let end_date = document.getElementById("end_date").value;
+        let requested_amount_goal = document.getElementById("requested_amount_goal").value;
+        let problem = document.getElementById("problem").value;
+        let project_goal = document.getElementById("project_goal").value;
+        let results = document.getElementById("results").value;
+        let activities = document.getElementById("activities").value;
+        let additional_info = document.getElementById("additional_info").value;
+        let reason = document.getElementById("reason").value;
+        let tableArray = [[],[],[],[],[],[]];
+        for (i = 0; i < document.getElementsByName("budget").length; i++) {
+          tableArray[0].push(document.getElementsByName("budget")[i].value);
+          tableArray[1].push(document.getElementsByName("unit")[i].value);
+          tableArray[2].push(document.getElementsByName("cost_of_unit")[i].value);
+          tableArray[3].push(document.getElementsByName("unit_amount")[i].value);
+          tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
+          tableArray[5].push(document.getElementsByName("funder")[i].value);
+        }
+        let jsonTable = JSON.stringify(tableArray);
+
+        let project_budget_total = document.getElementById("project_budget_total").value;
+        let requested_budget = document.getElementById("requested_budget").value;
+        let budget_explanation = document.getElementById("budget_explanation").value;
+        $.post("./php/form_submit/teadusprojekti_aruandlus_submit.php", {name:name, connection:connection, id:id, phone:phone, email:email, address:address, speciality:speciality, degree:degree, year:year, project_manager:project_manager, team_members:team_members,  project_name:project_name, requested_amount:requested_amount, budget:budget, initial_date:initial_date, end_date:end_date, requested_amount_goal:requested_amount_goal, problem:problem, project_goal:project_goal, results:results, activities:activities, additional_info:additional_info, reason:reason, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+          alert( "Andmed: " + data );
+        });
       }
     </script>
 </head>

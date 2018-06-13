@@ -42,7 +42,7 @@ require './php/sessionCheck.php';
         //event.preventDefault();
 
         let name = document.getElementById("name").value;
-		let connection = document.getElementById("name").value;
+		let connection = document.getElementById("connection").value;
         let id = document.getElementById("code").value;
         let phone = document.getElementById("phone").value;
         let email = document.getElementById("email").value;

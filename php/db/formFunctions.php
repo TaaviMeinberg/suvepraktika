@@ -162,6 +162,16 @@
                 echo '</table><br>';
                 echo '<p><b>Eelarve põhjendus: </b>'.$row['budget_explanation'].'</p>';
                 break;
+              case "scientific_project_report":
+                echo 'Viga: Selle taotluse detailvaade pole veel saadaval! :(';
+                break;
+              case "student_project_application":
+                echo 'Viga: Selle taotluse detailvaade pole veel saadaval! :(';
+                break;
+              case "student_project_report":
+                echo 'Viga: Selle taotluse detailvaade pole veel saadaval! :(';
+                break;
+
         }
       }
       $stmt->free_result();
@@ -172,7 +182,7 @@
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
         $stmt = $mysqli->prepare("UPDATE ".$tableName." SET is_deleted=1 WHERE id = ?");
         $stmt->bind_param("i", $id);
-    
+
         if(!$stmt->execute()){
             echo "\n Tekkis viga : " .$stmt->error;
         }

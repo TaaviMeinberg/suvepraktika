@@ -31,8 +31,8 @@ supervisor_field VARCHAR(60),
 project_name VARCHAR(500), 
 initial_date DATE,
 end_date DATE, 
-grant_awarded DOUBLE(7),
-actual_cost DOUBLE(7),
+grant_awarded DOUBLE,
+actual_cost DOUBLE,
 problem VARCHAR(3000),
 project_goal VARCHAR(3000),
 planned_results VARCHAR(3000), 
@@ -46,9 +46,9 @@ actual_m2 VARCHAR(3000),
 planned_m3 VARCHAR(3000), 
 actual_m3 VARCHAR(3000),
 additional_info VARCHAR(3000),
-budget_table VARCHAR(2000); 
-budget_total DOUBLE(7);
-requested_budget DOUBLE(7);
+budget_table VARCHAR(2000),
+budget_total DOUBLE,
+requested_budget DOUBLE,
 budget_explanation VARCHAR(400) 
 );
 
@@ -71,7 +71,7 @@ supervisor_name VARCHAR(60),
 supervisor_occupation VARCHAR(60), 
 supervisor_field VARCHAR(60), 
 project_name VARCHAR(100), 
-requested_amount DOUBLE(7),
+requested_amount DOUBLE,
 initial_date DATE,
 end_date DATE, 
 requested_amount_goal VARCHAR(500),
@@ -101,9 +101,9 @@ team_members VARCHAR(240),
 project_name VARCHAR(500), 
 initial_date DATE,
 end_date DATE, 
-grant_awarded DOUBLE(7),
-used_grant_awarded DOUBLE(7),
-actual_cost DOUBLE(7),
+grant_awarded DOUBLE,
+used_grant_awarded DOUBLE,
+actual_cost DOUBLE,
 problem VARCHAR(3000),
 project_goal VARCHAR(3000),
 planned_results VARCHAR(3000), 
@@ -112,8 +112,8 @@ planned_activities VARCHAR(3000),
 actual_activities VARCHAR(3000),
 additional_info VARCHAR(3000);
 budget_table VARCHAR(2000); 
-budget_total DOUBLE(7);
-requested_budget DOUBLE(7);
+budget_total DOUBLE;
+requested_budget DOUBLE;
 budget_explanation VARCHAR(400) 
 );
 
@@ -133,8 +133,8 @@ year INT(4),
 project_manager VARCHAR(60), 
 team_members VARCHAR(1000), 
 project_name VARCHAR(500), 
-requested_amount DOUBLE(7),
-budget DOUBLE(7),
+requested_amount DOUBLE,
+budget DOUBLE,
 initial_date DATE,
 end_date DATE, 
 requested_amount_goal VARCHAR(3000),
@@ -146,3 +146,16 @@ additional_info VARCHAR(3000),
 reason VARCHAR(3000)
 );
 
+
+Otsuse tabel
+
+-- otsus: tagasi lükatud -1, pole otsustatud 0, vastu võetud 1
+
+CREATE TABLE decision(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+application_id INT(11), 
+table_name VARCHAR(60), 
+decision INT DEFAULT 0,
+summa DOUBLE,
+comment VARCHAR(1000)
+);

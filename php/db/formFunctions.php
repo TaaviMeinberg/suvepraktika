@@ -58,7 +58,7 @@
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
                 <button type="button" id="'.$id.',scientific_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+                <button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
             }
@@ -78,7 +78,7 @@
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
                 <button type="button" id="'.$id.',student_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+                <button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
             }
@@ -98,7 +98,7 @@
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
                 <button type="button" id="'.$id.',student_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+                <button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
             }

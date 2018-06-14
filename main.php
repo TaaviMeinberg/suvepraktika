@@ -19,7 +19,7 @@ require './php/sessionCheck.php';
     <div class="content">
         <div class="chapter-header">
             <p id="header">Pealeht</p>
-            
+
         </div>
         <div class="chapter">
                 <button type="button" class="btn btn-success btn-small" onclick="location.href='uusTaotlus.php';" style="float: left;">Esita uus taotlus</button>
@@ -27,7 +27,7 @@ require './php/sessionCheck.php';
             <center>
                 <br>
                 <br>
-                <?php 
+                <?php
                     echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
                 <hr>
@@ -55,7 +55,9 @@ require './php/sessionCheck.php';
             $('#list').append (result);
         });
         function showDetailView(){
-            alert("test");
+            $("button[name*='detailView']").on('click', function(event){
+                window.location = "detailedView.html?id="+event.target.id+"";
+            });
         }
     </script>
 </body>

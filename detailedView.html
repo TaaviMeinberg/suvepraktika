@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+      <title>Page Title</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+      let formId = window.location.href.split('?')[1].split('=')[1].split(',')[0];
+      let tableName = window.location.href.split('?')[1].split('=')[1].split(',')[1];
+
+      $.post("./php/db/formFunctions.php", {action:"detailed_content", formId:formId, tableName:tableName}, function(result){
+          document.getElementById("detailed_content").innerHTML = result;
+      });
+      </script>
+  </head>
+
+  <body>
+    <div id="detailed_content">
+
+    </div>
+  </body>
+
+</html>

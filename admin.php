@@ -47,7 +47,7 @@ require './php/sessionCheck.php';
                             <th>Tegevused</th>
                         </tr>
                         </thead>
-                        <tbody style="margin-right: 10px;"id="list">
+                        <tbody style="margin-right: 10px;"id="list" >
                         </tbody>
                     </table>
                 </div>
@@ -58,7 +58,12 @@ require './php/sessionCheck.php';
     <script>
         $.post("./php/db/formFunctions.php", {action:"listAllSubmissions"}, function(result){
             $('#list').append (result);
+			$("button[name*='markAsDeleted']").hide();
         });
+		
+		function showDetailView(){
+            alert("test");
+        }
     </script>
 </body>
 

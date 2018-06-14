@@ -54,6 +54,9 @@ require './php/sessionCheck.php';
         $.post("./php/db/formFunctions.php", {action:"listUserSubmissions"}, function(result){
             $('#list').append (result);
         });
+        function showDetailView(){
+            alert("test");
+        }
     </script>
 </body>
 

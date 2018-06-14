@@ -70,10 +70,11 @@
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
+
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
 				
@@ -82,7 +83,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
 				
 					);
@@ -97,12 +98,7 @@
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id,$creationDate, $projectName);
         $stmt->execute();
-<<<<<<< HEAD
         while($stmt->fetch()){
-=======
-
-            while($stmt->fetch()){
->>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti taotlus</td>';
@@ -110,7 +106,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
 				
@@ -119,7 +115,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
 				
 					);
@@ -133,14 +129,8 @@
 	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM student_project_report WHERE user_email like ? AND is_deleted = 0");
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id, $creationDate, $projectName);
-        $stmt->execute();
-<<<<<<< HEAD
-        
-           while($stmt->fetch()){
-=======
-
-            while($stmt->fetch()){
->>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a
+        $stmt->execute();    
+        while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti taotlus</td>';
@@ -148,7 +138,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
 				
@@ -157,7 +147,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
 				
 					);
@@ -250,10 +240,4 @@
         }
         $stmt->close();
     }
-<<<<<<< HEAD
-	
-	
 ?>
-=======
-?>
->>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a

@@ -34,7 +34,7 @@
             while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti taotlusdadasdass</td>';
+                echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
 				if ($email == '%') {
 					echo (
@@ -42,7 +42,7 @@
 							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
-				
+
 					);
 				} else{
 					echo (
@@ -50,13 +50,13 @@
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
-				
+
 					);
 				}
-			
+
 			}
         $stmt->close();
-		
+
 	}
     function listScientificReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
@@ -68,7 +68,7 @@
             while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti taotlus</td>';
+                echo '<td>Teadusprojekti aruandlus</td>';
                 echo '<td>'. $projectName.'</td>';
 
 				if ($email == '%') {
@@ -77,7 +77,7 @@
 							<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
-				
+
 					);
 				} else{
 					echo (
@@ -85,10 +85,10 @@
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
-				
+
 					);
 				}
-				
+
 			}
         $stmt->close();
     }
@@ -101,7 +101,7 @@
         while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti taotlus</td>';
+                echo '<td>Tudengiprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
 				if ($email == '%') {
 					echo (
@@ -109,7 +109,7 @@
 							<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
-				
+
 					);
 				} else{
 					echo (
@@ -117,10 +117,10 @@
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
-				
+
 					);
 				}
-				
+
 			}
         $stmt->close();
     }
@@ -129,11 +129,11 @@
 	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM student_project_report WHERE user_email like ? AND is_deleted = 0");
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id, $creationDate, $projectName);
-        $stmt->execute();    
+        $stmt->execute();
         while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti taotlus</td>';
+                echo '<td>Tudengiprojekti aruandlus</td>';
                 echo '<td>'. $projectName.'</td>';
 				if ($email == '%') {
 					echo (
@@ -141,7 +141,7 @@
 							<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
 						</td>'
-				
+
 					);
 				} else{
 					echo (
@@ -149,10 +149,10 @@
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
 						</td>'
-				
+
 					);
 				}
-				
+
 			}
         $stmt->close();
     }

@@ -22,16 +22,16 @@ require './php/sessionCheck.php';
     <div class="content">
         <div class="chapter-header">
             <p id="header">ADMIN leht</p>
-            
+
         </div>
         <div class="chapter">
-                
+
             <button type="button" class="btn btn-danger btn-small" onclick="signOut();" style="float: right; margin-right: 10px;">Logi välja</button>
             <button type="button" class="btn btn-info" onclick="location.href='adminKasutajad.php';" style="float: left; margin-right: 10px;">Halda adminne</button>
             <center>
                 <br>
                 <br>
-                <?php 
+                <?php
                     echo "<p>Tere, " . $_SESSION["userName"] . ".</p>";
                 ?>
                 <hr>
@@ -60,9 +60,11 @@ require './php/sessionCheck.php';
             $('#list').append (result);
 			$("button[name*='markAsDeleted']").hide();
         });
-		
-		function showDetailView(){
-            alert("test");
+
+        function showDetailView(){
+            $("button[name*='detailView']").on('click', function(event){
+                window.location = "detailedView.html?id="+event.target.id+"";
+            });
         }
     </script>
 </body>

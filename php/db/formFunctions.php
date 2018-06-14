@@ -34,16 +34,30 @@
             while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti taotlus</td>';
+                echo '<td>Teadusprojekti taotlusdadasdass</td>';
                 echo '<td>'. $projectName.'</td>';
-                echo '<td>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-                </td>';
-                echo '</tr>';
-            }
+				if ($email == '%') {
+					echo (
+						'<td>
+							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+						</td>'
+				
+					);
+				} else{
+					echo (
+						'<td>
+						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						</td>'
+				
+					);
+				}
+			
+			}
         $stmt->close();
-    }
+		
+	}
     function listScientificReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM scientific_project_report WHERE user_email like ? AND is_deleted = 0");
@@ -54,14 +68,27 @@
             while($stmt->fetch()){
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Teadusprojekti aruanne</td>';
+                echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
-                echo '<td>
-                <button type="button" id="'.$id.',scientific_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-                </td>';
-                echo '</tr>';
-            }
+				if ($email == '%') {
+					echo (
+						'<td>
+							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+						</td>'
+				
+					);
+				} else{
+					echo (
+						'<td>
+						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						</td>'
+				
+					);
+				}
+				
+			}
         $stmt->close();
     }
     function listStudentApplications($email){
@@ -70,18 +97,35 @@
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id,$creationDate, $projectName);
         $stmt->execute();
+<<<<<<< HEAD
+        while($stmt->fetch()){
+=======
 
             while($stmt->fetch()){
+>>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Tudengiprojekti taotlus</td>';
+                echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
-                echo '<td>
-                <button type="button" id="'.$id.',student_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-                </td>';
-                echo '</tr>';
-            }
+				if ($email == '%') {
+					echo (
+						'<td>
+							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+						</td>'
+				
+					);
+				} else{
+					echo (
+						'<td>
+						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						</td>'
+				
+					);
+				}
+				
+			}
         $stmt->close();
     }
     function listStudentReports($email){
@@ -90,18 +134,36 @@
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id, $creationDate, $projectName);
         $stmt->execute();
+<<<<<<< HEAD
+        
+           while($stmt->fetch()){
+=======
 
             while($stmt->fetch()){
+>>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a
                 echo '<tr>';
                 echo '<td>'. $creationDate .'</td>';
-                echo '<td>Tudengiprojekti aruanne</td>';
+                echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
-                echo '<td>
-                <button type="button" id="'.$id.',student_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-                </td>';
-                echo '</tr>';
-            }
+				if ($email == '%') {
+					echo (
+						'<td>
+							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+						</td>'
+				
+					);
+				} else{
+					echo (
+						'<td>
+						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						</td>'
+				
+					);
+				}
+				
+			}
         $stmt->close();
     }
     function showDetailedContent($id, $table) {
@@ -188,4 +250,10 @@
         }
         $stmt->close();
     }
+<<<<<<< HEAD
+	
+	
 ?>
+=======
+?>
+>>>>>>> a1d17b9b335147423c443f91e61894c2a5a9661a

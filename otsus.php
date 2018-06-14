@@ -56,9 +56,14 @@ require './php/sessionCheck.php';
 				<label class="radio-inline"><input type="radio" id="not_decided" onclick="notDecided()">Otsus tegemata</label>
             </div>
 			<div class="form-group">
+		      <label>Määratud summa:</label>
+			  <input type="text" id="summa" class="form-control">
+			<div class="form-group">
               <label>Kommentaar:</label>
               <input type="text" id="comment" class="form-control">
 			</div>
+			<div class="form-group">
+			  <button type="button" class="btn btn-success" onclick="sendForm">Kinnita</button>
 		</div>
 		<script>
 			function accepted() {

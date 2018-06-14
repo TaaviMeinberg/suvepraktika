@@ -69,16 +69,7 @@ require './php/sessionCheck.php';
         let actual_results = document.getElementById("actual_results").value;
         let planned_activities = document.getElementById("planned_activities").value;
         let actual_activities = document.getElementById("actual_activities").value;
-        let m_type = 0;
-        if (document.getElementById('M1').checked == true) {
-          m_type = 1;
-        }
-        if (document.getElementById('M2').checked == true) {
-          m_type = 2;
-        }
-        if (document.getElementById('M3').checked == true) {
-          m_type = 3;
-        }
+        let m_type = document.getElementById("project_type").value;
         let planned_m = document.getElementById("planned_m").value;
         let actual_m = document.getElementById("actual_m").value;
         let additional_info = document.getElementById("additional_info").value;
@@ -234,43 +225,43 @@ require './php/sessionCheck.php';
 			<div class="form-group">
                 <label>16.2 Tegelikud tegevused ja tähtaeg <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda):</br></label>
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_activities"></textarea>
-
-				<tr>
-
-              </tr>
             </div>
-			<div class="form-group">
-                <label>17.Vali taotluse tüüp :</label>
-				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
-				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
-				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
+            <div class="form-group">
+                <label>Vali projekti meede:</label>
+                <select class="form-control" id="project_type" onchange="mChange()">
+                    <option value="" disabled selected>Vali projekti tüüp</option>
+                    <option value="M1">(M1) teadustöö läbiviimine (kuni 400 eurot)</option>
+                    <option value="M2">(M2) teaduse populariseerimine (kuni 800 eurot)</option>
+                    <option value="M3">(M3) teadustöö esitlemine (kuni 300 eurot)</option>
+                </select>
+                <small id="project_option" class="form-text text-muted">
+                    <b>M1:</b> andmete kogumine, töövahendite või teavikute soetamine, tõlkimine ja keeleline toimetamine;
+                    <br>
+                    <b>M2:</b> teadust populariseerivate ürituste korraldamine, teadust populariseerivate materjalide koostamine
+                    ja väljaandmine, tudengite erialaühenduste tegevust populariseerivate ürituste korraldamine ja materjalide
+                    koostamine;
+                    <br>
+                    <b>M3:</b> teaduslike tööde (sh kursusetööde, lõputööde jms) esitlemine, teadustöö esitlemiseks mõeldud
+                    üritustel osalemine ja/või üritusele reisimine;
+                </small>
             </div>
-			<div class="form-group">
+            
+            <div class="form-group">
                 <label id="test2"></label>
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="planned_m"></textarea>
-				<tr>
-
-              </tr>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="actual_m"></textarea>
-				<tr>
-
-              </tr>
             </div>
-            <div class="form-group">
-
-
-
             <div class="form-group">
                 <label>20. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
                 <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
             </div>
-
+            </div>
 			 <hr>
         <div class="chapter-header">
             <p>Projekti eelarve ning põhjendus</p>
@@ -322,11 +313,10 @@ require './php/sessionCheck.php';
         <hr>
 
           <div class="form-group">
-              <label>17. Eelarve põhjzendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 
-        </div>
 		 <hr>
         <div class="chapter-header">
             <p>Kinnitusleht</p>
@@ -358,20 +348,18 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 -->
     </div>
 	<script>
-			function M1function() {
-				document.getElementById("test2").innerHTML ="17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M2function() {
-				document.getElementById("test2").innerHTML ="18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
-				document.getElementById('M1').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M3function() {
-				document.getElementById("test2").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M1').checked = false;
+			function mChange() {
+                switch(document.getElementById("project_type").value){
+                    case "M1":
+                        document.getElementById("test2").innerHTML ="(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
+                        break;
+                    case "M2":
+                        document.getElementById("test2").innerHTML ="(ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
+                        break;
+                    case "M3":
+                        document.getElementById("test2").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
+                        break;
+                }
 			}
 
 

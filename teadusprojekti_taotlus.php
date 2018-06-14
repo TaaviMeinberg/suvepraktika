@@ -68,16 +68,7 @@ require './php/sessionCheck.php';
         let results = document.getElementById("results").value;
         let activities = document.getElementById("activities").value;
         let m = document.getElementById("m").value;
-        let m_type = 0;
-        if (document.getElementById('M1').checked == true) {
-          m_type = 1;
-        }
-        if (document.getElementById('M2').checked == true) {
-          m_type = 2;
-        }
-        if (document.getElementById('M3').checked == true) {
-          m_type = 3;
-        }
+        let m_type = document.getElementById("project_type").value;
         let reason = document.getElementById("reason").value;
         let tableArray = [[],[],[],[],[],[]];
         for (i = 0; i < document.getElementsByName("budget").length; i++) {
@@ -189,10 +180,11 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>Vali projekti meede:</label>
-                <select class="form-control" id="project_option">
-                    <option>(M1) teadustöö läbiviimine (kuni 400 eurot)</option>
-                    <option>(M2) teaduse populariseerimine (kuni 800 eurot)</option>
-                    <option>(M3) teadustöö esitlemine (kuni 300 eurot)</option>
+                <select class="form-control" id="project_type" onchange="mChange()">
+                    <option value="" disabled selected>Vali projekti tüüp</option>
+                    <option value="M1">(M1) teadustöö läbiviimine (kuni 400 eurot)</option>
+                    <option value="M2">(M2) teaduse populariseerimine (kuni 800 eurot)</option>
+                    <option value="M3">(M3) teadustöö esitlemine (kuni 300 eurot)</option>
                 </select>
                 <small id="project_option" class="form-text text-muted">
                     <b>M1:</b> andmete kogumine, töövahendite või teavikute soetamine, tõlkimine ja keeleline toimetamine;
@@ -204,7 +196,16 @@ require './php/sessionCheck.php';
                     <b>M3:</b> teaduslike tööde (sh kursusetööde, lõputööde jms) esitlemine, teadustöö esitlemiseks mõeldud
                     üritustel osalemine ja/või üritusele reisimine;
                 </small>
-
+            </div>
+            <div class="form-group">
+                <label id="tyyp">Vali ülevalt projekti M-tüüp.</label>
+                <input type="text" class="form-control" id="m">
+            </div>
+            <div class="form-group">
+                <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
+                    ehk mida saab rahastuse abil paremini teha):</label>
+                <input type="text" class="form-control" id="reason">
+				<hr>
             </div>
         </div>
         <hr>
@@ -231,21 +232,6 @@ require './php/sessionCheck.php';
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
                 <textarea class="form-control" id="activities" placeholder="1. ..."> </textarea>
             </div>
-			<div class="form-group">
-                <label>17.Märgi taotluse tüüp :</label>
-				<label class="radio-inline"><input type="radio" id="M1" onclick="M1function()">M1</label>
-				<label class="radio-inline"><input type="radio" id="M2" onclick="M2function()">M2</label>
-				<label class="radio-inline"><input type="radio" id="M3" onclick="M3function()">M3</label>
-            </div>
-            <div class="form-group">
-                <label id="tyyp"></label>
-                <input type="text" class="form-control" id="m">
-            </div>
-            <div class="form-group">
-                <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
-                    ehk mida saab rahastuse abil paremini teha):</label>
-                <input type="text" class="form-control" id="reason">
-				<hr>
         <div class="chapter-header">
             <p>Projekti eelarve ning põhjendus</p>
         </div>
@@ -296,7 +282,7 @@ require './php/sessionCheck.php';
         <hr>
 
           <div class="form-group">
-              <label>17. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
+              <label>Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
               <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
           </div>
 
@@ -326,20 +312,18 @@ Projekti eelarve ning põhjendus vaja teha, tuleb keerulisem
 -->
     </div>
 <script>
-			function M1function() {
-				document.getElementById("tyyp").innerHTML ="17.(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M2function() {
-				document.getElementById("tyyp").innerHTML ="18. (ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
-				document.getElementById('M1').checked = false;
-				document.getElementById('M3').checked = false;
-			}
-			function M3function() {
-				document.getElementById("tyyp").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
-				document.getElementById('M2').checked = false;
-				document.getElementById('M1').checked = false;
+			function mChange() {
+                switch(document.getElementById("project_type").value){
+                    case "M1":
+                        document.getElementById("tyyp").innerHTML ="(ainult M1 taotleja) Uurimismeetodite kirjeldus :";
+                        break;
+                    case "M2":
+                        document.getElementById("tyyp").innerHTML ="(ainult M2 taotleja) Planeeritava ürituse programmi kirjeldus ning esinejate loetelu; projekti raames avaldatava materjali kirjeldus (Vajadusel lisada taotlusele lisafailina.):";
+                        break;
+                    case "M3":
+                        document.getElementById("tyyp").innerHTML ="(ainult M3 taotleja) Teadustöö esitlemise vormi, teadustöö sisu ning esitluspaiga või ürituse kirjeldus:";
+                        break;
+                }
 			}
 
 

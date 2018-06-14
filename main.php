@@ -53,12 +53,21 @@ require './php/sessionCheck.php';
     <script>
         $.post("./php/db/formFunctions.php", {action:"listUserSubmissions"}, function(result){
             $('#list').append (result);
+            $("button[name*='markAsDeleted']").on('click', function(event){
+                var idAndTableName = event.target.id.split(",")
+                var id = Number(idAndTableName[0]);
+                var tableName = idAndTableName[1];
+                $.post("./php/db/formFunctions.php", {action:"markDeleted",entryID:id,tableName:tableName}, function(result){
+                    location.reload();
+                });
+            });
         });
         function showDetailView(){
             $("button[name*='detailView']").on('click', function(event){
                 window.location = "detailedView.html?id="+event.target.id+"";
             });
         }
+        
     </script>
 </body>
 

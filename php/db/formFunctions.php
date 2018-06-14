@@ -19,6 +19,9 @@
             $tableName = $_POST["tableName"];
             showDetailedContent($formId, $tableName);
             break;
+        case "markDeleted":
+            markDeleted($_POST["tableName"],$_POST["entryID"]);
+            break;
     }
 
     function listScientificApplications($email){
@@ -34,7 +37,7 @@
                 echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
-                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="deleteAdmin">Kustuta</button>
+                <button type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
                 <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
@@ -54,7 +57,7 @@
                 echo '<td>Teadusprojekti aruanne</td>';
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
-                <button type="button" id="'.$id.',scientific_project_report" class="btn btn-danger btn-sm" name="deleteAdmin">Kustuta</button>
+                <button type="button" id="'.$id.',scientific_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
                 <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
@@ -74,7 +77,7 @@
                 echo '<td>Tudengiprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
-                <button type="button" id="'.$id.',student_project_application" class="btn btn-danger btn-sm" name="deleteAdmin">Kustuta</button>
+                <button type="button" id="'.$id.',student_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
                 <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
@@ -94,14 +97,13 @@
                 echo '<td>Tudengiprojekti aruanne</td>';
                 echo '<td>'. $projectName.'</td>';
                 echo '<td>
-                <button type="button" id="'.$id.',student_project_report" class="btn btn-danger btn-sm" name="deleteAdmin">Kustuta</button>
+                <button type="button" id="'.$id.',student_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
                 <button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
                 </td>';
                 echo '</tr>';
             }
         $stmt->close();
     }
-
     function showDetailedContent($id, $table) {
       $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
       $stmt = $mysqli->prepare("SELECT * FROM ".$table." WHERE id like ?");
@@ -165,5 +167,15 @@
       $stmt->free_result();
       $stmt->close();
       $mysqli->close();
+    }
+    function markDeleted($tableName,$id){
+        $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+        $stmt = $mysqli->prepare("UPDATE ".$tableName." SET is_deleted=1 WHERE id = ?");
+        $stmt->bind_param("i", $id);
+    
+        if(!$stmt->execute()){
+            echo "\n Tekkis viga : " .$stmt->error;
+        }
+        $stmt->close();
     }
 ?>

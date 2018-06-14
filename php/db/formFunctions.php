@@ -15,7 +15,7 @@
             listStudentApplications('%');
             break;
         case "markDeleted":
-            markDeleted($_POST["entryID"],$_POST["tableName"]);
+            markDeleted($_POST["tableName"],$_POST["entryID"]);
             break;
     }
 
@@ -99,7 +99,14 @@
             }
         $stmt->close();
     }
-    function markDeleted($id,$tableName){
-
+    function markDeleted($tableName,$id){
+        $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
+        $stmt = $mysqli->prepare("UPDATE ".$tableName." SET is_deleted=1 WHERE id = ?");
+        $stmt->bind_param("i", $id);
+    
+        if(!$stmt->execute()){
+            echo "\n Tekkis viga : " .$stmt->error;
+        }
+        $stmt->close();
     }
 ?>

@@ -51,6 +51,7 @@ require './php/sessionCheck.php';
 
     </div>
     <script>
+		
         $.post("./php/db/formFunctions.php", {action:"listUserSubmissions"}, function(result){
             $('#list').append (result);
             $("button[name*='markAsDeleted']").on('click', function(event){

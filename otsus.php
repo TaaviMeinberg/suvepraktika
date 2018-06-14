@@ -44,7 +44,7 @@ require './php/sessionCheck.php';
 	 <div class="content">
         <div class="chapter-header">
             <p>Projekti otsus</p>
-			<button style="float: right;" type="button" class="btn btn-success" onclick="location.href='admin.php';">Tagasi admini lehele</button>
+			<button style="float: left;" type="button" class="btn btn-info" onclick="location.href='admin.php';">Tagasi admini lehele</button>
 			<br>
 			<br>
         </div>

@@ -256,7 +256,43 @@
                 echo '</table><br>';;
                 break;
               case "student_project_report":
-                echo 'Viga: Selle taotluse detailvaade pole veel saadaval! :(';
+                case "student_project_report":
+				echo '<p><b>ID: </b>'.$row['id'].'</p>';
+				echo '<p><b>Saatja E-mail: </b>'.$row['user_email'].'</p>';
+				echo '<p><b>Koostatud: </b>'.$row['date_created'].'</p>';
+				if ($row['organization']==0) {
+                  echo '<p><b>Nimi: </b>'.$row['name'].'</p>';
+                  echo '<p><b>Taotleja isikukood: </b>'.$row['code'].'</p>';
+				  echo '<p><b>Taotleja kontaktandmed: </b>'.$row['phone'].'</p>';
+				  echo '<p><b>Taotleja arveldusarve number: </b>'.$row['bank_account'].'</p>';
+				  echo '<p><b>Aruandluse koostaja: </b>'.$row['report_compiler'].'</p>';
+				  echo '<p><b>Projekti juht: </b>'.$row['project_manager'].'</p>';
+				  echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
+				  echo '<p><b>Projekti pealkiri: </b>'.$row['project_name'].'</p>';
+                } else {
+                  echo '<p><b>Organisatsioon: </b>'.$row['name'].'</p>';
+                  echo '<p><b>Organisatsiooni registrikood: </b>'.$row['code'].'</p>';
+                  echo '<p><b>Organisatsiooni seos tudengi ja ülikooliga: </b>'.$row['connection'].'</p>';
+				  echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
+                echo '<p><b>Õppeinfo: </b></p><table border="1"><tr><th>Eriala</th><th>Õppetase</th><th>Õppeaasta</th></tr><tr><th>'.$row['speciality'].'</th><th>'.$row['degree'].'</th><th>'.$row['year'].'</th></tr></table><br>';
+                echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
+                }
+				echo '<p><b>Projekti tegelik elluviimise periood: </b>'.$row['initial_date'].' - '.$row['end_date'].'</p>';
+			
+                echo '<p><b>Määratud toetuse summa: </b>'.$row['grant_awarded'].'</p>';
+				echo '<p><b>Kasutatud toetuse summa: </b>'.$row['used_grant_awarded'].'</p>';
+				echo '<p><b>Projekti kogusumma: </b>'.$row['actual_cost'].'</p>';
+                echo '<p><b>Probleemi püstitus ja taotletava summa eesmärk: </b>'.$row['problem'].'</p>';
+                echo '<p><b>Projekti eesmärk: </b>'.$row['project_goal'].'</p>';
+                echo '<p><b>Projekti oodatavad tulemused: </b>'.$row['planned_results'].'</p>';
+				echo '<p><b>Projekti tegelikud tulemused: </b>'.$row['actual_results'].'</p>';
+                echo '<p><b>Tegevuste loetelu koos tähtajaga: </b>'.$row['actual_activities'].'</p>';
+				echo '<p><b>Täiendav informatsioon: </b>'.$row['additional_info'].'</p>';
+				echo '<p><b>Projekti eelarve ning põhjendus: </b></p><table border="1"><tr><th>Eelarvernamea ehk kuluartikkel</th><th>Ühik</th><th>Ühiku hind</th><th>Ühiku kogus</th><th>Kuluartikli summa</th><th>Rahastaja</th></tr>';
+				 for ($i = 0; $i < sizeof(json_decode($row['budget_table'])[0]); $i++) {
+                  echo '<tr><th>'.json_decode($row['budget_table'])[0][$i].'</th><th>'.json_decode($row['budget_table'])[1][$i].'</th><th>'.json_decode($row['budget_table'])[2][$i].'</th><th>'.json_decode($row['budget_table'])[3][$i].'</th><th>'.json_decode($row['budget_table'])[4][$i].'</th><th>'.json_decode($row['budget_table'])[5][$i].'</th></tr>';
+                }
+				echo '<p><b>Eelarve põhjendus: </b>'.$row['budget_explanation'].'</p>';
                 break;
 
         }

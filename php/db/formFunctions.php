@@ -167,6 +167,8 @@
 
         switch($table){
             case "scientific_project_application":
+                echo'<center><p id="projektName" style="font-weight: bold; margin-top: 10px;">'.$row['project_name'].'</p></center>';
+                echo '<hr>';
                 echo '<p><b>ID: </b>'.$row['id'].'</p>';
                 echo '<p><b>Saatja E-mail: </b>'.$row['user_email'].'</p>';
                 echo '<p><b>Koostatud: </b>'.$row['date_created'].'</p>';
@@ -178,14 +180,14 @@
                   echo '<p><b>Organisatsiooni registrikood: </b>'.$row['code'].'</p>';
                   echo '<p><b>Organisatsiooni seos tudengi ja ülikooliga: </b>'.$row['connection'].'</p>';
                 }
-                echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
-                echo '<p><b>Õppeinfo: </b></p><table border="1"><tr><th>Eriala</th><th>Õppetase</th><th>Õppeaasta</th></tr><tr><th>'.$row['speciality'].'</th><th>'.$row['degree'].'</th><th>'.$row['year'].'</th></tr></table><br>';
+                echo '<p><b>Taotleja kontaktandmed: </b></p><table class="table table-bordered table-striped table-hover" style="font-size: 7px;"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
+                echo '<p><b>Õppeinfo: </b></p><table class="table table-bordered table-striped table-hover" style="font-size: 7px;"><tr><th>Eriala</th><th>Õppetase</th><th>Õppeaasta</th></tr><tr><th>'.$row['speciality'].'</th><th>'.$row['degree'].'</th><th>'.$row['year'].'</th></tr></table><br>';
                 echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
                 echo '<p><b>Projekti tüüp: </b>'.$row['m_type'].'</p>';
                 if ($row['m_type']=="M1") {
-                    echo '<p><b>Juhendaja info: </b></p><table border="1"><tr><th>Juhendaja nimi</th><th>Ametikoht</th><th>Tegevusvaldkond</th></tr><tr><th>'.$row['supervisor_name'].'</th><th>'.$row['supervisor_occupation'].'</th><th>'.$row['field_of_activity'].'</th></tr></table><br>';
+                    echo '<p><b>Juhendaja info: </b></p><table class="table table-bordered table-striped table-hover" style="font-size: 7px;"><tr><th>Juhendaja nimi</th><th>Ametikoht</th><th>Tegevusvaldkond</th></tr><tr><th>'.$row['supervisor_name'].'</th><th>'.$row['supervisor_occupation'].'</th><th>'.$row['field_of_activity'].'</th></tr></table><br>';
                 }
-                echo '<p><b>Projekti pealkiri: </b>'.$row['project_name'].'</p>';
+                echo '<b>Projekti pealkiri: </b><p id="projektName">'.$row['project_name'].'</p>';
                 echo '<p><b>Taotletav summa: </b>'.$row['requested_amount'].'</p>';
                 echo '<p><b>Projekti eeldatav periood: </b>'.$row['initial_date'].' - '.$row['end_date'].'</p>';
                 echo '<p><b>Taotleva summa kasutamise eesmärk: </b>'.$row['requested_amount_goal'].'</p>';
@@ -206,12 +208,15 @@
                 }
                 echo '<p><b>Toetuse taotlemise põhjus: </b>'.$row['reason'].'</p>';
 
-                echo '<p><b>Projekti eelarve ning põhjendus: </b></p><table border="1"><tr><th>Eelarvernamea ehk kuluartikkel</th><th>Ühik</th><th>Ühiku hind</th><th>Ühiku kogus</th><th>Kuluartikli summa</th><th>Rahastaja</th></tr>';
+                echo '<p><b>Projekti eelarve ning põhjendus: </b></p>';
+                echo'<p>';
+                echo '<table class="table table-bordered table-striped table-hover" style="font-size: 7px;"><tr><th>Kuluartikkel</th><th>Ühik</th><th>Ühiku hind</th><th>Ühiku kogus</th><th>Kuluartikli summa</th><th>Rahastaja</th></tr>';
 
                 for ($i = 0; $i < sizeof(json_decode($row['budget_table'])[0]); $i++) {
                   echo '<tr><th>'.json_decode($row['budget_table'])[0][$i].'</th><th>'.json_decode($row['budget_table'])[1][$i].'</th><th>'.json_decode($row['budget_table'])[2][$i].'</th><th>'.json_decode($row['budget_table'])[3][$i].'</th><th>'.json_decode($row['budget_table'])[4][$i].'</th><th>'.json_decode($row['budget_table'])[5][$i].'</th></tr>';
                 }
-                echo '</table><br>';
+                echo '</table>';
+                echo'</p>';
                 echo '<p><b>Eelarve põhjendus: </b>'.$row['budget_explanation'].'</p>';
                 break;
               case "scientific_project_report":

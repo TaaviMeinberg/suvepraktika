@@ -2,25 +2,49 @@
 
 <html>
 
-  <head>
-      <title>Page Title</title>
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script type="text/javascript">
-      let formId = window.location.href.split('?')[1].split('=')[1].split(',')[0];
-      let tableName = window.location.href.split('?')[1].split('=')[1].split(',')[1];
+<head>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+  <style>
+    #detailed_content{
+      margin-right: 10px;
+    }
+  </style>
+</head>
 
-      $.post("./php/db/formFunctions.php", {action:"detailed_content", formId:formId, tableName:tableName}, function(result){
-          document.getElementById("detailed_content").innerHTML = result;
-      });
-      </script>
-  </head>
-
-  <body>
-    <div id="detailed_content">
-
+<body>
+  <div class="content">
+    <div class="chapter-header">
+      <p>Detailvaade</p>
     </div>
-  </body>
+    <div class="chapter">
+      <div id="detailed_content">
+
+      </div>
+      <center>
+          <button type="button" class="btn btn-success" onclick="generatePDF()" style="margin-bottom: 10px;">Salvesta PDF</button>
+      </center>
+    </div>
+  </div>
+  <script>
+    let doc = new jsPDF();
+    let formId = window.location.href.split('?')[1].split('=')[1].split(',')[0];
+    let tableName = window.location.href.split('?')[1].split('=')[1].split(',')[1];
+
+    $.post("./php/db/formFunctions.php", { action: "detailed_content", formId: formId, tableName: tableName }, function (result) {
+      document.getElementById("detailed_content").innerHTML = result;
+    });
+
+    function generatePDF() {
+      doc.fromHTML($('#detailed_content').html(), 10, 10, {
+        'width': 190
+      });
+      doc.save('sample-file.pdf');
+    }
+  </script>
+</body>
 
 </html>

@@ -49,7 +49,7 @@
 					echo (
 						'<td>
 							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',scientific_project_application\'">Langeta otsus</button>
 						</td>'
 
 					);
@@ -84,7 +84,7 @@
 					echo (
 						'<td>
 							<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',scientific_project_report\'">Langeta otsus</button>
 						</td>'
 
 					);
@@ -116,7 +116,7 @@
 					echo (
 						'<td>
 							<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',student_project_application\'">Langeta otsus</button>
 						</td>'
 
 					);
@@ -148,7 +148,7 @@
 					echo (
 						'<td>
 							<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
-							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php\'">Langeta otsus</button>
+							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',student_project_report\'">Langeta otsus</button>
 						</td>'
 
 					);
@@ -240,11 +240,11 @@
                 } else {
                   echo '<p><b>Organisatsioon: </b>'.$row['name'].'</p>';
 				  echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
-                
+
                 echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
                 }
 				echo '<p><b>Projekti tegelik elluviimise periood: </b>'.$row['initial_date'].' - '.$row['end_date'].'</p>';
-			
+
                 echo '<p><b>Määratav toetus: </b>'.$row['grant_awarded'].'</p>';
 				echo '<p><b>Tegelik kulu: </b>'.$row['actual_cost'].'</p>';
                 echo '<p><b>Probleemi püstitus ja taotletava summa eesmärk: </b>'.$row['problem'].'</p>';
@@ -259,7 +259,7 @@
                 }
 				echo '<p><b>Eelarve põhjendus: </b>'.$row['budget_explanation'].'</p>';
                 break;
-				
+
               case "student_project_application":
                 echo '<p><b>ID: </b>'.$row['id'].'</p>';
 				echo '<p><b>Saatja E-mail: </b>'.$row['user_email'].'</p>';
@@ -289,7 +289,7 @@
                   echo '<tr><th>'.json_decode($row['budget_table'])[0][$i].'</th><th>'.json_decode($row['budget_table'])[1][$i].'</th><th>'.json_decode($row['budget_table'])[2][$i].'</th><th>'.json_decode($row['budget_table'])[3][$i].'</th><th>'.json_decode($row['budget_table'])[4][$i].'</th><th>'.json_decode($row['budget_table'])[5][$i].'</th></tr>';
                 }
                 echo '</table><br>';
-				
+
                 break;
               case "student_project_report":
 				echo '<p><b>ID: </b>'.$row['id'].'</p>';
@@ -313,7 +313,7 @@
                 echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
                 }
 				echo '<p><b>Projekti tegelik elluviimise periood: </b>'.$row['initial_date'].' - '.$row['end_date'].'</p>';
-			
+
                 echo '<p><b>Määratud toetuse summa: </b>'.$row['grant_awarded'].'</p>';
 				echo '<p><b>Kasutatud toetuse summa: </b>'.$row['used_grant_awarded'].'</p>';
 				echo '<p><b>Projekti kogusumma: </b>'.$row['actual_cost'].'</p>';
@@ -383,7 +383,7 @@
                 echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
                 }
 				echo '<p><b>Projekti tegelik elluviimise periood: </b>'.$row['initial_date'].' - '.$row['end_date'].'</p>';
-			
+
                 echo '<p><b>Määratud toetuse summa: </b>'.$row['grant_awarded'].'</p>';
 				echo '<p><b>Kasutatud toetuse summa: </b>'.$row['used_grant_awarded'].'</p>';
 				echo '<p><b>Projekti kogusumma: </b>'.$row['actual_cost'].'</p>';

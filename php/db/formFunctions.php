@@ -34,16 +34,17 @@
 
     function listScientificApplications($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM scientific_project_application WHERE user_email like ? AND is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name, m_type FROM scientific_project_application WHERE user_email like ? AND is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type);
         $stmt->execute();
 
             while($stmt->fetch()){
-                echo '<tr>';
+                echo '<tr id="'.$m_type.'">';
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
+
 				if ($email == '%') {
 					echo (
 						'<td>
@@ -68,13 +69,13 @@
 	}
     function listScientificReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM scientific_project_report WHERE user_email like ? AND is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name, m_type FROM scientific_project_report WHERE user_email like ? AND is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type);
         $stmt->execute();
 
             while($stmt->fetch()){
-                echo '<tr>';
+                echo '<tr id="'.$m_type.'">';
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti aruandlus</td>';
                 echo '<td>'. $projectName.'</td>';

@@ -3,21 +3,21 @@
 require 'dbConfig.php';
 
 $application_id;
-$table_name;
+$form_name;
 $decision;
-$summa;
+$amount;
 $comment;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$application_id = $_POST['application_id'];
-	$table_name = $_POST['table_name'];
+	$form_name = $_POST['form_name'];
 	$decision = $_POST['decision'];
-	$summa = $_POST['summa'];
+	$amount = $_POST['amount'];
 	$comment = $_POST['comment'];
-	
+
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	$stmt = $mysqli->prepare("INSERT INTO decision (application_id, table_name, decision, summa, comment) VALUES (?,?,?,?,?)");
+	$stmt = $mysqli->prepare("INSERT INTO decision (application_id, form_name, decision, summa, comment) VALUES (?,?,?,?,?)");
 	echo $mysqli->error;
-    $stmt->bind_param("sssds", $application_id, $table_name, $decision, $summa, $comment);
+    $stmt->bind_param("sssds", $application_id, $form_name, $decision, $amount, $comment);
 	 if ($stmt->execute()){
       echo "\n Salvestatud!";
     } else {
@@ -26,4 +26,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $mysqli->close();
 }
-	

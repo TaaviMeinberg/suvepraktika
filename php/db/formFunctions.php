@@ -232,11 +232,12 @@
 				if ($row['organization']==0) {
                   echo '<p><b>Nimi: </b>'.$row['name'].'</p>';
                   echo '<p><b>Taotleja isikukood: </b>'.$row['code'].'</p>';
+		echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
                 } else {
                   echo '<p><b>Organisatsioon: </b>'.$row['name'].'</p>';
                   echo '<p><b>Organisatsiooni registrikood: </b>'.$row['code'].'</p>';
                   echo '<p><b>Organisatsiooni seos tudengi ja ülikooliga: </b>'.$row['connection'].'</p>';
-				  echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
+		echo '<p><b>Taotleja kontaktandmed: </b></p><table border="1"><tr><th>Telefoninumber</th><th>E-posti aadress</th><th>Elukoha aadress</th></tr><tr><th>'.$row['phone'].'</th><th>'.$row['email'].'</th><th>'.$row['address'].'</th></tr></table><br>';
                 echo '<p><b>Õppeinfo: </b></p><table border="1"><tr><th>Eriala</th><th>Õppetase</th><th>Õppeaasta</th></tr><tr><th>'.$row['speciality'].'</th><th>'.$row['degree'].'</th><th>'.$row['year'].'</th></tr></table><br>';
                 echo '<p><b>Teised projektimeeskonna liikmed: </b>'.$row['team_members'].'</p>';
                 }

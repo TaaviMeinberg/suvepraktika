@@ -1,6 +1,7 @@
 <?php
 
 require './../db/dbConfig.php';
+require './../db/formFunctions.php';
 
 $name;
 $organization;
@@ -35,33 +36,33 @@ $budget_explanation;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$user_email = $_SESSION["userEmail"];
-	$name = $_POST['name'];
-	$organization = $_POST['organisation'];
-	$id = $_POST['id'];
-	$phone = $_POST['phone'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$bank_acc = $_POST['bank_acc'];
-	$report_compiler = $_POST['report_compiler'];
-	$project_manager = $_POST['project_manager'];
-	$team_members = $_POST['team_members'];
-	$project_name = $_POST['project_name'];
-	$initial_date = $_POST['initial_date'];
-	$end_date = $_POST['end_date'];
-	$grant_awarded = $_POST['grant_awarded'];
-	$used_grant_awarded = $_POST['used_grant_awarded'];
-	$actual_cost = $_POST['actual_cost'];
-	$problem = $_POST['problem'];
-	$project_goal = $_POST['project_goal'];
-	$planned_results = $_POST['planned_results'];
-	$actual_results = $_POST['actual_results'];
-	$planned_activities = $_POST['planned_activities'];
-	$actual_activities = $_POST['actual_activities'];
-	$additional_info = $_POST['additional_info'];
-	$jsonTable = $_POST['jsonTable'];
-	$project_budget_total = $_POST['project_budget_total'];
-	$requested_budget = $_POST['requested_budget'];
-	$budget_explanation = $_POST['budget_explanation'];
+	$name = test_input($_POST['name']);
+	$organization = test_input($_POST['organisation']);
+	$id = test_input($_POST['id']);
+	$phone = test_input($_POST['phone']);
+	$email = test_input($_POST['email']);
+	$address = test_input($_POST['address']);
+	$bank_acc = test_input($_POST['bank_acc']);
+	$report_compiler = test_input($_POST['report_compiler']);
+	$project_manager = test_input($_POST['project_manager']);
+	$team_members = test_input($_POST['team_members']);
+	$project_name = test_input($_POST['project_name']);
+	$initial_date = test_input($_POST['initial_date']);
+	$end_date = test_input($_POST['end_date']);
+	$grant_awarded = test_input($_POST['grant_awarded']);
+	$used_grant_awarded = test_input($_POST['used_grant_awarded']);
+	$actual_cost = test_input($_POST['actual_cost']);
+	$problem = test_input($_POST['problem']);
+	$project_goal = test_input($_POST['project_goal']);
+	$planned_results = test_input($_POST['planned_results']);
+	$actual_results = test_input($_POST['actual_results']);
+	$planned_activities = test_input($_POST['planned_activities']);
+	$actual_activities = test_input($_POST['actual_activities']);
+	$additional_info = test_input($_POST['additional_info']);
+	$jsonTable = test_input($_POST['jsonTable']);
+	$project_budget_total = test_input($_POST['project_budget_total']);
+	$requested_budget = test_input($_POST['requested_budget']);
+	$budget_explanation = test_input($_POST['budget_explanation']);
 
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 	$stmt = $mysqli->prepare("INSERT INTO student_project_report (user_email, name, organization, code, phone, email, address, bank_account, report_compiler, project_manager, team_members, project_name, initial_date, end_date, grant_awarded, used_grant_awarded, actual_cost, problem, project_goal, planned_results, actual_results, planned_activities, actual_activities, additional_info, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");

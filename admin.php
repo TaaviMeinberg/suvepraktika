@@ -37,6 +37,13 @@ require './php/sessionCheck.php';
                 <hr>
                 <p style="font-style: italic;">Siia kuvatakse kõik esitatud taotlused</p>
                 <br>
+                <select class="form-control" style="margin-right: 10px" id="" onchange="changeFilter(this)">
+                  <option value="all" selected>Kõik</option>
+                  <option value="M1">M1</option>
+                  <option value="M2">M2</option>
+                  <option value="M3">M3</option>
+                </select>
+                <br>
                 <div style="margin-right: 10px;" class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="admins">
                         <thead>
@@ -65,6 +72,18 @@ require './php/sessionCheck.php';
             $("button[name*='detailView']").on('click', function(event){
                 window.location = "detailedView.html?id="+event.target.id+"";
             });
+        }
+        function changeFilter(m) {
+          for (var i = 0; i < document.getElementById('list').getElementsByTagName('TR').length; i++) {
+            document.getElementById('list').getElementsByTagName('TR')[i].style.display = "table-row";
+          }
+          if (m.value != 'all') {
+            for (var i = 0; i < document.getElementById('list').getElementsByTagName('TR').length; i++) {
+              if (document.getElementById('list').getElementsByTagName('TR')[i].id != m.value) {
+                document.getElementById('list').getElementsByTagName('TR')[i].style.display = "none";
+              }
+            }
+          }
         }
     </script>
 </body>

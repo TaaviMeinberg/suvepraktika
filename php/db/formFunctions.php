@@ -33,17 +33,35 @@
     }
 
     function listScientificApplications($email){
-        $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name, m_type FROM scientific_project_application WHERE user_email like ? AND is_deleted = 0");
+        $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]); //WHERE user_email like ? AND is_deleted = 0
+	    $stmt = $mysqli->prepare("SELECT scientific_project_application.id, scientific_project_application.date_created, scientific_project_application.project_name, scientific_project_application.m_type, decision.decision, decision.confirmed, scientific_project_application.requested_amount, decision.summa FROM scientific_project_application LEFT JOIN decision ON scientific_project_application.id = decision.application_id AND decision.form_name ='scientific_project_application' WHERE scientific_project_application.user_email like ? AND scientific_project_application.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $m_type);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $requested_ammount, $given_ammount);
         $stmt->execute();
-
+        
             while($stmt->fetch()){
                 echo '<tr id="'.$m_type.'">';
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti taotlus</td>';
                 echo '<td>'. $projectName.'</td>';
+                if($decision == ""){
+                    echo '<td style="background-color: yellow;">Ei ole veel otsustatud</td>';
+                } else if($decision=="-1"){
+                    echo '<td style="background-color: red;">Taotlus lükati tagasi</td>';
+                }else if($decision=="1"){
+                    echo '<td style="background-color: green;">Taotlus kiideti heaks</td>';
+                }
+                if($confirmed == ""){
+                    echo '<td>Otsus ei ole veel kinnitatud</td>';
+                }else {
+                    echo '<td>'.$confirmed.'</td>';
+                }
+                echo '<td>'. $requested_ammount.'</td>';
+                if($given_ammount == ""){
+                    echo '<td>Toetus ei ole veel määratud</td>';
+                }else {
+                    echo '<td>'.$given_ammount.'</td>';
+                }
 
 				if ($email == '%') {
 					echo (
@@ -63,15 +81,16 @@
 					);
 				}
 
-			}
+			} 
         $stmt->close();
 
 	}
     function listScientificReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name, m_type FROM scientific_project_report WHERE user_email like ? AND is_deleted = 0");
+        //scientific_project_report
+        $stmt = $mysqli->prepare("SELECT scientific_project_report.id, scientific_project_report.date_created, scientific_project_report.project_name, scientific_project_report.m_type, decision.decision, decision.confirmed, decision.summa FROM scientific_project_report LEFT JOIN decision ON scientific_project_report.id = decision.application_id AND decision.form_name ='scientific_project_report' WHERE scientific_project_report.user_email like ? AND scientific_project_report.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $m_type);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $given_ammount);
         $stmt->execute();
 
             while($stmt->fetch()){
@@ -79,6 +98,24 @@
                 echo '<td>'. $creationDate .'</td>';
                 echo '<td>Teadusprojekti aruandlus</td>';
                 echo '<td>'. $projectName.'</td>';
+                if($decision == ""){
+                    echo '<td style="background-color: yellow;">Ei ole veel otsustatud</td>';
+                } else if($decision=="-1"){
+                    echo '<td style="background-color: red;">Taotlus lükati tagasi</td>';
+                }else if($decision=="1"){
+                    echo '<td style="background-color: green;">Taotlus kiideti heaks</td>';
+                }
+                if($confirmed == ""){
+                    echo '<td>Otsus ei ole veel kinnitatud</td>';
+                }else {
+                    echo '<td>'.$confirmed.'</td>';
+                }
+                echo '<td></td>';
+                if($given_ammount == ""){
+                    echo '<td>Toetus ei ole veel määratud</td>';
+                }else {
+                    echo '<td>'.$given_ammount.'</td>';
+                }
 
 				if ($email == '%') {
 					echo (
@@ -103,15 +140,33 @@
     }
     function listStudentApplications($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM student_project_application WHERE user_email like ? AND is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT student_project_application.id, student_project_application.date_created, student_project_application.project_name, decision.decision, decision.confirmed, student_project_application.requested_amount, decision.summa FROM student_project_application LEFT JOIN decision ON student_project_application.id = decision.application_id AND decision.form_name ='student_project_application' WHERE student_project_application.user_email like ? AND student_project_application.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id,$creationDate, $projectName);
+        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $requested_ammount, $given_ammount);
         $stmt->execute();
         while($stmt->fetch()){
-                echo '<tr>';
-                echo '<td>'. $creationDate .'</td>';
-                echo '<td>Tudengiprojekti taotlus</td>';
-                echo '<td>'. $projectName.'</td>';
+            echo '<tr>';
+            echo '<td>'. $creationDate .'</td>';
+            echo '<td>Tudengiprojekti taotlus</td>';
+            echo '<td>'. $projectName.'</td>';
+            if($decision == ""){
+                echo '<td style="background-color: yellow;">Ei ole veel otsustatud</td>';
+            } else if($decision=="-1"){
+                echo '<td style="background-color: red;">Taotlus lükati tagasi</td>';
+            }else if($decision=="1"){
+                echo '<td style="background-color: green;">Taotlus kiideti heaks</td>';
+            }
+            if($confirmed == ""){
+                echo '<td>Otsus ei ole veel kinnitatud</td>';
+            }else {
+                echo '<td>'.$confirmed.'</td>';
+            }
+            echo '<td>'.$requested_ammount.'</td>';
+            if($given_ammount == ""){
+                echo '<td>Toetus ei ole veel määratud</td>';
+            }else {
+                echo '<td>'.$given_ammount.'</td>';
+            }
 				if ($email == '%') {
 					echo (
 						'<td>
@@ -135,15 +190,33 @@
     }
     function listStudentReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT id, date_created, project_name FROM student_project_report WHERE user_email like ? AND is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT student_project_report.id, student_project_report.date_created, student_project_report.project_name, decision.decision, decision.confirmed, decision.summa FROM student_project_report LEFT JOIN decision ON student_project_report.id = decision.application_id AND decision.form_name ='student_project_report' WHERE student_project_report.user_email like ? AND student_project_report.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName);
+        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $given_ammount);
         $stmt->execute();
         while($stmt->fetch()){
-                echo '<tr>';
-                echo '<td>'. $creationDate .'</td>';
-                echo '<td>Tudengiprojekti aruandlus</td>';
-                echo '<td>'. $projectName.'</td>';
+            echo '<tr>';
+            echo '<td>'. $creationDate .'</td>';
+            echo '<td>Tudengiprojekti aruandlus</td>';
+            echo '<td>'. $projectName.'</td>';
+            if($decision == ""){
+                echo '<td style="background-color: yellow;">Ei ole veel otsustatud</td>';
+            } else if($decision=="-1"){
+                echo '<td style="background-color: red;">Taotlus lükati tagasi</td>';
+            }else if($decision=="1"){
+                echo '<td style="background-color: green;">Taotlus kiideti heaks</td>';
+            }
+            if($confirmed == ""){
+                echo '<td>Otsus ei ole veel kinnitatud</td>';
+            }else {
+                echo '<td>'.$confirmed.'</td>';
+            }
+            echo '<td></td>';
+            if($given_ammount == ""){
+                echo '<td>Toetus ei ole veel määratud</td>';
+            }else {
+                echo '<td>'.$given_ammount.'</td>';
+            }
 				if ($email == '%') {
 					echo (
 						'<td>

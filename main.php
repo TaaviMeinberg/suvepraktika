@@ -39,6 +39,10 @@ require './php/sessionCheck.php';
                             <th>Loomise kuupäev</th>
                             <th>Liik</th>
                             <th>Nimi</th>
+                            <th>Otsuse staatus</th>
+                            <th>Kinnituse staatus</th>
+                            <th>Taoteldud summa</th>
+                            <th>Määratud summa</th>
                             <th>Tegevused</th>
                         </tr>
                         </thead>

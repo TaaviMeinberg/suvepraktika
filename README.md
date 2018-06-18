@@ -9,3 +9,13 @@ See sisaldab:
 6. Andmebaas, kuhu lähevad kõik taotlused/aruanded, otsused ja samuti adminnid.
 
 ![alt text](https://github.com/TaaviMeinberg/suvepraktika/blob/master/main.png "main page")
+
+instituut: https://www.tlu.ee/dt
+
+Projekt on loodud Tallinna Ülikooli Digitehnoloogiate instituudi, informaatika kursuse suveprojekti raames.
+
+Kasutatud tehnoloogiad: HTML, PhP, CSS, SQL, Bootstrap, Javascript, JQueri, https://github.com/MrRio/jsPDF - seda koodi kasutasime pdfi genereerimiseks.
+
+Projekti panustasid: Taavi Meinberg, Mihkel Haava, Silver Kaugemaa, Marii Helena Keering, Simon Berner.
+
+Paigaldusjuhised: Projekti kaust tuleb laadida serverisse ja seada üles andmebaas.

@@ -6,7 +6,7 @@ require './php/sessionCheck.php';
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Tudengiprojekti aruandlus</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -100,28 +100,28 @@ require './php/sessionCheck.php';
 
             <div class="form-group">
                 <label>Ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi:</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" class="required" id="name">
 		<label>Organisatsioon:</label>
                 <input id="organisation" type="checkbox">
             </div>
 
             <div class="form-group">
                 <label>Taotleja isikukood / organisatsiooni registrikood:</label>
-                <input type="text" class="form-control" id="code">
+                <input type="text" class="form-control" class="required" id="code">
             </div>
 
             <div class="form-group">
                 <label>Taotleja kontaktandmed:</label>
-                <input type="text" class="form-control" placeholder="telefoninumber" id="phone">
+                <input type="text" class="form-control" class="required" placeholder="telefoninumber" id="phone">
                 <br>
-                <input type="email" class="form-control" placeholder="e-posti aadress" id="email">
+                <input type="email" class="form-control" class="required" placeholder="e-posti aadress" id="email">
                 <br>
-                <input type="text" class="form-control" placeholder="elukoha aadress" id="address">
+                <input type="text" class="form-control" class="required" placeholder="elukoha aadress" id="address">
 
             </div>
             <div class="form-group">
                 <label>Taotleja arveldusarve number:</label>
-                <input type="text" class="form-control" placeholder="arveldusarve number" id="bank_account">
+                <input type="text" class="form-control" class="required" placeholder="arveldusarve number" id="bank_account">
             </div>
             <div class="form-group">
                 <label>Aruandluse koostaja (juhul, kui erineb taotlejast):</label>
@@ -129,7 +129,7 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Projekti juht:</label>
-                <input type="text" class="form-control" id="project_manager">
+                <input type="text" class="form-control" class="required" id="project_manager">
             </div>
             <div class="form-group">
                 <label>Teised projektimeeskonna liikmed:</label>
@@ -137,25 +137,25 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Projekti pealkiri:</label>
-                <input type="text" class="form-control" id="project_name">
+                <input type="text" class="form-control" class="required" id="project_name">
             </div>
             <div class="form-group">
                 <label>Projekti tegelik elluviimise periood (algus- ning lõpukuupäev):</label>
-                <input type="date" class="form-control" id="initial_date">
+                <input type="date" class="form-control" class="required" id="initial_date">
                 <br>
-                <input type="date" class="form-control" id="end_date">
+                <input type="date" class="form-control" class="required" id="end_date">
             </div>
             <div class="form-group">
                 <label>Määratud toetuse summa (kui suur toetus tegelikult määrati komisjoni poolt):</label>
-                <input type="number" class="form-control" min="0" id="grant_awarded">
+                <input type="number" class="form-control" class="required" min="0" id="grant_awarded">
             </div>
             <div class="form-group">
                 <label>Kasutatud toetuse summa (kui palju määratud toetusest ära kasutati):</label>
-                <input type="number" class="form-control" min="0" id="used_grant_awarded">
+                <input type="number" class="form-control" class="required" min="0" id="used_grant_awarded">
             </div>
             <div class="form-group">
                 <label>Projekti tegelik kogukulu (kasutatud toetus + kaasfinantseering + omaosalus):</label>
-                <input type="number" class="form-control" min="0" id="actual_cost">
+                <input type="number" class="form-control" class="required" min="0" id="actual_cost">
             </div>
 
 
@@ -167,11 +167,11 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>Probleemi püstitus ja sihtrühma kirjeldus (vt taotlusest):</label>
-                <input type="text" class="form-control" id="problem">
+                <input type="text" class="form-control" class="required" id="problem">
             </div>
             <div class="form-group">
                 <label>Projekti eesmärk (vt taotlusest):</label>
-                <input type="text" class="form-control" id="project_goal">
+                <input type="text" class="form-control" class="required" id="project_goal">
             </div>
             <div class="form-group">
                 <label>Projekti tulemused
@@ -179,11 +179,11 @@ require './php/sessionCheck.php';
 			</div>
 			<div class="form-group">
 				<label>Oodatud tulemused (mida projektiga taheti saavutada, vt taotlusest):
-				 <textarea class="form-control" id="planned_results" placeholder="1. ..."> </textarea>
+				 <textarea class="form-control" class="required id="planned_results" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Tegelikud tulemused (mida projektiga tegelikult saavutati):</label>
-                 <textarea class="form-control" id="actual_results" placeholder="1. ..."> </textarea>
+                 <textarea class="form-control" class="required" id="actual_results" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Tegevuste loetelu koos tähtajaga:</label>
@@ -191,11 +191,11 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Planeeritud tegevused ja tähtaeg (vt taotlusest):</label>
-                 <textarea class="form-control" id="planned_activities" placeholder="1. ..."> </textarea>
+                 <textarea class="form-control" class="required" id="planned_activities" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Tegelikud tegevused ja tähtaeg (kui tegelik erineb planeeritust, siis põhjenda):</label>
-				 <textarea class="form-control" id="actual_activities" placeholder="1. ..."> </textarea>
+				 <textarea class="form-control" class="required" id="actual_activities" placeholder="1. ..."> </textarea>
             </div>
             <div class="form-group">
                 <label>Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline, mida ei saanud eelnevates punktides kirjutada või selgitada):</label>
@@ -243,8 +243,8 @@ require './php/sessionCheck.php';
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" placeholder=""></td>
-                <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" placeholder=""></td>
+                <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" class="required" placeholder=""></td>
+                <td>TLÜst toatletav summa:<input type="number" id="requested_budget" class="form-control" class="required" placeholder=""></td>
 
               </tr>
             </tbody>
@@ -255,7 +255,7 @@ require './php/sessionCheck.php';
           <div class="form-group">
               <br>
               <label>Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" id="budget_explanation" class="form-control" placeholder="eelarve põhjendus">
+              <input type="text" id="budget_explanation" class="form-control" class="required" placeholder="eelarve põhjendus">
           </div>
         </div>
 

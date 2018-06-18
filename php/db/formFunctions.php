@@ -128,7 +128,7 @@
 				} else{
 					echo (
 						'<td>
-						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button  type="button" id="'.$id.',scientific_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
@@ -178,7 +178,7 @@
 				} else{
 					echo (
 						'<td>
-						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button  type="button" id="'.$id.',student_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
@@ -228,7 +228,7 @@
 				} else{
 					echo (
 						'<td>
-						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
+						<button  type="button" id="'.$id.',student_project_report" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
 						<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
@@ -486,7 +486,8 @@
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
         $stmt = $mysqli->prepare("UPDATE ".$tableName." SET is_deleted=1 WHERE id = ?");
         $stmt->bind_param("i", $id);
-
+        $stmt->execute();
+        echo "id: ".$id." table: ".$tableName;
         if(!$stmt->execute()){
             echo "\n Tekkis viga : " .$stmt->error;
         }

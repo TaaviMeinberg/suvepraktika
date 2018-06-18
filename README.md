@@ -8,4 +8,4 @@ See sisaldab:
 5. Adminnide haldusleht, kus saab adminne juurde lisada ja eemaldada.
 6. Andmebaas, kuhu lähevad kõik taotlused/aruanded, otsused ja samuti adminnid.
 
-![alt text](https://https://github.com/TaaviMeinberg/suvepraktika/blob/master/35628668_1940487509328833_136630962749440000_n.png "Pildike")
+![alt text](https://github.com/TaaviMeinberg/suvepraktika/blob/master/main.png "main page")

@@ -86,6 +86,8 @@ require './php/sessionCheck.php';
 					document.getElementById("confirm_date").value = result.split(', ')[1];
 					document.getElementById("confirm_date").disabled = true;
 				}
+			} else {
+					document.getElementById("confirm_date").disabled = true;
 			}
 		});
 	function sendForm() {

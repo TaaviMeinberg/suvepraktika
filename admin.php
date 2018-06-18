@@ -70,13 +70,10 @@ require './php/sessionCheck.php';
         $.post("./php/db/formFunctions.php", {action:"listAllSubmissions"}, function(result){
             $('#list').append (result);
 			$("button[name*='markAsDeleted']").hide();
-        });
-
-        function showDetailView(){
             $("button[name*='detailView']").on('click', function(event){
-                window.location = "detailedView.html?id="+event.target.id+"";
+                window.location = "detailedView.php?id="+event.target.id+"";
             });
-        }
+        });
         function changeFilter(m) {
           for (var i = 0; i < document.getElementById('list').getElementsByTagName('TR').length; i++) {
             document.getElementById('list').getElementsByTagName('TR')[i].style.display = "table-row";

@@ -332,10 +332,13 @@ require './php/sessionCheck.php';
             <div class="form-group">
                 <label>Kinnitan:</label>
                 <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
-				<small id="confirmation" class="form-text text-muted" style="text-align: center;">
-					Vajutades nupule saadab taotluse ära
-				</small>
+				
             </div>
+			<div style="text-align: center;" class="form-group">
+			<small id="confirmation" class="form-text text-muted">
+				Kinnitades saadab taotluse ära
+			</small>
+			</div>
         </div>
         </div>
 

@@ -303,6 +303,11 @@ require './php/sessionCheck.php';
                 <label>Kinnitan:</label>
                 <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
             </div>
+			<div style="text-align: center;" class="form-group">
+			<small id="confirmation" class="form-text text-muted">
+				Kinnitades saadab taotluse ära
+			</small>
+			</div>
         </div>
         </div>
             </div>

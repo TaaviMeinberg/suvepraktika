@@ -66,12 +66,10 @@ require './php/sessionCheck.php';
                     location.reload();
                 });
             });
-        });
-        function showDetailView(){
             $("button[name*='detailView']").on('click', function(event){
-                window.location = "detailedView.html?id="+event.target.id+"";
+                window.location = "detailedView.php?id="+event.target.id+"";
             });
-        }
+        });
         
     </script>
 </body>

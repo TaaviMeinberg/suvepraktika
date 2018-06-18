@@ -66,7 +66,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',scientific_project_application\'">Langeta otsus</button>
 						</td>'
 
@@ -75,7 +75,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',scientific_project_application" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
 					);
@@ -120,7 +120,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',scientific_project_report\'">Langeta otsus</button>
 						</td>'
 
@@ -129,7 +129,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',scientific_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
 					);
@@ -170,7 +170,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',student_project_application\'">Langeta otsus</button>
 						</td>'
 
@@ -179,7 +179,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',student_project_application" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
 					);
@@ -220,7 +220,7 @@
 				if ($email == '%') {
 					echo (
 						'<td>
-							<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+							<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 							<button type="button" class="btn btn-info btn-sm" onclick="location.href=\'otsus.php?id='.$id.',student_project_report\'">Langeta otsus</button>
 						</td>'
 
@@ -229,7 +229,7 @@
 					echo (
 						'<td>
 						<button  type="button" id="'.$id.',scientific_project_application" class="btn btn-danger btn-sm" name="markAsDeleted">Kustuta</button>
-						<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm" onclick="showDetailView()" name="detailView">Detailvaade</button>
+						<button type="button" id="'.$id.',student_project_report" class="btn btn-secondary btn-sm"  name="detailView">Detailvaade</button>
 						</td>'
 
 					);

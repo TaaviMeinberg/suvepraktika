@@ -1,3 +1,6 @@
+<?php
+  require './php/sessionCheck.php';
+?>
 <!DOCTYPE html>
 
 <html>
@@ -34,18 +37,25 @@
     let formId = window.location.href.split('?')[1].split('=')[1].split(',')[0];
     let tableName = window.location.href.split('?')[1].split('=')[1].split(',')[1];
 
+    //First .post queries the application data from the database
     $.post("./php/db/formFunctions.php", { action: "detailed_content", formId: formId, tableName: tableName }, function (result) {
-      document.getElementById("detailed_content").innerHTML = result;
+      //Second .post gets the application submitters email
+      $.post("./php/db/detailview_check.php", { formId: formId, tableName: tableName }, function (applcationCreator) {
+        //Third .post checks if current user is an admin or not: true/false
+        $.post("./php/db/isUserAdmin.php", function (isAdmin) {
+          //Finally, before loading the detailed data that was recieved from the first .post
+          //it is checked if current user is admin OR if current user is the one who submitted the application
+          if (isAdmin=="true" || applcationCreator == "<?php echo $_SESSION["userEmail"];?>") {
+            document.getElementById("detailed_content").innerHTML = result;
+          } else {
+            alert("Teil puudub selle info vaatamiseks õigus");
+            window.history.back();
+          }
+        });
+      });
     });
 
     function generatePDF() {
-      /*
-      doc.fromHTML($('#detailed_content').html(), 10, 10, {
-        'width': 190
-      });
-      doc.save('sample-file.pdf');
-      */
-
       var pdf = new jsPDF('p', 'pt', 'letter');
       source = $('#detailed_content')[0];
       specialElementHandlers = {
@@ -72,8 +82,6 @@
         },
 
         function (dispose) {
-          // dispose: object with X, Y of the last line add to the PDF 
-          //          this allow the insertion of new lines after html
           pdf.save('taotlus.pdf');
         }, margins);
     }

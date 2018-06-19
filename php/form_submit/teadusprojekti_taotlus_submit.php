@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = test_input($_POST['email']);
     $address = test_input($_POST['address']);
     $speciality = test_input($_POST['speciality']);
+    $degree = test_input($_POST['degree']);
     $year = test_input($_POST['year']);
     $project_manager = test_input($_POST['project_manager']);
     $team_members = test_input($_POST['team_members']);

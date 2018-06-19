@@ -34,9 +34,9 @@
 
     function listScientificApplications($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]); //WHERE user_email like ? AND is_deleted = 0
-	    $stmt = $mysqli->prepare("SELECT scientific_project_application.id, scientific_project_application.date_created, scientific_project_application.project_name, scientific_project_application.m_type, decision.decision, decision.confirmed, scientific_project_application.requested_amount, decision.summa, decision.comment FROM scientific_project_application LEFT JOIN decision ON scientific_project_application.id = decision.application_id AND decision.form_name ='scientific_project_application' WHERE scientific_project_application.user_email like ? AND scientific_project_application.is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT scientific_project_application.id, scientific_project_application.date_created, scientific_project_application.project_name, scientific_project_application.m_type, decision.decision, decision.confirmed, scientific_project_application.requested_amount, decision.summa, decision.prePaid, decision.comment FROM scientific_project_application LEFT JOIN decision ON scientific_project_application.id = decision.application_id AND decision.form_name ='scientific_project_application' WHERE scientific_project_application.user_email like ? AND scientific_project_application.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $requested_ammount, $given_ammount, $comment);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $requested_ammount, $given_ammount, $prePaid, $comment);
         $stmt->execute();
         
             while($stmt->fetch()){
@@ -62,6 +62,12 @@
                 }else {
                     echo '<td>'.$given_ammount.'</td>';
                 }
+                if($prePaid!=""){
+                    echo '<td>'.$prePaid.'</td>';
+                }else {
+                    echo '<td>Ei ole ettemakstud</td>';
+                }
+                
                 echo '<td>'.$comment.'</td>';
 
 				if ($email == '%') {
@@ -89,9 +95,9 @@
     function listScientificReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
         //scientific_project_report
-        $stmt = $mysqli->prepare("SELECT scientific_project_report.id, scientific_project_report.date_created, scientific_project_report.project_name, scientific_project_report.m_type, decision.decision, decision.confirmed, decision.summa, decision.comment FROM scientific_project_report LEFT JOIN decision ON scientific_project_report.id = decision.application_id AND decision.form_name ='scientific_project_report' WHERE scientific_project_report.user_email like ? AND scientific_project_report.is_deleted = 0");
+        $stmt = $mysqli->prepare("SELECT scientific_project_report.id, scientific_project_report.date_created, scientific_project_report.project_name, scientific_project_report.m_type, decision.decision, decision.confirmed, decision.summa, decision.prePaid, decision.comment FROM scientific_project_report LEFT JOIN decision ON scientific_project_report.id = decision.application_id AND decision.form_name ='scientific_project_report' WHERE scientific_project_report.user_email like ? AND scientific_project_report.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $given_ammount, $comment);
+        $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $given_ammount, $prePaid, $comment);
         $stmt->execute();
 
             while($stmt->fetch()){
@@ -116,6 +122,11 @@
                     echo '<td>Toetus ei ole veel määratud</td>';
                 }else {
                     echo '<td>'.$given_ammount.'</td>';
+                }
+                if($prePaid!=""){
+                    echo '<td>'.$prePaid.'</td>';
+                }else {
+                    echo '<td>Ei ole ettemakstud</td>';
                 }
                 echo '<td>'.$comment.'</td>';
 
@@ -142,9 +153,9 @@
     }
     function listStudentApplications($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT student_project_application.id, student_project_application.date_created, student_project_application.project_name, decision.decision, decision.confirmed, student_project_application.requested_amount, decision.summa, decision.comment FROM student_project_application LEFT JOIN decision ON student_project_application.id = decision.application_id AND decision.form_name ='student_project_application' WHERE student_project_application.user_email like ? AND student_project_application.is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT student_project_application.id, student_project_application.date_created, student_project_application.project_name, decision.decision, decision.confirmed, student_project_application.requested_amount, decision.summa, decision.prePaid, decision.comment FROM student_project_application LEFT JOIN decision ON student_project_application.id = decision.application_id AND decision.form_name ='student_project_application' WHERE student_project_application.user_email like ? AND student_project_application.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $requested_ammount, $given_ammount, $comment);
+        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $requested_ammount, $given_ammount, $prePaid, $comment);
         $stmt->execute();
         while($stmt->fetch()){
             echo '<tr>';
@@ -168,6 +179,11 @@
                 echo '<td>Toetus ei ole veel määratud</td>';
             }else {
                 echo '<td>'.$given_ammount.'</td>';
+            }
+            if($prePaid!=""){
+                echo '<td>'.$prePaid.'</td>';
+            }else {
+                echo '<td>Ei ole ettemakstud</td>';
             }
             echo '<td>'.$comment.'</td>';
 
@@ -194,9 +210,9 @@
     }
     function listStudentReports($email){
         $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	    $stmt = $mysqli->prepare("SELECT student_project_report.id, student_project_report.date_created, student_project_report.project_name, decision.decision, decision.confirmed, decision.summa, decision.comment FROM student_project_report LEFT JOIN decision ON student_project_report.id = decision.application_id AND decision.form_name ='student_project_report' WHERE student_project_report.user_email like ? AND student_project_report.is_deleted = 0");
+	    $stmt = $mysqli->prepare("SELECT student_project_report.id, student_project_report.date_created, student_project_report.project_name, decision.decision, decision.confirmed, decision.summa, decision.prePaid, decision.comment FROM student_project_report LEFT JOIN decision ON student_project_report.id = decision.application_id AND decision.form_name ='student_project_report' WHERE student_project_report.user_email like ? AND student_project_report.is_deleted = 0");
         $stmt->bind_param("s",$email);
-        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $given_ammount, $comment);
+        $stmt->bind_result($id, $creationDate, $projectName, $decision, $confirmed, $given_ammount, $prePaid, $comment);
         $stmt->execute();
         while($stmt->fetch()){
             echo '<tr>';
@@ -220,6 +236,11 @@
                 echo '<td>Toetus ei ole veel määratud</td>';
             }else {
                 echo '<td>'.$given_ammount.'</td>';
+            }
+            if($prePaid!=""){
+                echo '<td>'.$prePaid.'</td>';
+            }else {
+                echo '<td>Ei ole ettemakstud</td>';
             }
             echo '<td>'.$comment.'</td>';
             

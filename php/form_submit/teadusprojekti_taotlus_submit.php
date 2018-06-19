@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $m_type = test_input($_POST['m_type']);
     $m = test_input($_POST['m']);
     $reason = test_input($_POST['reason']);
-	  $jsonTable = test_input($_POST['jsonTable']);
+	  $jsonTable = $_POST['jsonTable'];
     $project_budget_total = test_input($_POST['project_budget_total']);
     $requested_budget = test_input($_POST['requested_budget']);
     $budget_explanation = test_input($_POST['budget_explanation']);

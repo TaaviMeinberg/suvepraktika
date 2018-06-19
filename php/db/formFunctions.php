@@ -1,13 +1,6 @@
 <?php
     require("dbConfig.php");
 
-    function test_input($data){
-      $data = trim($data); //eemaldab lõpust tühiku, tab vms
-      $data = stripslashes($data); // eemaldab "\"
-      $data = htmlspecialchars($data); // eemaldab keelatud märgid
-      return $data;
-    }
-
     $user_email = $_SESSION["userEmail"];
     switch($_POST["action"]){
         case "listUserSubmissions":

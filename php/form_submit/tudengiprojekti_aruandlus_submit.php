@@ -26,6 +26,7 @@ $problem;
 $project_goal;
 $planned_results;
 $actual_results;
+$activity_list;
 $planned_activities;
 $actual_activities;
 $additional_info;
@@ -56,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$project_goal = test_input($_POST['project_goal']);
 	$planned_results = test_input($_POST['planned_results']);
 	$actual_results = test_input($_POST['actual_results']);
+	$activity_list = test_input($_POST['activity_list']);
 	$planned_activities = test_input($_POST['planned_activities']);
 	$actual_activities = test_input($_POST['actual_activities']);
 	$additional_info = test_input($_POST['additional_info']);
@@ -65,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$budget_explanation = test_input($_POST['budget_explanation']);
 
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUserName"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-	$stmt = $mysqli->prepare("INSERT INTO student_project_report (user_email, name, organization, code, phone, email, address, bank_account, report_compiler, project_manager, team_members, project_name, initial_date, end_date, grant_awarded, used_grant_awarded, actual_cost, problem, project_goal, planned_results, actual_results, planned_activities, actual_activities, additional_info, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt = $mysqli->prepare("INSERT INTO student_project_report (user_email, name, organization, code, phone, email, address, bank_account, report_compiler, project_manager, team_members, project_name, initial_date, end_date, grant_awarded, used_grant_awarded, actual_cost, problem, project_goal, planned_results, actual_results, activity_list, planned_activities, actual_activities, additional_info, budget_table, budget_total, requested_budget, budget_explanation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 	echo $mysqli->error;
-	$stmt->bind_param("ssisssssssssssdddssssssssdds", $user_email, $name, $organization, $id, $phone, $email, $aadress, $bank_acc, $report_compiler, $project_manager, $team_members, $project_name, $initial_date, $end_date, $grant_awarded, $used_grant_awarded, $actual_cost, $problem, $project_goal, $planned_results, $actual_results, $planned_activities, $actual_activities, $additional_info, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
+	$stmt->bind_param("ssisssssssssssdddsssssssssdds", $user_email, $name, $organization, $id, $phone, $email, $aadress, $bank_acc, $report_compiler, $project_manager, $team_members, $project_name, $initial_date, $end_date, $grant_awarded, $used_grant_awarded, $actual_cost, $problem, $project_goal, $planned_results, $actual_results, $activity_list, $planned_activities, $actual_activities, $additional_info, $jsonTable, $project_budget_total, $requested_budget, $budget_explanation);
 	if ($stmt->execute()){
 		echo "\n Õnnestus!";
 	} else {

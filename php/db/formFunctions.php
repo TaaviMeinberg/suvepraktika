@@ -38,7 +38,7 @@
         $stmt->bind_param("s",$email);
         $stmt->bind_result($id, $creationDate, $projectName, $m_type, $decision, $confirmed, $requested_ammount, $given_ammount, $prePaid, $comment);
         $stmt->execute();
-        
+
             while($stmt->fetch()){
                 echo '<tr id="'.$m_type.'">';
                 echo '<td>'. $creationDate .'</td>';
@@ -67,7 +67,7 @@
                 }else {
                     echo '<td>Ei ole ettemakstud</td>';
                 }
-                
+
                 echo '<td>'.$comment.'</td>';
 
 				if ($email == '%') {
@@ -88,7 +88,7 @@
 					);
 				}
 
-			} 
+			}
         $stmt->close();
 
 	}
@@ -243,7 +243,7 @@
                 echo '<td>Ei ole ettemakstud</td>';
             }
             echo '<td>'.$comment.'</td>';
-            
+
 				if ($email == '%') {
 					echo (
 						'<td>
@@ -422,9 +422,11 @@
 				echo '<p><b>Projekti kogusumma: </b>'.$row['actual_cost'].'</p>';
                 echo '<p><b>Probleemi püstitus ja taotletava summa eesmärk: </b>'.$row['problem'].'</p>';
                 echo '<p><b>Projekti eesmärk: </b>'.$row['project_goal'].'</p>';
-                echo '<p><b>Projekti oodatavad tulemused: </b>'.$row['planned_results'].'</p>';
+                echo '<p><b>Projekti oodatud tulemused: </b>'.$row['planned_results'].'</p>';
 				echo '<p><b>Projekti tegelikud tulemused: </b>'.$row['actual_results'].'</p>';
-                echo '<p><b>Tegevuste loetelu koos tähtajaga: </b>'.$row['actual_activities'].'</p>';
+        echo '<p><b>Projekti tegevuste loetelu: </b>'.$row['activity_list'].'</p>';
+        echo '<p><b>Plaanitud tegvused: </b>'.$row['planned_activities'].'</p>';
+                echo '<p><b>Tegelikud tegevused: </b>'.$row['actual_activities'].'</p>';
 				echo '<p><b>Täiendav informatsioon: </b>'.$row['additional_info'].'</p>';
 				echo '<p><b>Projekti eelarve ning põhjendus: </b></p><table border="1"><tr><th>Eelarvernamea ehk kuluartikkel</th><th>Ühik</th><th>Ühiku hind</th><th>Ühiku kogus</th><th>Kuluartikli summa</th><th>Rahastaja</th></tr>';
 				 for ($i = 0; $i < sizeof(json_decode($row['budget_table'])[0]); $i++) {

@@ -52,8 +52,8 @@ require './php/sessionCheck.php';
 		if (required_fields == false) {
 			alert("Täida koik nõutud väljad!");
 		} else {
-		
-		
+
+
 			let name = document.getElementById("name").value;
 			let organisation = 0;
 			if (document.getElementById("organisation").checked==true) {
@@ -123,52 +123,52 @@ require './php/sessionCheck.php';
 
             <div class="form-group">
                 <label>1. Taotleja ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi </br>( * toetuse taotleja on projekti lõppedes toetuse saaja)</br></label>
-                <input type="text" class="form-control required" id="name">
+                <input type="text" class="form-control required" id="name" maxlength="60">
 	    	<label>Organisatsioon:</label>
                 <input id="organisation" type="checkbox">
 
             </div>
             <div class="form-group">
                 <label>2. Taotleja isikukood / organisatsiooni registrikood </label>
-                <input type="text" class="form-control required" id="code">
+                <input type="text" class="form-control required" id="code" maxlength="11">
             </div>
 
             <div class="form-group">
                 <label>3.Taotleja kontaktandmed:</label>
-                <input type="text" class="form-control required" placeholder="telefoninumber" id="phone">
+                <input type="text" class="form-control required" placeholder="telefoninumber" id="phone" maxlength="8">
                 <br>
-                <input type="email" class="form-control required" placeholder="e-posti aadress" id="email">
+                <input type="email" class="form-control required" placeholder="e-posti aadress" id="email" maxlength="60">
                 <br>
-                <input type="text" class="form-control required" placeholder="elukoha aadress" id="address">
+                <input type="text" class="form-control required" placeholder="elukoha aadress" id="address" maxlength="60">
 
             </div>
             <div class="form-group">
                 <label>4. Taotleja arveldusarve number </label>
-                <input type="text" class="form-control required" placeholder="number" id="bank_account">
+                <input type="text" class="form-control required" placeholder="number" id="bank_account" maxlength="22">
             </div>
             <div class="form-group">
                 <label>5. Aruandluse koostaja (juhul, kui erineb taotlejast)</label>
-                <input type="text" class="form-control" id="report_compiler">
+                <input type="text" class="form-control" id="report_compiler" maxlength="60">
             </div>
             <div class="form-group">
                 <label>6. Projekti juht (M1 ja M3 projektide puhul saab juhiks olla toetuse taotleja)</label>
-                <input type="text" class="form-control required" id="project_manager">
+                <input type="text" class="form-control required" id="project_manager" maxlength="60">
             </div>
             <div class="form-group">
                 <label>7. Teised projektimeeskonna liikmed:</label>
-                <input type="text" class="form-control" id="team_members">
+                <input type="text" class="form-control" id="team_members" maxlength="1000">
             </div>
 			<div class="form-group">
                 <label>8. Juhendaja nimi, ametikoht/haridus, tegevusvaldkond (ainult M1 projekt) :</label>
-                <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name">
+                <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name" maxlength="60">
                 <br>
-                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation">
+                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation" maxlength="60">
                 <br>
-                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity">
+                <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity" maxlength="60">
             </div>
 			<div class="form-group">
                 <label>9. Projekti pealkiri :</label>
-                <input type="text" class="form-control required" id="project_name">
+                <input type="text" class="form-control required" id="project_name" maxlength="500">
             </div>
 
             <div class="form-group">
@@ -197,12 +197,12 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>13. Probleemi püstitus ja sihtrühma kirjeldus :</label>
-                <input type="text" class="form-control required" id="problem">
+                <input type="text" class="form-control required" id="problem" maxlength="3000">
 				</div>
 
             <div class="form-group">
                 <label>14. Projekti eesmärk :</label>
-                <input type="text" class="form-control required" id="project_goal">
+                <input type="text" class="form-control required" id="project_goal" maxlength="3000">
             </div>
             <div class="form-group">
                 <label>15. Projekti tulemused
@@ -210,7 +210,7 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>15.1 Oodatud tulemused <br>(mida projektiga taheti saavutada) :</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="expected_results"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="expected_results" maxlength="3000"></textarea>
 
 				<tr>
 
@@ -218,7 +218,7 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>15.2 Tegelikud tulemused : <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda) :</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_results"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_results" maxlength="3000"></textarea>
 
 				<tr>
 
@@ -229,7 +229,7 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>16.1 Planeeritud tegevused ja tähtaeg <br>(mida projektiga taheti saavutada) :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="planned_activities"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="planned_activities" maxlength="3000"></textarea>
 
 				<tr>
 
@@ -237,7 +237,7 @@ require './php/sessionCheck.php';
             </div>
 			<div class="form-group">
                 <label>16.2 Tegelikud tegevused ja tähtaeg <br>(kui tegelik erineb oodatust, siis selgita ja põhjenda):</br></label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_activities"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_activities" maxlength="3000"></textarea>
             </div>
             <div class="form-group">
                 <label>Vali projekti meede:</label>
@@ -258,21 +258,21 @@ require './php/sessionCheck.php';
                     üritustel osalemine ja/või üritusele reisimine;
                 </small>
             </div>
-            
+
             <div class="form-group">
                 <label id="test2"></label>
             </div>
 			<div class="form-group">
                 <label>17.1. Planeeritud :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="planned_m"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="planned_m" maxlength="3000"></textarea>
             </div>
 			<div class="form-group">
                 <label>17.2. Tegelik :</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_m"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control required" id="actual_m" maxlength="3000"></textarea>
             </div>
             <div class="form-group">
                 <label>18. Täiendav informatsioon projekti kohta (meediakajastus, koostööpartnerid jm oluline):</label>
-                <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info"></textarea>
+                <textarea rows="" cols="" placeholder="1." class="form-control" id="additional_info" maxlength="3000"></textarea>
             </div>
             </div>
 			 <hr>
@@ -327,7 +327,7 @@ require './php/sessionCheck.php';
 
           <div class="form-group">
               <label>19. Eelarve põhjendus (selgitus erinevustele planeeritust; seos projekti elluviimisega):</label>
-              <input type="text" id="budget_explanation" class="form-control required" placeholder="eelarve põhjendus">
+              <input type="text" id="budget_explanation" class="form-control required" placeholder="eelarve põhjendus" maxlength="400">
           </div>
 
 		 <hr>
@@ -346,7 +346,7 @@ require './php/sessionCheck.php';
                 <center>
 				<button  type="button" class="btn btn-success" onclick="sendForm()">Esita taotlus</button>
 				</center>
-				
+
             </div>
 			<div style="text-align: center;" class="form-group">
 			<small id="confirmation" class="form-text text-muted">

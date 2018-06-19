@@ -8,10 +8,11 @@ require './php/sessionCheck.php';
 <head>
     <title>Tudengiprojekti taotlus</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+	<meta http-equiv="content-type" content="application/vnd.ms-excel" charset="UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
+	var required_fields = true;
     let counter=3;
       function addOneToTable() {
         var table = document.getElementById("projectBudgetTable");
@@ -40,7 +41,18 @@ require './php/sessionCheck.php';
       }
 	  function sendForm() {
         //event.preventDefault();
-
+		required_fields = true;
+		$('.required').each(function(event){
+			if (this.value == "") {
+				this.style.borderColor = "red";
+				required_fields = false;
+			}
+		});
+		if (required_fields == false) {
+			alert("Täida koik nõutud väljad!");
+		}
+		
+		
         let name = document.getElementById("name").value;
         let organisation = 0;
         if (document.getElementById("organisation").checked==true) {
@@ -57,8 +69,8 @@ require './php/sessionCheck.php';
         let project_manager = document.getElementById("project_manager").value;
         let team_members = document.getElementById("team_members").value;
         let project_name = document.getElementById("project_name").value;
-		    let requested_amount = document.getElementById("requested_amount").value;
-		    let budget = document.getElementById("budget").value;
+		let requested_amount = document.getElementById("requested_amount").value;
+		let budget = document.getElementById("budget").value;
         let initial_date = document.getElementById("initial_date").value;
         let end_date = document.getElementById("end_date").value;
         let requested_amount_goal = document.getElementById("requested_amount_goal").value;
@@ -105,7 +117,7 @@ require './php/sessionCheck.php';
 
             <div class="form-group">
                 <label>Ees- ja perekonnanimi / taotleva organisatsiooni nimi ja vastutava (allkirjaõigusliku) isiku nimi:</label>
-                <input type="text" class="form-control" class="required" id="name">
+                <input type="text" class="form-control required" id="name">
 		<label>Organisatsioon:</label>
                 <input id="organisation" type="checkbox">
             </div>
@@ -115,29 +127,29 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Taotleja isikukood / organisatsiooni registrikood:</label>
-                <input type="text" class="form-control" class="required" id="code">
+                <input type="text" class="form-control required" id="code">
             </div>
 
             <div class="form-group">
                 <label>Taotleja kontaktandmed:</label>
-                <input type="text" class="form-control" class="required" placeholder="telefoninumber" id="phone">
+                <input type="text" class="form-control required" placeholder="telefoninumber" id="phone">
                 <br>
-                <input type="email" class="form-control" class="required" placeholder="e-posti aadress" id="email">
+                <input type="email" class="form-control required" placeholder="e-posti aadress" id="email">
                 <br>
-                <input type="text" class="form-control" class="required" placeholder="elukoha aadress" id="address">
+                <input type="text" class="form-control required" placeholder="elukoha aadress" id="address">
 
             </div>
             <div class="form-group">
                 <label>Õppeinfo:</label>
-                <input type="text" class="form-control" class="required" placeholder="eriala" id="speciality">
+                <input type="text" class="form-control required" placeholder="eriala" id="speciality">
                 <br>
-                <input type="text" class="form-control" class="required" placeholder="õppetase" id="degree">
+                <input type="text" class="form-control required" placeholder="õppetase" id="degree">
                 <br>
-                <input type="number" class="form-control" class="required" placeholder="õppeaasta" id="year">
+                <input type="number" class="form-control required" placeholder="õppeaasta" id="year">
             </div>
             <div class="form-group">
                 <label>Projekti juht:</label>
-                <input type="text" class="form-control" class="required" id="project_manager">
+                <input type="text" class="form-control required" id="project_manager">
 
             </div>
             <div class="form-group">
@@ -146,26 +158,26 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <label>Projekti pealkiri</label>
-                <input type="text" class="form-control" class="required" id="project_name">
+                <input type="text" class="form-control required" id="project_name">
             </div>
             <div class="form-group">
                 <label>Tudengiprojekti toetusest taotletav summa</label>
-                <input type="number" class="form-control" class="required" id="requested_amount">
+                <input type="number" class="form-control required" id="requested_amount">
             </div>
             <div class="form-group">
                 <label>Projekti kogu eelarve</label>
-                <input type="number" class="form-control" class="required" placeholder="tudengiprojekti toetus + kaasfinantseering + omaosalus" id="budget">
+                <input type="number" class="form-control required" placeholder="tudengiprojekti toetus + kaasfinantseering + omaosalus" id="budget">
                 <br>
             </div>
 			<div class="form-group">
                 <label>Projekti eeldatav periood:</label>
-                <input type="date" class="form-control" class="required" placeholder="alguskuupäev" id="initial_date">
+                <input type="date" class="form-control required" placeholder="alguskuupäev" id="initial_date">
                 <br>
-                <input type="date" class="form-control" class="required" placeholder="lõpukuupäev" id="end_date">
+                <input type="date" class="form-control required" placeholder="lõpukuupäev" id="end_date">
             </div>
             <div class="form-group">
                 <label>Taotletava summa kasutamise eesmärk (ühe lausega)</label>
-                <input type="text" class="form-control" class="required" id="requested_amount_goal">
+                <input type="text" class="form-control required" id="requested_amount_goal">
             </div>
 
 
@@ -177,7 +189,7 @@ require './php/sessionCheck.php';
         <div class="chapter">
             <div class="form-group">
                 <label>Vali projekti meede:</label>
-                <select class="form-control" id="project_option">
+                <select class="form-control required" id="project_option">
                     <option>1. Eriala arendus</option>
                     <option>2. Kodanikuühiskonnas kaasa rääkimine</option>
                     <option>3. Traditsioonide hoidmine ja edendamine</option>
@@ -207,21 +219,22 @@ require './php/sessionCheck.php';
             <div class="form-group">
                 <label>Probleemi püstitus ja sihtrühma kirjeldus (kirjelda sihtgruppi ja selle probleeme või vajadusi; põhjenda
                     projekti olulisust):</label>
-                <input type="text" class="form-control" class="required" id="problem">
+                <input type="text" class="form-control required" id="problem">
             </div>
             <div class="form-group">
                 <label>Projekti eesmärk (ühe lausega; eesmärk ei saa olla tegevus):</label>
-                <input type="text" class="form-control" class="required" id="project_goal">
+                <input type="text" class="form-control required" id="project_goal">
             </div>
             <div class="form-group">
                 <label>Projekti oodatavad tulemused
                     <br>(mõju sihtgrupile, valdkonnale ja ühiskonnale laiemalt; oodatav tulemus peab
                     olema konkreetne, objektiivselt mõõdetav ja kaasa aitama eesmärgi saavutamisele):</label>
-					 <textarea class="form-control" class="required" id="expected_results" placeholder="1. ..."> </textarea>
+					 <textarea rows="" cols="" class="form-control required" id="expected_results" placeholder="1. ..."></textarea>
+					 
             </div>
             <div class="form-group">
                 <label>Tegevuste loetelu koos tähtajaga (vajadusel kirjelda, kuidas tegevused aitavad oodatavaid tulemusi saavutada):</label>
-                <textarea class="form-control" class="required" id="activities" placeholder="1. ..."> </textarea>
+                <textarea rows="" cols="" class="form-control required" id="activities" placeholder="1. ..."></textarea>
             </div>
             <div class="form-group">
                 <label>Täiendav informatsioon projekti kohta (kõik vajalik, mida ei saanud eelnevates punktides kirjutada või selgitada)</label>
@@ -271,8 +284,8 @@ require './php/sessionCheck.php';
 						<td></td>
 						<td></td>
 						<td></td>
-            <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control" class="required" placeholder=""></td>
-            <td>TLÜst taotletav summa:<input type="number" id="requested_budget" class="form-control" class="required" placeholder=""></td>
+            <td>Projekti summa kokku:<input type="number" id="project_budget_total" class="form-control required" placeholder=""></td>
+            <td>TLÜst taotletav summa:<input type="number" id="requested_budget" class="form-control required" placeholder=""></td>
 
 					  </tr>
 					</tbody>
@@ -282,12 +295,12 @@ require './php/sessionCheck.php';
 		<div class="chapter">
 				<div class="budget">
                 <label>Eelarve põhjendus (selgitus üldsõnalistele kuluartiklitele; seos projekti elluviimisega)</label>
-                <input type="text" id="budget_explanation" class="form-control" class="required" placeholder="eelarve põhjendus">
+                <input type="text" id="budget_explanation" class="form-control required" placeholder="eelarve põhjendus">
             </div>
             <br>
 			<div class="budget">
                 <label>Toetuse taotlemise põhjus (Kuidas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele ehk mida saab rahastuse abil paremini teha.)</label>
-                <input type="text" class="form-control" class="required">
+                <input type="text" class="form-control required">
             </div>
             <br>
 		</div>

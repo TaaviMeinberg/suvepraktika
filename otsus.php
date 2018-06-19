@@ -12,7 +12,7 @@ require './php/sessionCheck.php';
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	<script src="js/googleAccount.js"></script>
 </head>
 <body>
 	 <div class="content">
@@ -115,6 +115,7 @@ require './php/sessionCheck.php';
 				});
 			}
 	}
+    isAdmin();
 	</script>
 	</body>
 	</html>

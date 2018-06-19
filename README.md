@@ -18,4 +18,4 @@ Kasutatud tehnoloogiad: HTML, PhP, CSS, SQL, Bootstrap, Javascript, JQueri, http
 
 Projekti panustasid: Taavi Meinberg, Mihkel Haava, Silver Kaugemaa, Marii Helena Keering, Simon Berner.
 
-Paigaldusjuhised: Projekti kaust tuleb laadida serverisse ja seada üles andmebaas.
+Paigaldusjuhised: on leitav [siin.](/doc/paigaldusJuhend.md) 

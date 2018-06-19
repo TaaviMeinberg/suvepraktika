@@ -33,7 +33,7 @@ require './php/sessionCheck.php';
                 <hr>
                 <p style="font-style: italic;">Siia kuvatakse Sinu esitatud taotlused</p>
                 <div style="margin-right: 10px;" class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover" id="admins">
+                    <table class="table table-bordered table-striped table-hover" id="admins" style="display: block; overflow-y: scroll; height:400px">
                         <thead>
                         <tr>
                             <th>Loomise kuupäev</th>

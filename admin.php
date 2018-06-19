@@ -45,7 +45,7 @@ require './php/sessionCheck.php';
                 </select>
                 <br>
                 <div style="margin-right: 10px;" class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover" id="admins">
+                    <table class="table table-bordered table-striped table-hover" id="admins" style="display: block; overflow-y: scroll; height:550px">
                         <thead>
                         <tr>
                             <th>Loomise kuupäev</th>
@@ -60,7 +60,7 @@ require './php/sessionCheck.php';
                             <th>Tegevused</th>
                         </tr>
                         </thead>
-                        <tbody style="margin-right: 10px;"id="list" >
+                        <tbody style=" margin-right: 10px;"id="list" >
                         </tbody>
                     </table>
                 </div>

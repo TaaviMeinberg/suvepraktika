@@ -51,51 +51,52 @@ require './php/sessionCheck.php';
 		});
 		if (required_fields == false) {
 			alert("Täida koik nõutud väljad!");
-		}
+		} else {
 		
-        let name = document.getElementById("name").value;
-        let organisation = 0;
-        if (document.getElementById("organisation").checked==true) {
-          organisation=1;
-        }
-        let id = document.getElementById("code").value;
-        let phone = document.getElementById("phone").value;
-        let email = document.getElementById("email").value;
-        let address = document.getElementById("address").value;
-        let bank_acc = document.getElementById("bank_account").value;
-        let report_compiler = document.getElementById("report_compiler").value;
-        let project_manager = document.getElementById("project_manager").value;
-        let team_members = document.getElementById("team_members").value;
-        let project_name = document.getElementById("project_name").value;
-        let initial_date = document.getElementById("initial_date").value;
-        let end_date = document.getElementById("end_date").value;
-        let grant_awarded = document.getElementById("grant_awarded").value;
-        let used_grant_awarded = document.getElementById("used_grant_awarded").value;
-        let actual_cost = document.getElementById("actual_cost").value;
-        let problem = document.getElementById("problem").value;
-        let project_goal = document.getElementById("project_goal").value;
-        let planned_results = document.getElementById("planned_results").value;
-        let actual_results = document.getElementById("actual_results").value;
-        let planned_activities = document.getElementById("planned_activities").value;
-        let actual_activities = document.getElementById("actual_activities").value;
-        let additional_info = document.getElementById("additional_info").value;
-        let tableArray = [[],[],[],[],[],[]];
-        for (i = 0; i < document.getElementsByName("budget").length; i++) {
-          tableArray[0].push(document.getElementsByName("budget")[i].value);
-          tableArray[1].push(document.getElementsByName("unit")[i].value);
-          tableArray[2].push(document.getElementsByName("cost_of_unit")[i].value);
-          tableArray[3].push(document.getElementsByName("unit_amount")[i].value);
-          tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
-          tableArray[5].push(document.getElementsByName("funder")[i].value);
-        }
-        let jsonTable = JSON.stringify(tableArray);
+			let name = document.getElementById("name").value;
+			let organisation = 0;
+			if (document.getElementById("organisation").checked==true) {
+			  organisation=1;
+			}
+			let id = document.getElementById("code").value;
+			let phone = document.getElementById("phone").value;
+			let email = document.getElementById("email").value;
+			let address = document.getElementById("address").value;
+			let bank_acc = document.getElementById("bank_account").value;
+			let report_compiler = document.getElementById("report_compiler").value;
+			let project_manager = document.getElementById("project_manager").value;
+			let team_members = document.getElementById("team_members").value;
+			let project_name = document.getElementById("project_name").value;
+			let initial_date = document.getElementById("initial_date").value;
+			let end_date = document.getElementById("end_date").value;
+			let grant_awarded = document.getElementById("grant_awarded").value;
+			let used_grant_awarded = document.getElementById("used_grant_awarded").value;
+			let actual_cost = document.getElementById("actual_cost").value;
+			let problem = document.getElementById("problem").value;
+			let project_goal = document.getElementById("project_goal").value;
+			let planned_results = document.getElementById("planned_results").value;
+			let actual_results = document.getElementById("actual_results").value;
+			let planned_activities = document.getElementById("planned_activities").value;
+			let actual_activities = document.getElementById("actual_activities").value;
+			let additional_info = document.getElementById("additional_info").value;
+			let tableArray = [[],[],[],[],[],[]];
+			for (i = 0; i < document.getElementsByName("budget").length; i++) {
+			  tableArray[0].push(document.getElementsByName("budget")[i].value);
+			  tableArray[1].push(document.getElementsByName("unit")[i].value);
+			  tableArray[2].push(document.getElementsByName("cost_of_unit")[i].value);
+			  tableArray[3].push(document.getElementsByName("unit_amount")[i].value);
+			  tableArray[4].push(document.getElementsByName("cost_of_item")[i].value);
+			  tableArray[5].push(document.getElementsByName("funder")[i].value);
+			}
+			let jsonTable = JSON.stringify(tableArray);
 
-        let project_budget_total = document.getElementById("project_budget_total").value;
-        let requested_budget = document.getElementById("requested_budget").value;
-        let budget_explanation = document.getElementById("budget_explanation").value;
-        $.post("./php/form_submit/tudengiprojekti_aruandlus_submit.php", {name:name, organisation:organisation, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, used_grant_awarded:used_grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, planned_results:planned_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
-          alert( "Andmed: " + data );
-        });
+			let project_budget_total = document.getElementById("project_budget_total").value;
+			let requested_budget = document.getElementById("requested_budget").value;
+			let budget_explanation = document.getElementById("budget_explanation").value;
+			$.post("./php/form_submit/tudengiprojekti_aruandlus_submit.php", {name:name, organisation:organisation, id:id, phone:phone, email:email, address:address, bank_acc:bank_acc, report_compiler:report_compiler, project_manager:project_manager, team_members:team_members, project_name:project_name, initial_date:initial_date, end_date:end_date, grant_awarded:grant_awarded, used_grant_awarded:used_grant_awarded, actual_cost:actual_cost, problem:problem, project_goal:project_goal, planned_results:planned_results, actual_results:actual_results, planned_activities:planned_activities, actual_activities:actual_activities, additional_info:additional_info, jsonTable:jsonTable, project_budget_total:project_budget_total, requested_budget:requested_budget, budget_explanation:budget_explanation}).done(function( data ) {
+			  alert( "Andmed: " + data );
+			});
+		}
       }
     </script>
 </head>
@@ -286,8 +287,9 @@ require './php/sessionCheck.php';
                 </ul>
             </div>
             <div class="form-group">
-                <label>Kinnitan:</label>
-                <input type="checkbox" class="form-control" placeholder="" onclick="sendForm()">
+                <center>
+				<button  type="button" class="btn btn-success" onclick="sendForm()">Esita taotlus</button>
+				</center>
             </div>
 			<div style="text-align: center;" class="form-group">
 			<small id="confirmation" class="form-text text-muted">

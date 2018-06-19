@@ -55,6 +55,7 @@ require './php/sessionCheck.php';
                             <th>Kinnituse staatus</th>
                             <th>Taoteldud summa</th>
                             <th>Määratud summa</th>
+                            <th>Ettetasutud summa</th>
                             <th>Kommentaar</th>
                             <th>Tegevused</th>
                         </tr>

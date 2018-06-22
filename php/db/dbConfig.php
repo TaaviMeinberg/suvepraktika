@@ -1,9 +1,22 @@
 <?php
+	/*
+	--Näidis sisu VAJAB MUUTMIST--
+	
+	//Kontrollib sessiooni olemasolu
 	if(!isset($_SESSION)){
 		session_start();
 	}
-	$serverHost = "greeny.cs.tlu.ee";
-	$serverUserName = "if17";
-	$serverPassword = "if17";
-	$database = "if17_suvepraktika";
+	
+	//Serveri/andmebaasi url
+	$serverHost = "sinu-andmebaasi-url";
+	
+	//Serveri/andmebaasi kasutajanimi
+	$serverUserName = "kasutajanimi";
+	
+	//Serveri/andmebaasi parool
+	$serverPassword = "parool";
+	
+	//Andmebaasi nimi
+	$database = "andmebaasi_nimi";
+	*/
 ?>

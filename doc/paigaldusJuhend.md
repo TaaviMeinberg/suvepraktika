@@ -5,6 +5,8 @@
 - Pakkige failid lahti.
 - Tõstke projekti kaust enda veebiserveris sobivasse kohta.
 
+**NB: [/php/db/dbConfig.php](/php/db/dbConfig.php) fail on näidis fail ning selles olev sisu on vaja asendada reaalse infoga!**
+
 2 - Andmebaasi loomine:
 - Leidke projektis "database" kaustast fail: export.sql .
 - Selles failis on phpmyadmin andmebaasi tabelite loomise käsud, nende abil saate luua vajalikud tabelid, kuhu keskkond infot salvestab.
@@ -31,3 +33,4 @@
     ![Alt text](/doc/img/OAuth.PNG "Optional Title")
 
     Seal peate "https://greeny.cs.tlu.ee/~meintaav" osa muutma enda domeeni asukohale, kus see project asub.
+    

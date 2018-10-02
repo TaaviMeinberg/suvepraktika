@@ -178,7 +178,7 @@ require './php/sessionCheck.php';
                 <input type="date" class="form-control required" placeholder="lõpukuupäev" id="end_date">
             </div>
 			<div class="form-group">
-                <label>11. Määratav toetus :</label>
+                <label>11. Määratud toetus :</label>
                 <input type="number" class="form-control required" id="grant_awarded">
 			</div>
 			<div class="form-group">
@@ -283,7 +283,7 @@ require './php/sessionCheck.php';
           <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
-                <th>Eelarverida ehk kuluartikkel</th>
+                <th>Kuluartikkel</th>
                 <th>Ühik</th>
                 <th>Ühiku hind</th>
                 <th>Ühiku kogus</th>
@@ -302,7 +302,7 @@ require './php/sessionCheck.php';
             <tbody>
               <tr>
                 <td><input name="budget" type="text" class="form-control" placeholder="1."></td>
-                <td><input name="unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="unit" type="text" class="form-control" placeholder=""></td>
                 <td><input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input name="unit_amount" type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input name="cost_of_item" type="number" class="form-control" placeholder="" min="0"></td>

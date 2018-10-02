@@ -135,7 +135,7 @@ require './php/sessionCheck.php';
 
             <div class="form-group">
                 <label>Taotleja kontaktandmed:</label>
-                <input type="number" class="form-control required" placeholder="telefoninumber" id="phone" maxlength="8">
+                <input type="text" class="form-control required" placeholder="telefoninumber" id="phone" maxlength="8">
                 <br>
                 <input type="email" class="form-control required" placeholder="e-posti aadress" id="email" maxlength="60">
                 <br>
@@ -163,7 +163,7 @@ require './php/sessionCheck.php';
                 <label>Juhendaja info (ainult M1 projekt):</label>
                 <input type="text" class="form-control" placeholder="juhendaja nimi" id="supervisor_name" maxlength="60">
                 <br>
-                <input type="text" class="form-control" placeholder="ametikoht/harnameus" id="supervisor_occupation" maxlength="60">
+                <input type="text" class="form-control" placeholder="ametikoht/haridus" id="supervisor_occupation" maxlength="60">
                 <br>
                 <input type="text" class="form-control" placeholder="tegevusvaldkond" id="field_of_activity" maxlength="60">
             </div>
@@ -217,7 +217,7 @@ require './php/sessionCheck.php';
                 <input type="text" class="form-control required" id="m" maxlength="500">
             </div>
             <div class="form-group">
-                <label>Toetuse taotlemise põhjus (kunameas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
+                <label>Toetuse taotlemise põhjus (kuidas aitab taotletav toetus kaasa projekti kvaliteedi olulisele paranemisele
                     ehk mida saab rahastuse abil paremini teha):</label>
                 <input type="text" class="form-control required" id="reason" maxlength="400">
 				<hr>
@@ -254,7 +254,7 @@ require './php/sessionCheck.php';
           <table class="table table-bordered" id="projectBudgetTable">
             <thead>
               <tr>
-                <th>Eelarvernamea ehk kuluartikkel</th>
+                <th>Kuluartikkel</th>
                 <th>Ühik</th>
                 <th>Ühiku hind</th>
                 <th>Ühiku kogus</th>
@@ -267,13 +267,13 @@ require './php/sessionCheck.php';
                 <th class="tableExplanation">(nt. ühe plakati hind, ühe bussi pileti hind)</th>
                 <th class="tableExplanation">(nt. 45 plakatit, 10 bussipiletit)</th>
                 <th class="tableExplanation">(ühiku hind x ühiku kogus)</th>
-                <th class="tableExplanation">(märknamea, kas kulu on planeeritud TLÜ toetusest, omafinantseeringust või kaasfinantseeringust*)</th>
+                <th class="tableExplanation">(märkida, kas kulu on planeeritud TLÜ toetusest, omafinantseeringust või kaasfinantseeringust*)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><input name="budget" type="text" class="form-control" placeholder="1."></td>
-                <td><input name="unit" type="number" class="form-control" placeholder="" min="0"></td>
+                <td><input name="unit" type="text" class="form-control" placeholder=""></td>
                 <td><input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input name="unit_amount" type="number" class="form-control" placeholder="" min="0"></td>
                 <td><input name="cost_of_item" type="number" class="form-control" placeholder="" min="0"></td>

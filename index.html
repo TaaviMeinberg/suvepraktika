@@ -9,7 +9,8 @@
     <script src="js/googleAccount.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="608677679448-ak55huh9omcppibuhh2t69iectp1r7ok.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="526642092128-vo4l0ub8vcka7ojcl828mr021g4qt2la.apps.googleusercontent.com">
+	
 </head>
 
 <body>
@@ -21,6 +22,7 @@
             <div class="chapter">
                 <p>Palun logi sisse kasutades enda TLÜ kontot.</p>
                 <div id="loginButton" class="g-signin2" data-onsuccess="onSignIn"></div>
+				<?php include 'php/session.php';?>
                 <a href="#" onclick="signOut();">Sign out</a>
             </div>
         </div>

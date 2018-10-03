@@ -9,5 +9,4 @@ if($_POST["sessionStatus"]=="create"){
 }
 
 
-
 ?>

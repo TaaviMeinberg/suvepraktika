@@ -4,5 +4,4 @@ if(!isset($_SESSION["userName"])){
     header('Location: index.html');
     exit;
 }
-
 ?>

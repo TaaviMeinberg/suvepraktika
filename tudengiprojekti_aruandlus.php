@@ -289,14 +289,10 @@ require './php/sessionCheck.php';
             </div>
             <div class="form-group">
                 <center>
-				<button  type="button" class="btn btn-success" onclick="sendForm()">Esita taotlus</button>
+				<button  type="button" class="btn btn-success" onclick="sendForm()">Kinnita ja esita aruandlus</button>
 				</center>
             </div>
-			<div style="text-align: center;" class="form-group">
-			<small id="confirmation" class="form-text text-muted">
-				Kinnitades saadab taotluse ära
-			</small>
-			</div>
+			
         </div>
     </div>
 

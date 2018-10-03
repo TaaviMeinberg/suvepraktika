@@ -19,4 +19,6 @@
 	//Andmebaasi nimi
 	$database = "andmebaasi_nimi";
 	*/
+	
+
 ?>

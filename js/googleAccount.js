@@ -30,14 +30,11 @@ function onSignIn(googleUser) {
 }
 
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        var sessionStatus = "destroy";
+	var sessionStatus = "destroy";
         $.post("./php/session.php", { sessionStatus: sessionStatus });
-        console.log('User signed out.');
-        window.location = "./index.html";
-    });
-}
+	document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:5555/~haavmihk/suvepraktika/index.html";
+
+  }
 function isAdmin() {
     $.get("./php/db/isUserAdmin.php", function (result) {
         if (result != "true") {

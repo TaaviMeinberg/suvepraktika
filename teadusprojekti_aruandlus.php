@@ -25,7 +25,7 @@ require './php/sessionCheck.php';
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         cell1.innerHTML = '<input name="budget" type="text" class="form-control" placeholder="">';
-        cell2.innerHTML = '<input name="unit" type="number" class="form-control" placeholder="" min="0">';
+        cell2.innerHTML = '<input name="unit" type="text" class="form-control" placeholder="">';
         cell3.innerHTML = '<input name="cost_of_unit" type="number" class="form-control" placeholder="" min="0">';
         cell4.innerHTML = '<input name="unit_amount" type="number" class="form-control" placeholder="" min="0">';
         cell5.innerHTML = '<input name="cost_of_item" type="number" class="form-control" placeholder="" min="0">';

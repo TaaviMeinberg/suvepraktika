@@ -16,6 +16,6 @@ Projekt on loodud Tallinna Ülikooli Digitehnoloogiate instituudi, informaatika 
 
 Kasutatud tehnoloogiad: HTML, PhP, CSS, SQL, Bootstrap, Javascript, JQueri, https://github.com/MrRio/jsPDF - seda koodi kasutasime pdfi genereerimiseks.
 
-Projekti panustasid: Taavi Meinberg, Mihkel Haava, Silver Kaugemaa, Marii Helena Keering, Simon Berner.
+Projekti panustasid: Taavi Meinberg, Mihkel Haava, Silver Kaugemaa, Marii Helena Keerig, Simon Berner.
 
 Paigaldusjuhised: on leitav [siin.](/doc/paigaldusJuhend.md) 
